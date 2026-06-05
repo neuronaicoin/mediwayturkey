@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { SearchBar } from "@/components/SearchBar";
+import { TreatmentCard } from "@/components/TreatmentCard";
+import { CityCard } from "@/components/CityCard";
 import { getDictionary } from "@/lib/i18n";
 import { ACTIVE_TREATMENTS } from "@/lib/data/treatments";
 import { ACTIVE_CITIES } from "@/lib/data/cities";
@@ -55,8 +57,6 @@ export default function HomePage({ params }: { params: { locale: string } }) {
   const t = getDictionary(params.locale);
   const locale = params.locale;
   const lang = getLanguage(locale);
-  const firstTreatment = ACTIVE_TREATMENTS[0];
-  const firstCity = ACTIVE_CITIES[0];
 
   return (
     <main className="min-h-screen bg-cream font-body flex flex-col">
@@ -117,17 +117,19 @@ export default function HomePage({ params }: { params: { locale: string } }) {
       </div>
 
       <section className="max-w-container mx-auto px-5 mt-8 w-full">
-        <h2 className="font-display text-lg font-semibold text-navy mb-4">{t.sections.searchTreatment}</h2>
+        <h2 className="font-display text-xl font-semibold text-navy mb-4 text-center">{t.sections.searchTreatment}</h2>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
           {ACTIVE_TREATMENTS.map((tr) => {
             const Icon = TREATMENT_ICONS[tr.icon] ?? IconHair;
             return (
-              <Link key={tr.slug} href={`/${locale}/${tr.slug}/${firstCity.slug}`}
-                className="bg-white border border-gray-200 rounded-xl p-5 text-center hover:shadow-md hover:border-gold transition">
-                <div className="flex justify-center mb-2"><Icon /></div>
-                <div className="text-sm font-semibold text-navy">{tr.name}</div>
-                <div className="text-[11px] text-gray-400 mt-0.5">{treatmentSubtitle(tr.slug)}</div>
-              </Link>
+              <TreatmentCard
+                key={tr.slug}
+                locale={locale}
+                treatmentSlug={tr.slug}
+                treatmentName={tr.name}
+                subtitle={treatmentSubtitle(tr.slug)}
+                icon={<Icon />}
+              />
             );
           })}
         </div>
@@ -137,11 +139,13 @@ export default function HomePage({ params }: { params: { locale: string } }) {
         <h2 className="font-display text-lg font-semibold text-navy mb-4">{t.sections.popularDestinations}</h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
           {ACTIVE_CITIES.map((c, i) => (
-            <Link key={c.slug} href={`/${locale}/${firstTreatment.slug}/${c.slug}`}
-              className="rounded-xl h-28 flex items-center justify-center p-3 hover:brightness-110 transition"
-              style={{ background: `linear-gradient(135deg, #0a2540, ${["#21405e", "#2a5168", "#26485f", "#1c3a55", "#234862", "#1e4058"][i % 6]})` }}>
-              <span className="text-white text-lg font-semibold tracking-wide">{c.name}</span>
-            </Link>
+            <CityCard
+              key={c.slug}
+              locale={locale}
+              citySlug={c.slug}
+              cityName={c.name}
+              gradientTo={["#21405e", "#2a5168", "#26485f", "#1c3a55", "#234862", "#1e4058"][i % 6]}
+            />
           ))}
         </div>
       </section>
