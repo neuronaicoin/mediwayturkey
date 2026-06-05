@@ -62,10 +62,10 @@ export default function HomePage({ params }: { params: { locale: string } }) {
       <header className="bg-navy">
         <div className="max-w-container mx-auto px-5 py-4 flex items-center justify-between">
           <Link href={`/${locale}`} className="leading-none">
-            <span className="font-display text-2xl font-semibold text-white tracking-tight">
+            <span className="font-display text-3xl font-semibold text-white tracking-tight">
               Medi<span className="text-gold">Way</span>
             </span>
-            <span className="block font-display text-[8px] font-medium text-navy-muted tracking-[3px]">
+            <span className="block font-display text-[10px] font-medium text-navy-muted tracking-[4px]">
               {t.brandSuffix}
             </span>
           </Link>
@@ -103,25 +103,25 @@ export default function HomePage({ params }: { params: { locale: string } }) {
 
       <div className="max-w-container mx-auto px-5 -mt-9 w-full">
         <form action={`/${locale}/${firstTreatment.slug}/${firstCity.slug}`}
-          className="bg-white border-2 border-gold rounded-xl p-2 flex flex-col sm:flex-row gap-2 shadow-lg">
-          <div className="flex-1 flex items-center gap-2.5 px-3 py-2 sm:border-r border-gray-100">
+          className="bg-white border-2 border-gold rounded-2xl p-2.5 flex flex-col sm:flex-row gap-2 shadow-xl">
+          <div className="flex-1 flex items-center gap-3 px-4 py-3 sm:border-r border-gray-100">
             <StethoscopeIcon />
             <div className="text-left flex-1">
-              <div className="text-[10px] uppercase tracking-wide text-gray-400">{t.hero.treatmentLabel}</div>
+              <div className="text-[11px] uppercase tracking-wide text-gray-400 font-medium">{t.hero.treatmentLabel}</div>
               <select name="treatment" defaultValue={firstTreatment.slug}
-                className="w-full text-sm text-navy font-medium bg-transparent outline-none cursor-pointer">
+                className="w-full text-base text-navy font-semibold bg-transparent outline-none cursor-pointer">
                 {ACTIVE_TREATMENTS.map((tr) => (
                   <option key={tr.slug} value={tr.slug}>{tr.name}</option>
                 ))}
               </select>
             </div>
           </div>
-          <div className="flex-1 flex items-center gap-2.5 px-3 py-2 sm:border-r border-gray-100">
+          <div className="flex-1 flex items-center gap-3 px-4 py-3 sm:border-r border-gray-100">
             <PinIcon />
             <div className="text-left flex-1">
-              <div className="text-[10px] uppercase tracking-wide text-gray-400">{t.hero.cityLabel}</div>
+              <div className="text-[11px] uppercase tracking-wide text-gray-400 font-medium">{t.hero.cityLabel}</div>
               <select name="city" defaultValue={firstCity.slug}
-                className="w-full text-sm text-navy font-medium bg-transparent outline-none cursor-pointer">
+                className="w-full text-base text-navy font-semibold bg-transparent outline-none cursor-pointer">
                 {ACTIVE_CITIES.map((c) => (
                   <option key={c.slug} value={c.slug}>{c.name}</option>
                 ))}
@@ -129,7 +129,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
             </div>
           </div>
           <button type="submit"
-            className="bg-navy text-white flex items-center justify-center gap-2 px-7 py-3 rounded-lg text-sm font-semibold hover:bg-navy-light transition">
+            className="bg-navy text-white flex items-center justify-center gap-2 px-9 py-4 rounded-xl text-base font-semibold hover:bg-navy-light transition">
             <SearchIcon /> {t.hero.searchButton}
           </button>
         </form>
@@ -167,9 +167,9 @@ export default function HomePage({ params }: { params: { locale: string } }) {
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
           {ACTIVE_CITIES.map((c, i) => (
             <Link key={c.slug} href={`/${locale}/${firstTreatment.slug}/${c.slug}`}
-              className="rounded-xl h-20 flex items-end p-3 hover:brightness-110 transition"
+              className="rounded-xl h-28 flex items-center justify-center p-3 hover:brightness-110 transition"
               style={{ background: `linear-gradient(135deg, #0a2540, ${["#21405e", "#2a5168", "#26485f", "#1c3a55", "#234862", "#1e4058"][i % 6]})` }}>
-              <span className="text-white text-sm font-semibold">{c.name}</span>
+              <span className="text-white text-lg font-semibold tracking-wide">{c.name}</span>
             </Link>
           ))}
         </div>
