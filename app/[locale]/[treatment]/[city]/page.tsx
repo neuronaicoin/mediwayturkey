@@ -55,19 +55,19 @@ export default async function ListingPage({ params }: PageParams) {
           </span>
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-[180px_1fr] gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-[210px_1fr] gap-5">
           {/* ─── FİLTRE PANELİ ─── */}
           <aside className="bg-white border border-gray-200 rounded-xl p-4 h-fit">
-            <div className="text-sm font-semibold text-navy mb-3">{t.list.filters}</div>
+            <div className="text-base font-semibold text-navy mb-4">{t.list.filters}</div>
 
             {/* Tedaviye özel alanlar (Technique, Branch, ...) */}
             {filterGroups.map((g) => (
               <div key={g.key} className="mb-4">
-                <div className="text-[10px] uppercase tracking-wide text-gray-400 font-medium mb-1.5">
+                <div className="text-xs uppercase tracking-wide text-gray-500 font-semibold mb-2">
                   {g.label}
                 </div>
                 {g.options.slice(0, 6).map((o) => (
-                  <label key={o.slug} className="flex items-center gap-2 text-xs text-navy mb-1 cursor-pointer">
+                  <label key={o.slug} className="flex items-center gap-2 text-sm text-navy mb-1.5 cursor-pointer">
                     <input type="checkbox" className="accent-navy" /> {o.name}
                   </label>
                 ))}
@@ -76,13 +76,13 @@ export default async function ListingPage({ params }: PageParams) {
 
             {/* Package */}
             <div className="mb-4">
-              <div className="text-[10px] uppercase tracking-wide text-gray-400 font-medium mb-1.5">
+              <div className="text-xs uppercase tracking-wide text-gray-500 font-semibold mb-2">
                 {t.list.package}
               </div>
-              <label className="flex items-center gap-2 text-xs text-navy mb-1 cursor-pointer">
+              <label className="flex items-center gap-2 text-sm text-navy mb-1.5 cursor-pointer">
                 <input type="checkbox" className="accent-navy" /> {t.list.transfer}
               </label>
-              <label className="flex items-center gap-2 text-xs text-navy mb-1 cursor-pointer">
+              <label className="flex items-center gap-2 text-sm text-navy mb-1.5 cursor-pointer">
                 <input type="checkbox" className="accent-navy" /> {t.list.accommodation}
               </label>
             </div>
@@ -90,11 +90,11 @@ export default async function ListingPage({ params }: PageParams) {
             {/* District (şehrin ilçeleri varsa) */}
             {city.districts.length > 0 && (
               <div className="mb-2">
-                <div className="text-[10px] uppercase tracking-wide text-gray-400 font-medium mb-1.5">
+                <div className="text-xs uppercase tracking-wide text-gray-500 font-semibold mb-2">
                   {t.list.district}
                 </div>
                 {city.districts.map((d) => (
-                  <label key={d.slug} className="flex items-center gap-2 text-xs text-navy mb-1 cursor-pointer">
+                  <label key={d.slug} className="flex items-center gap-2 text-sm text-navy mb-1.5 cursor-pointer">
                     <input type="checkbox" className="accent-navy" /> {d.name}
                   </label>
                 ))}
