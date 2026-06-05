@@ -15,6 +15,7 @@ export interface Language {
 
 export const LANGUAGES: Language[] = [
   { code: "en", label: "English", englishLabel: "English", dir: "ltr", active: true },
+  { code: "tr", label: "Türkçe", englishLabel: "Turkish", dir: "ltr", active: false },
   { code: "de", label: "Deutsch", englishLabel: "German", dir: "ltr", active: false },
   { code: "ar", label: "العربية", englishLabel: "Arabic", dir: "rtl", active: false },
   { code: "fr", label: "Français", englishLabel: "French", dir: "ltr", active: false },
