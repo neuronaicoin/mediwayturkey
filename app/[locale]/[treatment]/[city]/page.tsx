@@ -6,6 +6,7 @@ import { getDictionary } from "@/lib/i18n";
 import { getTreatment, ACTIVE_TREATMENTS } from "@/lib/data/treatments";
 import { getCity, ACTIVE_CITIES } from "@/lib/data/cities";
 import { getProvidersForListing } from "@/lib/providers";
+import { ListingSchema } from "@/components/SchemaOrg";
 
 interface PageParams {
   params: { locale: string; treatment: string; city: string };
@@ -36,6 +37,13 @@ export default async function ListingPage({ params }: PageParams) {
 
   return (
     <main className="min-h-screen bg-cream font-body">
+      <ListingSchema
+        treatmentName={tr.name}
+        cityName={city.name}
+        treatmentSlug={params.treatment}
+        citySlug={params.city}
+        locale={locale}
+      />
       <TopBar locale={locale} />
 
       {/* Arama özeti çubuğu */}
