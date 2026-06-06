@@ -3,6 +3,7 @@ import { SearchBar } from "@/components/SearchBar";
 import { TreatmentCard } from "@/components/TreatmentCard";
 import { CityCard } from "@/components/CityCard";
 import { AiEntry } from "@/components/AiEntry";
+import { HomeSchema } from "@/components/SchemaOrg";
 import { getDictionary } from "@/lib/i18n";
 import { ACTIVE_TREATMENTS } from "@/lib/data/treatments";
 import { ACTIVE_CITIES } from "@/lib/data/cities";
@@ -61,6 +62,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
 
   return (
     <main className="min-h-screen bg-cream font-body flex flex-col">
+      <HomeSchema />
       <header className="bg-navy">
         <div className="max-w-container mx-auto px-5 py-4 flex items-center justify-between">
           <Link href={`/${locale}`} className="leading-none">
