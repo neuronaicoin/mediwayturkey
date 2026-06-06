@@ -1,0 +1,68 @@
+import type { Dictionary } from "./en";
+
+export const el: Dictionary = {
+  brand: "MediWay",
+  brandSuffix: "ΤΟΥΡΚΙΑ",
+  nav: {
+    listBusiness: "Καταχωρίστε την επιχείρησή σας",
+    blog: "Ιστολόγιο",
+    howItWorks: "Πώς λειτουργεί",
+  },
+  hero: {
+    headline: "Αναζητήστε, βρείτε και συγκρίνετε κορυφαίους παρόχους υγείας στην Τουρκία",
+    trustLine: "Δωρεάν για ασθενείς · Χωρίς προμήθεια · Επαληθευμένοι πάροχοι",
+    treatmentLabel: "Θεραπεία",
+    cityLabel: "Πόλη",
+    searchButton: "Αναζήτηση",
+  },
+  ai: {
+    entry: "Αφήστε τον βοηθό AI να σας καθοδηγήσει",
+    assistantName: "Βοηθός MediWay",
+    online: "Συνδεδεμένος",
+    connectButton: "Συνδέστε με με παρόχους",
+    consent:
+      "Συμφωνώ να κοινοποιηθούν τα στοιχεία μου σε κατάλληλους παρόχους ώστε να επικοινωνήσουν μαζί μου.",
+    privacyPolicy: "Πολιτική απορρήτου",
+    footnote: "Δωρεάν · Χωρίς προμήθεια · Τα στοιχεία σας πηγαίνουν μόνο σε αντίστοιχους παρόχους",
+    namePlaceholder: "Το όνομά σας",
+    whatsappPlaceholder: "Αριθμός WhatsApp",
+  },
+  sections: {
+    searchTreatment: "Αναζήτηση θεραπείας",
+    popularDestinations: "Δημοφιλείς προορισμοί",
+    howItWorks: "Πώς λειτουργεί",
+    step1: "Αναζήτηση",
+    step2: "Σύγκριση",
+    step3: "Σύνδεση",
+  },
+  list: {
+    resultsFound: "πάροχοι βρέθηκαν",
+    filters: "Φίλτρα",
+    technique: "Τεχνική",
+    package: "Πακέτο",
+    language: "Γλώσσα",
+    district: "Περιοχή",
+    transfer: "Μεταφορά",
+    accommodation: "Διαμονή",
+    contact: "Επικοινωνία",
+    viewProfile: "Προβολή προφίλ",
+    verified: "Επαληθευμένος πάροχος",
+    more: "περισσότερα",
+  },
+  profile: {
+    back: "Επιστροφή στα αποτελέσματα",
+    reviews: "κριτικές",
+    techniques: "Τεχνικές",
+    packages: "Πακέτα",
+    whatsapp: "WhatsApp",
+    email: "Email",
+    website: "Ιστότοπος",
+  },
+  footer: {
+    forPatients: "Για ασθενείς",
+    forProviders: "Για παρόχους",
+    company: "Εταιρεία",
+    legal: "Νομικά",
+    rights: "Με επιφύλαξη παντός δικαιώματος.",
+  },
+};
