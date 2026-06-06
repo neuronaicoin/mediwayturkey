@@ -5,7 +5,7 @@ import { getPostsByLocale } from "@/lib/data/blog";
 
 export function generateMetadata({ params }: { params: { locale: string } }): Metadata {
   return {
-    title: "Blog — Health Tourism in Turkey Guides | MediWayTurkey",
+    title: "Patient Guides — Health Tourism in Turkey | MediWayTurkey",
     description:
       "Expert guides on hair transplant, dental and aesthetic treatments in Turkey: costs, techniques, safety and how to choose the right clinic.",
     alternates: { canonical: `https://www.mediwayturkey.com/${params.locale}/blog` },
@@ -22,11 +22,11 @@ export default function BlogListPage({ params }: { params: { locale: string } })
 
       <div className="max-w-container mx-auto px-5 py-8">
         <h1 className="font-display text-2xl sm:text-3xl font-semibold text-navy mb-2">
-          MediWayTurkey Blog
+          Patient Guides
         </h1>
         <p className="text-sm text-slate-body mb-8 max-w-2xl">
-          Guides on hair transplant, dental and aesthetic treatments in Turkey — costs,
-          techniques, safety, and how to choose the right clinic.
+          Everything you need to know before your treatment in Turkey — costs,
+          techniques, safety, and how to choose the right clinic. Honest guides, no sales talk.
         </p>
 
         {posts.length === 0 ? (
