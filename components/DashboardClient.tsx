@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabase";
 import { ProfileEditor } from "@/components/ProfileEditor";
+import { LeadsList } from "@/components/LeadsList";
 import { loadProfile, type ProfileData, type TreatmentSelection } from "@/lib/profile";
 
 interface ProviderInfo {
@@ -128,6 +129,13 @@ export function DashboardClient({ locale }: { locale: string }) {
         </div>
       )}
 
+      {/* GELEN LEAD'LER */}
+      <div className="mb-8">
+        <h2 className="font-display text-lg font-semibold text-navy mb-3">Patient leads</h2>
+        <LeadsList providerId={providerId} />
+      </div>
+
+      <h2 className="font-display text-lg font-semibold text-navy mb-3">Your profile</h2>
       <ProfileEditor
         providerId={providerId}
         initialProfile={initialProfile}
