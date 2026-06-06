@@ -2,6 +2,7 @@ import Link from "next/link";
 import { SearchBar } from "@/components/SearchBar";
 import { TreatmentCard } from "@/components/TreatmentCard";
 import { CityCard } from "@/components/CityCard";
+import { AiEntry } from "@/components/AiEntry";
 import { getDictionary } from "@/lib/i18n";
 import { ACTIVE_TREATMENTS } from "@/lib/data/treatments";
 import { ACTIVE_CITIES } from "@/lib/data/cities";
@@ -107,13 +108,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
       </div>
 
       <div className="max-w-container mx-auto px-5 mt-4 w-full">
-        <button className="w-full bg-gold-tint border border-gold/40 rounded-xl px-4 py-3 flex items-center gap-3 text-left hover:brightness-[0.99] transition">
-          <span className="w-8 h-8 rounded-full bg-navy flex items-center justify-center flex-shrink-0">
-            <SparkIcon />
-          </span>
-          <span className="flex-1 text-sm text-navy font-semibold">{t.ai.entry}</span>
-          <ArrowIcon />
-        </button>
+        <AiEntry locale={locale} label={t.ai.entry} />
       </div>
 
       <section className="max-w-container mx-auto px-5 mt-8 w-full">
@@ -190,12 +185,6 @@ function SearchIcon({ gold }: { gold?: boolean }) {
   const c = gold ? "#fbbf24" : "currentColor";
   const s = gold ? "20" : "16";
   return <svg width={s} height={s} viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke={c} strokeWidth="1.8" /><path d="m20 20-3.5-3.5" stroke={c} strokeWidth="1.8" strokeLinecap="round" /></svg>;
-}
-function SparkIcon() {
-  return <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3Z" fill="#fbbf24" /></svg>;
-}
-function ArrowIcon() {
-  return <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke="#0a2540" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg>;
 }
 function CompareIcon() {
   return <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="7" height="14" rx="1.5" stroke="#fbbf24" strokeWidth="1.8" /><rect x="14" y="5" width="7" height="14" rx="1.5" stroke="#fbbf24" strokeWidth="1.8" /></svg>;
