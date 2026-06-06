@@ -1,0 +1,68 @@
+import type { Dictionary } from "./en";
+
+export const sq: Dictionary = {
+  brand: "MediWay",
+  brandSuffix: "TURQI",
+  nav: {
+    listBusiness: "Listo biznesin tënd",
+    blog: "Blog",
+    howItWorks: "Si funksionon",
+  },
+  hero: {
+    headline: "Kërko, gjej dhe krahaso ofruesit më të mirë shëndetësorë në Turqi",
+    trustLine: "Falas për pacientët · Pa komision · Ofrues të verifikuar",
+    treatmentLabel: "Trajtimi",
+    cityLabel: "Qyteti",
+    searchButton: "Kërko",
+  },
+  ai: {
+    entry: "Lëreni asistentin tonë AI t'ju udhëzojë",
+    assistantName: "Asistenti MediWay",
+    online: "Online",
+    connectButton: "Më lidh me ofruesit",
+    consent:
+      "Pajtohem që të dhënat e mia të ndahen me ofrues të përshtatshëm që të mund të më kontaktojnë.",
+    privacyPolicy: "Politika e privatësisë",
+    footnote: "Falas · Pa komision · Të dhënat tuaja shkojnë vetëm te ofruesit përkatës",
+    namePlaceholder: "Emri juaj",
+    whatsappPlaceholder: "Numri i WhatsApp",
+  },
+  sections: {
+    searchTreatment: "Kërko trajtim",
+    popularDestinations: "Destinacione popullore",
+    howItWorks: "Si funksionon",
+    step1: "Kërko",
+    step2: "Krahaso",
+    step3: "Lidhu",
+  },
+  list: {
+    resultsFound: "ofrues u gjetën",
+    filters: "Filtra",
+    technique: "Teknika",
+    package: "Paketa",
+    language: "Gjuha",
+    district: "Lagjja",
+    transfer: "Transferi",
+    accommodation: "Akomodimi",
+    contact: "Kontakt",
+    viewProfile: "Shiko profilin",
+    verified: "Ofrues i verifikuar",
+    more: "më shumë",
+  },
+  profile: {
+    back: "Kthehu te rezultatet",
+    reviews: "vlerësime",
+    techniques: "Teknikat",
+    packages: "Paketat",
+    whatsapp: "WhatsApp",
+    email: "Email",
+    website: "Faqja e internetit",
+  },
+  footer: {
+    forPatients: "Për pacientët",
+    forProviders: "Për ofruesit",
+    company: "Kompania",
+    legal: "Ligjore",
+    rights: "Të gjitha të drejtat e rezervuara.",
+  },
+};
