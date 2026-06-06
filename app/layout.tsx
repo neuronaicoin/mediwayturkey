@@ -21,6 +21,9 @@ export const metadata: Metadata = {
     "Compare verified hair transplant, dental and aesthetic clinics in Turkey. Free for patients, no commission. Connect directly with trusted providers.",
   verification: {
     google: "ZgeNITUSMAJUJTNtZ8ycJVylrDaQeaLutNZjXutC1vw",
+    other: {
+      "msvalidate.01": "9CB03E8E93C7289160D5677D71AB3ACB",
+    },
   },
   openGraph: {
     title: "MediWayTurkey — Top health providers in Turkey",
