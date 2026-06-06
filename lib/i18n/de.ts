@@ -1,0 +1,68 @@
+import type { Dictionary } from "./en";
+
+export const de: Dictionary = {
+  brand: "MediWay",
+  brandSuffix: "TÜRKEI",
+  nav: {
+    listBusiness: "Unternehmen eintragen",
+    blog: "Blog",
+    howItWorks: "So funktioniert's",
+  },
+  hero: {
+    headline: "Top-Gesundheitsanbieter in der Türkei suchen, finden & vergleichen",
+    trustLine: "Kostenlos für Patienten · Keine Provision · Verifizierte Anbieter",
+    treatmentLabel: "Behandlung",
+    cityLabel: "Stadt",
+    searchButton: "Suchen",
+  },
+  ai: {
+    entry: "Lassen Sie sich von unserem KI-Assistenten beraten",
+    assistantName: "MediWay Assistent",
+    online: "Online",
+    connectButton: "Mit Anbietern verbinden",
+    consent:
+      "Ich stimme zu, dass meine Daten an passende Anbieter weitergegeben werden, damit sie mich kontaktieren können.",
+    privacyPolicy: "Datenschutz",
+    footnote: "Kostenlos · Keine Provision · Ihre Daten gehen nur an passende Anbieter",
+    namePlaceholder: "Ihr Name",
+    whatsappPlaceholder: "WhatsApp-Nummer",
+  },
+  sections: {
+    searchTreatment: "Behandlung suchen",
+    popularDestinations: "Beliebte Ziele",
+    howItWorks: "So funktioniert's",
+    step1: "Suchen",
+    step2: "Vergleichen",
+    step3: "Verbinden",
+  },
+  list: {
+    resultsFound: "Anbieter gefunden",
+    filters: "Filter",
+    technique: "Technik",
+    package: "Paket",
+    language: "Sprache",
+    district: "Bezirk",
+    transfer: "Transfer",
+    accommodation: "Unterkunft",
+    contact: "Kontakt",
+    viewProfile: "Profil ansehen",
+    verified: "Verifizierter Anbieter",
+    more: "mehr",
+  },
+  profile: {
+    back: "Zurück zu den Ergebnissen",
+    reviews: "Bewertungen",
+    techniques: "Techniken",
+    packages: "Pakete",
+    whatsapp: "WhatsApp",
+    email: "E-Mail",
+    website: "Webseite",
+  },
+  footer: {
+    forPatients: "Für Patienten",
+    forProviders: "Für Anbieter",
+    company: "Unternehmen",
+    legal: "Rechtliches",
+    rights: "Alle Rechte vorbehalten.",
+  },
+};
