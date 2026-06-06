@@ -1,0 +1,68 @@
+import type { Dictionary } from "./en";
+
+export const fr: Dictionary = {
+  brand: "MediWay",
+  brandSuffix: "TURQUIE",
+  nav: {
+    listBusiness: "Référencer votre établissement",
+    blog: "Blog",
+    howItWorks: "Comment ça marche",
+  },
+  hero: {
+    headline: "Recherchez, trouvez et comparez les meilleurs prestataires de santé en Turquie",
+    trustLine: "Gratuit pour les patients · Sans commission · Prestataires vérifiés",
+    treatmentLabel: "Traitement",
+    cityLabel: "Ville",
+    searchButton: "Rechercher",
+  },
+  ai: {
+    entry: "Laissez notre assistant IA vous guider",
+    assistantName: "Assistant MediWay",
+    online: "En ligne",
+    connectButton: "Mettez-moi en relation avec des prestataires",
+    consent:
+      "J'accepte que mes informations soient partagées avec des prestataires adaptés afin qu'ils puissent me contacter.",
+    privacyPolicy: "Politique de confidentialité",
+    footnote: "Gratuit · Sans commission · Vos informations ne sont transmises qu'aux prestataires correspondants",
+    namePlaceholder: "Votre nom",
+    whatsappPlaceholder: "Numéro WhatsApp",
+  },
+  sections: {
+    searchTreatment: "Rechercher un traitement",
+    popularDestinations: "Destinations populaires",
+    howItWorks: "Comment ça marche",
+    step1: "Rechercher",
+    step2: "Comparer",
+    step3: "Contacter",
+  },
+  list: {
+    resultsFound: "prestataires trouvés",
+    filters: "Filtres",
+    technique: "Technique",
+    package: "Forfait",
+    language: "Langue",
+    district: "Quartier",
+    transfer: "Transfert",
+    accommodation: "Hébergement",
+    contact: "Contact",
+    viewProfile: "Voir le profil",
+    verified: "Prestataire vérifié",
+    more: "plus",
+  },
+  profile: {
+    back: "Retour aux résultats",
+    reviews: "avis",
+    techniques: "Techniques",
+    packages: "Forfaits",
+    whatsapp: "WhatsApp",
+    email: "E-mail",
+    website: "Site web",
+  },
+  footer: {
+    forPatients: "Pour les patients",
+    forProviders: "Pour les prestataires",
+    company: "Entreprise",
+    legal: "Mentions légales",
+    rights: "Tous droits réservés.",
+  },
+};
