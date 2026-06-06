@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { LOCALE_CODES } from "@/lib/data/languages";
 import { ACTIVE_TREATMENTS } from "@/lib/data/treatments";
 import { ACTIVE_CITIES } from "@/lib/data/cities";
+import { ALL_POSTS } from "@/lib/data/blog";
 
 const BASE_URL = "https://www.mediwayturkey.com";
 
@@ -28,6 +29,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
         });
       }
     }
+
+    // Blog liste sayfası (her dil)
+    entries.push({
+      url: `${BASE_URL}/${locale}/blog`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.6,
+    });
+  }
+
+  // Blog yazıları (kendi dillerinde)
+  for (const post of ALL_POSTS) {
+    entries.push({
+      url: `${BASE_URL}/${post.locale}/blog/${post.slug}`,
+      lastModified: new Date(post.publishedAt),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    });
   }
 
   return entries;
