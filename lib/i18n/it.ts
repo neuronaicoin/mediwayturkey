@@ -1,0 +1,68 @@
+import type { Dictionary } from "./en";
+
+export const it: Dictionary = {
+  brand: "MediWay",
+  brandSuffix: "TURCHIA",
+  nav: {
+    listBusiness: "Registra la tua attività",
+    blog: "Blog",
+    howItWorks: "Come funziona",
+  },
+  hero: {
+    headline: "Cerca, trova e confronta i migliori fornitori sanitari in Turchia",
+    trustLine: "Gratis per i pazienti · Nessuna commissione · Fornitori verificati",
+    treatmentLabel: "Trattamento",
+    cityLabel: "Città",
+    searchButton: "Cerca",
+  },
+  ai: {
+    entry: "Lascia che il nostro assistente IA ti guidi",
+    assistantName: "Assistente MediWay",
+    online: "Online",
+    connectButton: "Mettimi in contatto con i fornitori",
+    consent:
+      "Acconsento alla condivisione dei miei dati con fornitori idonei affinché possano contattarmi.",
+    privacyPolicy: "Informativa sulla privacy",
+    footnote: "Gratis · Nessuna commissione · I tuoi dati vengono inviati solo ai fornitori corrispondenti",
+    namePlaceholder: "Il tuo nome",
+    whatsappPlaceholder: "Numero WhatsApp",
+  },
+  sections: {
+    searchTreatment: "Cerca un trattamento",
+    popularDestinations: "Destinazioni popolari",
+    howItWorks: "Come funziona",
+    step1: "Cerca",
+    step2: "Confronta",
+    step3: "Contatta",
+  },
+  list: {
+    resultsFound: "fornitori trovati",
+    filters: "Filtri",
+    technique: "Tecnica",
+    package: "Pacchetto",
+    language: "Lingua",
+    district: "Quartiere",
+    transfer: "Transfer",
+    accommodation: "Alloggio",
+    contact: "Contatto",
+    viewProfile: "Vedi profilo",
+    verified: "Fornitore verificato",
+    more: "altro",
+  },
+  profile: {
+    back: "Torna ai risultati",
+    reviews: "recensioni",
+    techniques: "Tecniche",
+    packages: "Pacchetti",
+    whatsapp: "WhatsApp",
+    email: "E-mail",
+    website: "Sito web",
+  },
+  footer: {
+    forPatients: "Per i pazienti",
+    forProviders: "Per i fornitori",
+    company: "Azienda",
+    legal: "Note legali",
+    rights: "Tutti i diritti riservati.",
+  },
+};
