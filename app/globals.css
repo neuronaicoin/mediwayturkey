@@ -27,6 +27,17 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--navy);
 }
 
+/* RTL desteği (Arapça) */
 [dir="rtl"] {
   text-align: right;
+}
+
+/* Blog içeriğindeki linkler (SEO iç linkler) */
+.blog-prose a {
+  color: var(--gold-deep);
+  font-weight: 600;
+  text-decoration: underline;
+}
+.blog-prose a:hover {
+  color: var(--navy);
 }
