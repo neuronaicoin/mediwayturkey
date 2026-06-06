@@ -14,6 +14,7 @@ import {
   type ProfileData,
   type TreatmentSelection,
 } from "@/lib/profile";
+import { compressImage } from "@/lib/imageCompress";
 
 interface Props {
   providerId: string;
@@ -87,7 +88,9 @@ export function ProfileEditor({
     }
     setUploading(true);
     setMsg("");
-    const file = files[0];
+    const rawFile = files[0];
+    // Yüklemeden önce sıkıştır (3-5 MB → ~200-400 KB)
+    const file = await compressImage(rawFile);
     const url = await uploadPhoto(providerId, file, photos.length);
     setUploading(false);
     if (url) {
