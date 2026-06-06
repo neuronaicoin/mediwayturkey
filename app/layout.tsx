@@ -15,9 +15,21 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.mediwayturkey.com"),
   title: "MediWayTurkey — Search, find & compare top health providers in Turkey",
   description:
     "Compare verified hair transplant, dental and aesthetic clinics in Turkey. Free for patients, no commission. Connect directly with trusted providers.",
+  verification: {
+    google: "ZgeNITUSMAJUJTNtZ8ycJVylrDaQeaLutNZjXutC1vw",
+  },
+  openGraph: {
+    title: "MediWayTurkey — Top health providers in Turkey",
+    description:
+      "Compare verified hair transplant, dental and aesthetic clinics in Turkey. Free for patients, no commission.",
+    url: "https://www.mediwayturkey.com",
+    siteName: "MediWayTurkey",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
