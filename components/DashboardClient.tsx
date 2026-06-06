@@ -3,6 +3,8 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabase";
+import { ProfileEditor } from "@/components/ProfileEditor";
+import { loadProfile, type ProfileData, type TreatmentSelection } from "@/lib/profile";
 
 interface ProviderInfo {
   business_name: string;
@@ -16,7 +18,13 @@ export function DashboardClient({ locale }: { locale: string }) {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
   const [email, setEmail] = useState("");
+  const [providerId, setProviderId] = useState("");
   const [provider, setProvider] = useState<ProviderInfo | null>(null);
+  const [isPublished, setIsPublished] = useState(false);
+
+  const [initialProfile, setInitialProfile] = useState<Partial<ProfileData>>({});
+  const [initialTreatments, setInitialTreatments] = useState<TreatmentSelection>({});
+  const [initialPhotos, setInitialPhotos] = useState<{ id: string; url: string }[]>([]);
 
   useEffect(() => {
     let active = true;
@@ -29,6 +37,7 @@ export function DashboardClient({ locale }: { locale: string }) {
       }
       if (!active) return;
       setEmail(session.user.email ?? "");
+      setProviderId(session.user.id);
 
       const { data: prov } = await supabase
         .from("providers")
@@ -36,10 +45,20 @@ export function DashboardClient({ locale }: { locale: string }) {
         .eq("id", session.user.id)
         .single();
 
-      if (active) {
-        setProvider((prov as ProviderInfo) ?? null);
-        setLoading(false);
+      if (active && prov) {
+        const p = prov as ProviderInfo;
+        setProvider(p);
+        setIsPublished(p.is_published);
       }
+
+      const loaded = await loadProfile(session.user.id);
+      if (active && loaded) {
+        setInitialProfile(loaded.profile);
+        setInitialTreatments(loaded.treatments);
+        setInitialPhotos(loaded.photos);
+      }
+
+      if (active) setLoading(false);
     }
     load();
     return () => {
@@ -55,8 +74,7 @@ export function DashboardClient({ locale }: { locale: string }) {
   function trialDaysLeft(): number | null {
     if (!provider?.trial_ends_at) return null;
     const end = new Date(provider.trial_ends_at).getTime();
-    const now = Date.now();
-    const days = Math.ceil((end - now) / (1000 * 60 * 60 * 24));
+    const days = Math.ceil((end - Date.now()) / (1000 * 60 * 60 * 24));
     return days > 0 ? days : 0;
   }
 
@@ -79,21 +97,16 @@ export function DashboardClient({ locale }: { locale: string }) {
           </h1>
           <p className="text-xs text-slate-body mt-1">{email}</p>
         </div>
-        <button
-          onClick={handleLogout}
-          className="text-xs border border-gray-300 text-navy px-3 py-2 rounded-lg hover:bg-sky transition"
-        >
+        <button onClick={handleLogout}
+          className="text-xs border border-gray-300 text-navy px-3 py-2 rounded-lg hover:bg-sky transition">
           Log out
         </button>
       </div>
 
-      {/* Durum kartları */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6">
         <div className="bg-white border border-gray-200 rounded-xl p-4">
           <div className="text-[10px] uppercase tracking-wide text-gray-400">Plan</div>
-          <div className="text-base font-semibold text-navy capitalize">
-            {provider?.plan ?? "standard"}
-          </div>
+          <div className="text-base font-semibold text-navy capitalize">{provider?.plan ?? "standard"}</div>
         </div>
         <div className="bg-white border border-gray-200 rounded-xl p-4">
           <div className="text-[10px] uppercase tracking-wide text-gray-400">Free trial</div>
@@ -103,24 +116,25 @@ export function DashboardClient({ locale }: { locale: string }) {
         </div>
         <div className="bg-white border border-gray-200 rounded-xl p-4">
           <div className="text-[10px] uppercase tracking-wide text-gray-400">Status</div>
-          <div className="text-base font-semibold text-navy">
-            {provider?.is_published ? "Published" : "Draft"}
-          </div>
+          <div className="text-base font-semibold text-navy">{isPublished ? "Published" : "Draft"}</div>
         </div>
       </div>
 
-      {/* Profil tamamlama uyarısı */}
-      {!provider?.is_published && (
-        <div className="bg-gold-tint border border-gold/40 rounded-xl p-5 text-center">
-          <p className="text-sm text-navy font-semibold mb-1">
-            Your profile isn't live yet
-          </p>
-          <p className="text-xs text-slate-body">
-            Add your treatments and photos to get published and start receiving patient leads.
-            (Profile setup coming in the next step.)
+      {isPublished && (
+        <div className="bg-emerald-trust/10 border border-emerald-trust/30 rounded-xl p-3 mb-5 text-center">
+          <p className="text-xs text-navy font-medium">
+            Your profile is live and can receive patient leads.
           </p>
         </div>
       )}
+
+      <ProfileEditor
+        providerId={providerId}
+        initialProfile={initialProfile}
+        initialTreatments={initialTreatments}
+        initialPhotos={initialPhotos}
+        onPublishedChange={setIsPublished}
+      />
     </div>
   );
 }
