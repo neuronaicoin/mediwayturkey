@@ -10,12 +10,20 @@ export function TopBar({ locale }: { locale: string }) {
             Medi<span className="text-gold">Way</span>
           </span>
         </Link>
-        <Link
-          href={`/${locale}/list-your-business`}
-          className="text-xs sm:text-sm text-navy bg-gold px-3.5 py-2 rounded-md font-semibold hover:brightness-105 transition"
-        >
-          List your business
-        </Link>
+        <div className="flex items-center gap-3">
+          <Link
+            href={`/${locale}/blog`}
+            className="text-xs sm:text-sm text-sky hover:text-white transition"
+          >
+            Blog
+          </Link>
+          <Link
+            href={`/${locale}/list-your-business`}
+            className="text-xs sm:text-sm text-navy bg-gold px-3.5 py-2 rounded-md font-semibold hover:brightness-105 transition"
+          >
+            List your business
+          </Link>
+        </div>
       </div>
     </header>
   );
