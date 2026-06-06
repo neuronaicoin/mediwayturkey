@@ -1,0 +1,68 @@
+import type { Dictionary } from "./en";
+
+export const ar: Dictionary = {
+  brand: "MediWay",
+  brandSuffix: "تركيا",
+  nav: {
+    listBusiness: "أضف منشأتك",
+    blog: "المدونة",
+    howItWorks: "كيف يعمل",
+  },
+  hero: {
+    headline: "ابحث وقارن بين أفضل مقدمي الخدمات الصحية في تركيا",
+    trustLine: "مجاني للمرضى · بدون عمولة · مقدمو خدمات موثوقون",
+    treatmentLabel: "العلاج",
+    cityLabel: "المدينة",
+    searchButton: "بحث",
+  },
+  ai: {
+    entry: "دع مساعدنا الذكي يرشدك",
+    assistantName: "مساعد MediWay",
+    online: "متصل",
+    connectButton: "تواصل مع مقدمي الخدمات",
+    consent:
+      "أوافق على مشاركة بياناتي مع مقدمي الخدمات المناسبين حتى يتمكنوا من التواصل معي.",
+    privacyPolicy: "سياسة الخصوصية",
+    footnote: "مجاني · بدون عمولة · تُرسَل بياناتك فقط إلى مقدمي الخدمات المطابقين",
+    namePlaceholder: "اسمك",
+    whatsappPlaceholder: "رقم واتساب",
+  },
+  sections: {
+    searchTreatment: "ابحث عن علاج",
+    popularDestinations: "الوجهات الشائعة",
+    howItWorks: "كيف يعمل",
+    step1: "ابحث",
+    step2: "قارن",
+    step3: "تواصل",
+  },
+  list: {
+    resultsFound: "مقدم خدمة",
+    filters: "عوامل التصفية",
+    technique: "التقنية",
+    package: "الباقة",
+    language: "اللغة",
+    district: "المنطقة",
+    transfer: "النقل",
+    accommodation: "الإقامة",
+    contact: "تواصل",
+    viewProfile: "عرض الملف",
+    verified: "مقدم خدمة موثوق",
+    more: "المزيد",
+  },
+  profile: {
+    back: "العودة إلى النتائج",
+    reviews: "تقييمات",
+    techniques: "التقنيات",
+    packages: "الباقات",
+    whatsapp: "واتساب",
+    email: "البريد الإلكتروني",
+    website: "الموقع الإلكتروني",
+  },
+  footer: {
+    forPatients: "للمرضى",
+    forProviders: "لمقدمي الخدمات",
+    company: "الشركة",
+    legal: "قانوني",
+    rights: "جميع الحقوق محفوظة.",
+  },
+};
