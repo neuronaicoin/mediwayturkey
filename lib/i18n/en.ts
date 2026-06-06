@@ -11,7 +11,7 @@ export const en = {
 
   nav: {
     listBusiness: "List your business",
-    blog: "Blog",
+    blog: "Guides",
     howItWorks: "How it works",
   },
 
