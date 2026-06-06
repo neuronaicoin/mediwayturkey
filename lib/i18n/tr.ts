@@ -1,0 +1,68 @@
+import type { Dictionary } from "./en";
+
+export const tr: Dictionary = {
+  brand: "MediWay",
+  brandSuffix: "TÜRKİYE",
+  nav: {
+    listBusiness: "İşletmeni ekle",
+    blog: "Blog",
+    howItWorks: "Nasıl çalışır",
+  },
+  hero: {
+    headline: "Türkiye'deki en iyi sağlık sağlayıcılarını ara, bul ve karşılaştır",
+    trustLine: "Hastalar için ücretsiz · Komisyon yok · Doğrulanmış sağlayıcılar",
+    treatmentLabel: "Tedavi",
+    cityLabel: "Şehir",
+    searchButton: "Ara",
+  },
+  ai: {
+    entry: "Yapay zeka asistanımız size yol göstersin",
+    assistantName: "MediWay Asistan",
+    online: "Çevrimiçi",
+    connectButton: "Beni sağlayıcılarla buluştur",
+    consent:
+      "Bilgilerimin, benimle iletişime geçebilmeleri için uygun sağlayıcılarla paylaşılmasını kabul ediyorum.",
+    privacyPolicy: "Gizlilik politikası",
+    footnote: "Ücretsiz · Komisyon yok · Bilgileriniz yalnızca eşleşen sağlayıcılara iletilir",
+    namePlaceholder: "Adınız",
+    whatsappPlaceholder: "WhatsApp numarası",
+  },
+  sections: {
+    searchTreatment: "Tedavi ara",
+    popularDestinations: "Popüler şehirler",
+    howItWorks: "Nasıl çalışır",
+    step1: "Ara",
+    step2: "Karşılaştır",
+    step3: "İletişime geç",
+  },
+  list: {
+    resultsFound: "sağlayıcı bulundu",
+    filters: "Filtreler",
+    technique: "Teknik",
+    package: "Paket",
+    language: "Dil",
+    district: "İlçe",
+    transfer: "Transfer",
+    accommodation: "Konaklama",
+    contact: "İletişim",
+    viewProfile: "Profili gör",
+    verified: "Doğrulanmış sağlayıcı",
+    more: "daha",
+  },
+  profile: {
+    back: "Sonuçlara dön",
+    reviews: "değerlendirme",
+    techniques: "Teknikler",
+    packages: "Paketler",
+    whatsapp: "WhatsApp",
+    email: "E-posta",
+    website: "Web sitesi",
+  },
+  footer: {
+    forPatients: "Hastalar için",
+    forProviders: "Sağlayıcılar için",
+    company: "Şirket",
+    legal: "Yasal",
+    rights: "Tüm hakları saklıdır.",
+  },
+};
