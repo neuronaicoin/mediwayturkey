@@ -1,0 +1,68 @@
+import type { Dictionary } from "./en";
+
+export const bg: Dictionary = {
+  brand: "MediWay",
+  brandSuffix: "ТУРЦИЯ",
+  nav: {
+    listBusiness: "Добавете своя бизнес",
+    blog: "Блог",
+    howItWorks: "Как работи",
+  },
+  hero: {
+    headline: "Търсете, намерете и сравнете най-добрите здравни доставчици в Турция",
+    trustLine: "Безплатно за пациенти · Без комисиона · Проверени доставчици",
+    treatmentLabel: "Лечение",
+    cityLabel: "Град",
+    searchButton: "Търсене",
+  },
+  ai: {
+    entry: "Оставете нашия AI асистент да ви насочи",
+    assistantName: "MediWay Асистент",
+    online: "Онлайн",
+    connectButton: "Свържете ме с доставчици",
+    consent:
+      "Съгласявам се данните ми да бъдат споделени с подходящи доставчици, за да могат да се свържат с мен.",
+    privacyPolicy: "Политика за поверителност",
+    footnote: "Безплатно · Без комисиона · Данните ви отиват само при съответстващи доставчици",
+    namePlaceholder: "Вашето име",
+    whatsappPlaceholder: "WhatsApp номер",
+  },
+  sections: {
+    searchTreatment: "Търсене на лечение",
+    popularDestinations: "Популярни дестинации",
+    howItWorks: "Как работи",
+    step1: "Търсене",
+    step2: "Сравнение",
+    step3: "Свързване",
+  },
+  list: {
+    resultsFound: "намерени доставчици",
+    filters: "Филтри",
+    technique: "Техника",
+    package: "Пакет",
+    language: "Език",
+    district: "Район",
+    transfer: "Трансфер",
+    accommodation: "Настаняване",
+    contact: "Контакт",
+    viewProfile: "Виж профила",
+    verified: "Проверен доставчик",
+    more: "още",
+  },
+  profile: {
+    back: "Обратно към резултатите",
+    reviews: "отзиви",
+    techniques: "Техники",
+    packages: "Пакети",
+    whatsapp: "WhatsApp",
+    email: "Имейл",
+    website: "Уебсайт",
+  },
+  footer: {
+    forPatients: "За пациенти",
+    forProviders: "За доставчици",
+    company: "Компания",
+    legal: "Правни въпроси",
+    rights: "Всички права запазени.",
+  },
+};
