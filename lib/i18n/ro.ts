@@ -1,0 +1,68 @@
+import type { Dictionary } from "./en";
+
+export const ro: Dictionary = {
+  brand: "MediWay",
+  brandSuffix: "TURCIA",
+  nav: {
+    listBusiness: "Adaugă-ți afacerea",
+    blog: "Blog",
+    howItWorks: "Cum funcționează",
+  },
+  hero: {
+    headline: "Caută, găsește și compară cei mai buni furnizori medicali din Turcia",
+    trustLine: "Gratuit pentru pacienți · Fără comision · Furnizori verificați",
+    treatmentLabel: "Tratament",
+    cityLabel: "Oraș",
+    searchButton: "Caută",
+  },
+  ai: {
+    entry: "Lasă asistentul nostru AI să te ghideze",
+    assistantName: "Asistent MediWay",
+    online: "Online",
+    connectButton: "Conectează-mă cu furnizori",
+    consent:
+      "Sunt de acord ca datele mele să fie partajate cu furnizori potriviți pentru a mă putea contacta.",
+    privacyPolicy: "Politica de confidențialitate",
+    footnote: "Gratuit · Fără comision · Datele tale ajung doar la furnizorii potriviți",
+    namePlaceholder: "Numele tău",
+    whatsappPlaceholder: "Număr WhatsApp",
+  },
+  sections: {
+    searchTreatment: "Caută un tratament",
+    popularDestinations: "Destinații populare",
+    howItWorks: "Cum funcționează",
+    step1: "Caută",
+    step2: "Compară",
+    step3: "Conectează",
+  },
+  list: {
+    resultsFound: "furnizori găsiți",
+    filters: "Filtre",
+    technique: "Tehnică",
+    package: "Pachet",
+    language: "Limbă",
+    district: "Cartier",
+    transfer: "Transfer",
+    accommodation: "Cazare",
+    contact: "Contact",
+    viewProfile: "Vezi profilul",
+    verified: "Furnizor verificat",
+    more: "mai mult",
+  },
+  profile: {
+    back: "Înapoi la rezultate",
+    reviews: "recenzii",
+    techniques: "Tehnici",
+    packages: "Pachete",
+    whatsapp: "WhatsApp",
+    email: "E-mail",
+    website: "Site web",
+  },
+  footer: {
+    forPatients: "Pentru pacienți",
+    forProviders: "Pentru furnizori",
+    company: "Companie",
+    legal: "Legal",
+    rights: "Toate drepturile rezervate.",
+  },
+};
