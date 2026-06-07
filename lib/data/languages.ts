@@ -27,6 +27,7 @@ export const LANGUAGES: Language[] = [
   { code: "bg", label: "Български", englishLabel: "Bulgarian", dir: "ltr", active: true },
   { code: "sq", label: "Shqip", englishLabel: "Albanian", dir: "ltr", active: true },
   { code: "sr", label: "Srpski", englishLabel: "Serbian", dir: "ltr", active: true },
+  { code: "ru", label: "Русский", englishLabel: "Russian", dir: "ltr", active: true },
 ];
 
 export const DEFAULT_LOCALE = "en";
