@@ -23,6 +23,7 @@ import { post as disTedavisiTurkiyeFiyatlari2026 } from "./dis-tedavisi-turkiye-
 import { post as estetikCerrahiTurkiyeFiyatlari2026 } from "./estetik-cerrahi-turkiye-fiyatlari-2026";
 import { post as haartransplantationTuerkeiKosten2026 } from "./haartransplantation-tuerkei-kosten-2026";
 import { post as zahnbehandlungTuerkeiKosten2026 } from "./zahnbehandlung-tuerkei-kosten-2026";
+import { post as schoenheitsoperationTuerkeiKosten2026 } from "./schoenheitsoperation-tuerkei-kosten-2026";
 
 export const ALL_POSTS: BlogPost[] = [
   hairTransplantTurkeyCost2026,
@@ -44,6 +45,7 @@ export const ALL_POSTS: BlogPost[] = [
   estetikCerrahiTurkiyeFiyatlari2026,
   haartransplantationTuerkeiKosten2026,
   zahnbehandlungTuerkeiKosten2026,
+  schoenheitsoperationTuerkeiKosten2026,
 ];
 
 // Bir dile ait yayınlanmış yazılar (en yeni önce)
