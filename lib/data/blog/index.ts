@@ -26,6 +26,7 @@ import { post as zahnbehandlungTuerkeiKosten2026 } from "./zahnbehandlung-tuerke
 import { post as schoenheitsoperationTuerkeiKosten2026 } from "./schoenheitsoperation-tuerkei-kosten-2026";
 import { post as trapiantoCapelliTurchiaPrezzi2026 } from "./trapianto-capelli-turchia-prezzi-2026";
 import { post as cureDentaliTurchiaPrezzi2026 } from "./cure-dentali-turchia-prezzi-2026";
+import { post as chirurgiaEsteticaTurchiaPrezzi2026 } from "./chirurgia-estetica-turchia-prezzi-2026";
 
 export const ALL_POSTS: BlogPost[] = [
   hairTransplantTurkeyCost2026,
@@ -50,6 +51,7 @@ export const ALL_POSTS: BlogPost[] = [
   schoenheitsoperationTuerkeiKosten2026,
   trapiantoCapelliTurchiaPrezzi2026,
   cureDentaliTurchiaPrezzi2026,
+  chirurgiaEsteticaTurchiaPrezzi2026,
 ];
 
 // Bir dile ait yayınlanmış yazılar (en yeni önce)
