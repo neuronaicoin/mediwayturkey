@@ -13,6 +13,7 @@ import { post as greffeCheveuxTurquiePrix2026 } from "./greffe-cheveux-turquie-p
 import { post as greffeCheveuxIstanbulCliniques } from "./greffe-cheveux-istanbul-cliniques";
 import { post as soinsDentairesTurquiePrix2026 } from "./soins-dentaires-turquie-prix-2026";
 import { post as chirurgieEsthetiqueTurquiePrix2026 } from "./chirurgie-esthetique-turquie-prix-2026";
+import { post as tourismeMedicalTurquieSecurite } from "./tourisme-medical-turquie-securite";
 
 export const ALL_POSTS: BlogPost[] = [
   hairTransplantTurkeyCost2026,
@@ -24,6 +25,7 @@ export const ALL_POSTS: BlogPost[] = [
   greffeCheveuxIstanbulCliniques,
   soinsDentairesTurquiePrix2026,
   chirurgieEsthetiqueTurquiePrix2026,
+  tourismeMedicalTurquieSecurite,
 ];
 
 // Bir dile ait yayınlanmış yazılar (en yeni önce)
