@@ -30,6 +30,7 @@ import { post as chirurgiaEsteticaTurchiaPrezzi2026 } from "./chirurgia-estetica
 import { post as kliniklerIcinYurtdisiHastaRehberi } from "./klinikler-icin-yurtdisi-hasta-rehberi";
 import { post as injertoCapilarTurquiaPrecios2026 } from "./injerto-capilar-turquia-precios-2026";
 import { post as tratamientoDentalTurquiaPrecios2026 } from "./tratamiento-dental-turquia-precios-2026";
+import { post as cirugiaEsteticaTurquiaPrecios2026 } from "./cirugia-estetica-turquia-precios-2026";
 
 export const ALL_POSTS: BlogPost[] = [
   hairTransplantTurkeyCost2026,
@@ -58,6 +59,7 @@ export const ALL_POSTS: BlogPost[] = [
   kliniklerIcinYurtdisiHastaRehberi,
   injertoCapilarTurquiaPrecios2026,
   tratamientoDentalTurquiaPrecios2026,
+  cirugiaEsteticaTurquiaPrecios2026,
 ];
 
 // Bir dile ait yayınlanmış yazılar (en yeni önce)
