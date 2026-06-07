@@ -33,6 +33,7 @@ import { post as tratamientoDentalTurquiaPrecios2026 } from "./tratamiento-denta
 import { post as cirugiaEsteticaTurquiaPrecios2026 } from "./cirugia-estetica-turquia-precios-2026";
 import { post as peresadkaVolosTurtsiya2026 } from "./peresadka-volos-turtsiya-2026";
 import { post as lechenieZubovTurtsiya2026 } from "./lechenie-zubov-turtsiya-2026";
+import { post as plasticheskayaHirurgiyaTurtsiya2026 } from "./plasticheskaya-hirurgiya-turtsiya-2026";
 
 export const ALL_POSTS: BlogPost[] = [
   hairTransplantTurkeyCost2026,
@@ -64,6 +65,7 @@ export const ALL_POSTS: BlogPost[] = [
   cirugiaEsteticaTurquiaPrecios2026,
   peresadkaVolosTurtsiya2026,
   lechenieZubovTurtsiya2026,
+  plasticheskayaHirurgiyaTurtsiya2026,
 ];
 
 // Bir dile ait yayınlanmış yazılar (en yeni önce)
