@@ -10,6 +10,7 @@ import { post as plasticSurgeryTurkeyCost2026 } from "./plastic-surgery-turkey-c
 import { post as isMedicalTourismTurkeySafe } from "./is-medical-tourism-turkey-safe";
 import { post as fueVsDhiHairTransplant } from "./fue-vs-dhi-hair-transplant";
 import { post as greffeCheveuxTurquiePrix2026 } from "./greffe-cheveux-turquie-prix-2026";
+import { post as greffeCheveuxIstanbulCliniques } from "./greffe-cheveux-istanbul-cliniques";
 
 export const ALL_POSTS: BlogPost[] = [
   hairTransplantTurkeyCost2026,
@@ -18,6 +19,7 @@ export const ALL_POSTS: BlogPost[] = [
   isMedicalTourismTurkeySafe,
   fueVsDhiHairTransplant,
   greffeCheveuxTurquiePrix2026,
+  greffeCheveuxIstanbulCliniques,
 ];
 
 // Bir dile ait yayınlanmış yazılar (en yeni önce)
