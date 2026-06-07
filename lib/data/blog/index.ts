@@ -24,6 +24,7 @@ import { post as estetikCerrahiTurkiyeFiyatlari2026 } from "./estetik-cerrahi-tu
 import { post as haartransplantationTuerkeiKosten2026 } from "./haartransplantation-tuerkei-kosten-2026";
 import { post as zahnbehandlungTuerkeiKosten2026 } from "./zahnbehandlung-tuerkei-kosten-2026";
 import { post as schoenheitsoperationTuerkeiKosten2026 } from "./schoenheitsoperation-tuerkei-kosten-2026";
+import { post as trapiantoCapelliTurchiaPrezzi2026 } from "./trapianto-capelli-turchia-prezzi-2026";
 
 export const ALL_POSTS: BlogPost[] = [
   hairTransplantTurkeyCost2026,
@@ -46,6 +47,7 @@ export const ALL_POSTS: BlogPost[] = [
   haartransplantationTuerkeiKosten2026,
   zahnbehandlungTuerkeiKosten2026,
   schoenheitsoperationTuerkeiKosten2026,
+  trapiantoCapelliTurchiaPrezzi2026,
 ];
 
 // Bir dile ait yayınlanmış yazılar (en yeni önce)
