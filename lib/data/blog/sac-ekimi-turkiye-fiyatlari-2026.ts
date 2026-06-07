@@ -10,8 +10,8 @@ export const post: BlogPost = {
   excerpt:
     "Türkiye saç ekiminde dünya lideri. 2026'da fiyatlar ne durumda, hangi teknik size uygun, kaç greft gerekir ve güvenilir bir klinik nasıl seçilir? İşte kapsamlı rehber.",
   heroImage:
-    "https://images.unsplash.com/photo-1666214280557-f1b5022eb634?auto=format&fit=crop&w=1600&q=80",
-  heroAlt: "İstanbul'da modern bir saç ekimi kliniğinde kadın doktor hastayla görüşürken",
+    "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=1600&q=80",
+  heroAlt: "İstanbul'da modern bir klinikte kadın doktor saç ekimi konsültasyonu yaparken",
   category: "Saç Ekimi",
   publishedAt: "2026-06-07",
   readMinutes: 13,
