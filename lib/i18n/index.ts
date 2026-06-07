@@ -16,9 +16,10 @@ import { ro } from "./ro";
 import { bg } from "./bg";
 import { sq } from "./sq";
 import { sr } from "./sr";
+import { ru } from "./ru";
 
 const DICTIONARIES: Record<string, Dictionary> = {
-  en, tr, de, ar, fr, es, it, nl, el, ro, bg, sq, sr,
+  en, tr, de, ar, fr, es, it, nl, el, ro, bg, sq, sr, ru,
 };
 
 export function getDictionary(locale: string): Dictionary {
