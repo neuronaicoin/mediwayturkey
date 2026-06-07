@@ -18,6 +18,7 @@ import { post as ziraatAlshaarTurkiya2026 } from "./ziraat-alshaar-turkiya-2026"
 import { post as ziraatAlshaarIstanbul } from "./ziraat-alshaar-istanbul";
 import { post as ilajAlasnanTurkiya2026 } from "./ilaj-alasnan-turkiya-2026";
 import { post as jirahaTajmiliaIstanbul } from "./jiraha-tajmilia-istanbul";
+import { post as sacEkimiTurkiyeFiyatlari2026 } from "./sac-ekimi-turkiye-fiyatlari-2026";
 
 export const ALL_POSTS: BlogPost[] = [
   hairTransplantTurkeyCost2026,
@@ -34,6 +35,7 @@ export const ALL_POSTS: BlogPost[] = [
   ziraatAlshaarIstanbul,
   ilajAlasnanTurkiya2026,
   jirahaTajmiliaIstanbul,
+  sacEkimiTurkiyeFiyatlari2026,
 ];
 
 // Bir dile ait yayınlanmış yazılar (en yeni önce)
