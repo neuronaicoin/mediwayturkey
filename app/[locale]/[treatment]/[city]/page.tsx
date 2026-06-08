@@ -123,7 +123,7 @@ export default async function ListingPage({ params }: PageParams) {
                 </p>
               </div>
             ) : (
-              results.map(({ provider, treatment }) => {
+              results.map(({ provider, treatment, coverPhoto }) => {
                 const isPremium = provider.plan === "premium";
                 const techValues: string[] = treatment
                   ? Object.values(treatment.details).flat()
@@ -136,7 +136,22 @@ export default async function ListingPage({ params }: PageParams) {
                       isPremium ? "border-2 border-gold" : "border border-gray-200"
                     }`}
                   >
-                    <div className="w-20 h-20 bg-sky rounded-lg flex-shrink-0 relative">
+                    <div className="w-20 h-20 bg-sky rounded-lg flex-shrink-0 relative overflow-hidden">
+                      {coverPhoto ? (
+                        <img
+                          src={coverPhoto}
+                          alt={provider.business_name}
+                          className="w-full h-full object-cover"
+                        />
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center text-navy-muted">
+                          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" strokeWidth="1.5"/>
+                            <circle cx="8.5" cy="10" r="1.5" fill="currentColor"/>
+                            <path d="m4 17 5-4 4 3 3-2 4 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                          </svg>
+                        </div>
+                      )}
                       {isPremium && (
                         <span className="absolute top-1 left-1 bg-gold text-navy text-[8px] font-bold px-1.5 py-0.5 rounded">
                           PREMIUM
