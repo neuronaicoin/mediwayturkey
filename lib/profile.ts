@@ -18,6 +18,64 @@ export interface ProfileData {
 // Tedavi seçimi: { "hair-transplant": { "technique": ["fue","dhi"] }, ... }
 export type TreatmentSelection = Record<string, Record<string, string[]>>;
 
+// ─── IndexNow: yeni/güncel sayfayı Bing'e bildir (hızlı indexleme) ───
+// Ping başarısız olsa bile uygulama akışı ASLA bozulmaz (hata yutulur).
+const INDEXNOW_KEY = "db66538cc8be421583a14cbd2ece23dd";
+const SITE = "https://www.mediwayturkey.com";
+
+async function pingIndexNow(urls: string[]): Promise<void> {
+  try {
+    await fetch("https://api.indexnow.org/indexnow", {
+      method: "POST",
+      headers: { "Content-Type": "application/json; charset=utf-8" },
+      body: JSON.stringify({
+        host: "www.mediwayturkey.com",
+        key: INDEXNOW_KEY,
+        keyLocation: `${SITE}/${INDEXNOW_KEY}.txt`,
+        urlList: urls,
+      }),
+    });
+  } catch {
+    // Sessizce yut — ping başarısız olsa bile yayınlama etkilenmez
+  }
+}
+
+// Bir provider yayınlanınca bildirilecek sayfalar:
+// profil + o provider'ın sunduğu tedavi×şehir listeleme sayfaları
+async function pingProviderPages(providerId: string): Promise<void> {
+  try {
+    const urls = new Set<string>();
+    // Provider profil sayfası (8 dilde)
+    const locales = ["en", "tr", "de", "ar", "fr", "es", "it", "ru"];
+    for (const loc of locales) {
+      urls.add(`${SITE}/${loc}/provider/${providerId}`);
+    }
+    // Provider'ın tedavi + şehir kombinasyonları (listeleme sayfaları)
+    const { data: trts } = await supabase
+      .from("provider_treatments")
+      .select("treatment_slug")
+      .eq("provider_id", providerId);
+    const { data: prov } = await supabase
+      .from("providers")
+      .select("cities")
+      .eq("id", providerId)
+      .single();
+    const treatments = (trts ?? []).map((t: { treatment_slug: string }) => t.treatment_slug);
+    const cities = (prov?.cities ?? []) as string[];
+    for (const tr of treatments) {
+      for (const city of cities) {
+        // EN listeleme sayfası (en çok aranan dil)
+        urls.add(`${SITE}/en/${tr}/${city}`);
+      }
+    }
+    if (urls.size > 0) {
+      await pingIndexNow(Array.from(urls));
+    }
+  } catch {
+    // Sessizce yut
+  }
+}
+
 // Mevcut profili oku (dashboard formu için)
 export async function loadProfile(providerId: string): Promise<{
   profile: Partial<ProfileData> & { is_published?: boolean };
@@ -88,7 +146,6 @@ export async function saveTreatments(
   providerId: string,
   selection: TreatmentSelection
 ): Promise<boolean> {
-  // Mevcutları sil
   await supabase.from("provider_treatments").delete().eq("provider_id", providerId);
 
   const rows = Object.entries(selection).map(([slug, details]) => ({
@@ -151,5 +208,11 @@ export async function setPublished(providerId: string, published: boolean): Prom
     .from("providers")
     .update({ is_published: published })
     .eq("id", providerId);
-  return !error;
+  if (error) return false;
+
+  // Yayına alındıysa, yeni/güncel sayfaları Bing'e bildir (arka planda, hata yutulur)
+  if (published) {
+    void pingProviderPages(providerId);
+  }
+  return true;
 }
