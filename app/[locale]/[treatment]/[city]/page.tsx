@@ -1,263 +1,88 @@
-"use client";
+import { notFound } from "next/navigation";
+import type { Metadata } from "next";
+import { TopBar } from "@/components/TopBar";
+import { ListingResults, type ListingProvider } from "@/components/ListingResults";
+import { getDictionary } from "@/lib/i18n";
+import { getTreatment } from "@/lib/data/treatments";
+import { getCity } from "@/lib/data/cities";
+import { getProvidersForListing } from "@/lib/providers";
+import { ListingSchema } from "@/components/SchemaOrg";
 
-import { useState, useMemo } from "react";
-import Link from "next/link";
-import { LANGUAGES } from "@/lib/data/languages";
+// Her ziyarette canlı veri çek (statik cache yok) — yeni provider'lar anında görünür
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
-// Server'dan gelen hafifletilmiş provider verisi
-export interface ListingProvider {
-  id: string;
-  business_name: string;
-  plan: string;
-  is_verified: boolean;
-  languages: string[];
-  districts: string[];
-  techValues: string[]; // tedavi detayları (fue, dhi, implant...)
-  coverPhoto: string | null;
+interface PageParams {
+  params: { locale: string; treatment: string; city: string };
 }
 
-interface FilterGroup {
-  key: string;
-  label: string;
-  options: { slug: string; name: string }[];
+// ─── SEO: her tedavi×şehir için başlık/açıklama ───
+export function generateMetadata({ params }: PageParams): Metadata {
+  const tr = getTreatment(params.treatment);
+  const city = getCity(params.city);
+  if (!tr || !city) return { title: "MediWayTurkey" };
+  const title = `${tr.name} in ${city.name} — Compare Clinics | MediWayTurkey`;
+  const description = `Compare verified ${tr.name.toLowerCase()} clinics in ${city.name}, Turkey. Free for patients, no commission. Connect directly with trusted providers.`;
+  return { title, description };
 }
 
-interface Props {
-  locale: string;
-  cityName: string;
-  citySlug: string;
-  providers: ListingProvider[];
-  filterGroups: FilterGroup[];
-  districts: { slug: string; name: string }[];
-  labels: {
-    filters: string;
-    resultsFound: string;
-    verified: string;
-  };
-}
+export default async function ListingPage({ params }: PageParams) {
+  const { locale } = params;
+  const t = getDictionary(locale);
+  const tr = getTreatment(params.treatment);
+  const city = getCity(params.city);
 
-export function ListingResults({
-  locale,
-  cityName,
-  citySlug,
-  providers,
-  filterGroups,
-  districts,
-  labels,
-}: Props) {
-  // Seçili filtreler (henüz uygulanmamış)
-  const [selTech, setSelTech] = useState<string[]>([]);
-  const [selLangs, setSelLangs] = useState<string[]>([]);
-  const [selDistricts, setSelDistricts] = useState<string[]>([]);
-  // Uygulanmış filtreler (Apply'a basınca güncellenir)
-  const [applied, setApplied] = useState<{ tech: string[]; langs: string[]; districts: string[] }>({
-    tech: [],
-    langs: [],
-    districts: [],
-  });
+  if (!tr || !city) notFound();
 
-  function toggle(arr: string[], val: string): string[] {
-    return arr.includes(val) ? arr.filter((x) => x !== val) : [...arr, val];
-  }
+  const results = await getProvidersForListing(params.treatment, params.city);
 
-  function applyFilters() {
-    setApplied({ tech: selTech, langs: selLangs, districts: selDistricts });
-  }
-
-  function clearFilters() {
-    setSelTech([]);
-    setSelLangs([]);
-    setSelDistricts([]);
-    setApplied({ tech: [], langs: [], districts: [] });
-  }
-
-  // Filtrelenmiş sonuçlar
-  const filtered = useMemo(() => {
-    return providers.filter((p) => {
-      // Teknik: seçili tekniklerden en az biri provider'da olmalı
-      if (applied.tech.length > 0) {
-        const has = applied.tech.some((t) => p.techValues.includes(t));
-        if (!has) return false;
-      }
-      // Dil: seçili dillerden en az biri
-      if (applied.langs.length > 0) {
-        const has = applied.langs.some((l) => p.languages.includes(l));
-        if (!has) return false;
-      }
-      // Yaka/bölge: seçili olanlardan en az biri
-      if (applied.districts.length > 0) {
-        const has = applied.districts.some((d) => p.districts.includes(d));
-        if (!has) return false;
-      }
-      return true;
-    });
-  }, [providers, applied]);
-
-  const hasSelection = selTech.length > 0 || selLangs.length > 0 || selDistricts.length > 0;
-  const hasApplied = applied.tech.length > 0 || applied.langs.length > 0 || applied.districts.length > 0;
-
-  // Sadece içerikte gerçekten kullanılan dilleri göster (8 dil)
-  const filterableLangs = LANGUAGES.filter((l) =>
-    ["en", "tr", "de", "fr", "ar", "es", "it", "ru"].includes(l.code)
-  );
+  // Client component'e hafifletilmiş veri hazırla
+  const providers: ListingProvider[] = results.map(({ provider, treatment, coverPhoto }) => ({
+    id: provider.id,
+    business_name: provider.business_name,
+    plan: provider.plan,
+    is_verified: provider.is_verified,
+    languages: provider.languages ?? [],
+    districts: provider.districts ?? [],
+    techValues: treatment ? Object.values(treatment.details).flat() : [],
+    coverPhoto,
+  }));
 
   return (
-    <>
-      <p className="text-sm text-slate-body mb-4">
-        Hair Transplant in {cityName} —{" "}
-        <span className="text-navy font-semibold">
-          {filtered.length} {labels.resultsFound}
-        </span>
-      </p>
+    <main className="min-h-screen bg-cream font-body">
+      <ListingSchema
+        treatmentName={tr.name}
+        cityName={city.name}
+        treatmentSlug={params.treatment}
+        citySlug={params.city}
+        locale={locale}
+      />
+      <TopBar locale={locale} />
 
-      <div className="grid grid-cols-1 md:grid-cols-[230px_1fr] gap-5">
-        {/* ─── FİLTRE PANELİ ─── */}
-        <aside className="bg-white border border-gray-200 rounded-xl p-4 h-fit">
-          <div className="text-base font-semibold text-navy mb-4">{labels.filters}</div>
-
-          {/* Tedaviye özel alanlar (Technique...) */}
-          {filterGroups.map((g) => (
-            <div key={g.key} className="mb-4">
-              <div className="text-xs uppercase tracking-wide text-gray-500 font-semibold mb-2">
-                {g.label}
-              </div>
-              {g.options.slice(0, 8).map((o) => (
-                <label key={o.slug} className="flex items-center gap-2 text-sm text-navy mb-1.5 cursor-pointer">
-                  <input
-                    type="checkbox"
-                    className="accent-navy"
-                    checked={selTech.includes(o.slug)}
-                    onChange={() => setSelTech((p) => toggle(p, o.slug))}
-                  />
-                  {o.name}
-                </label>
-              ))}
-            </div>
-          ))}
-
-          {/* Dil filtresi */}
-          <div className="mb-4">
-            <div className="text-xs uppercase tracking-wide text-gray-500 font-semibold mb-2">
-              Language
-            </div>
-            {filterableLangs.map((l) => (
-              <label key={l.code} className="flex items-center gap-2 text-sm text-navy mb-1.5 cursor-pointer">
-                <input
-                  type="checkbox"
-                  className="accent-navy"
-                  checked={selLangs.includes(l.code)}
-                  onChange={() => setSelLangs((p) => toggle(p, l.code))}
-                />
-                {l.label}
-              </label>
-            ))}
-          </div>
-
-          {/* Bölge/yaka (sadece İstanbul'da districts dolu) */}
-          {districts.length > 0 && (
-            <div className="mb-4">
-              <div className="text-xs uppercase tracking-wide text-gray-500 font-semibold mb-2">
-                Area
-              </div>
-              {districts.map((d) => (
-                <label key={d.slug} className="flex items-center gap-2 text-sm text-navy mb-1.5 cursor-pointer">
-                  <input
-                    type="checkbox"
-                    className="accent-navy"
-                    checked={selDistricts.includes(d.slug)}
-                    onChange={() => setSelDistricts((p) => toggle(p, d.slug))}
-                  />
-                  {d.name}
-                </label>
-              ))}
-            </div>
-          )}
-
-          {/* APPLY + CLEAR */}
-          <div className="flex flex-col gap-2 mt-5">
-            <button
-              onClick={applyFilters}
-              disabled={!hasSelection}
-              className="w-full bg-navy text-white py-2.5 rounded-lg text-sm font-semibold hover:bg-navy-light transition disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              Apply filters
-            </button>
-            {(hasApplied || hasSelection) && (
-              <button
-                onClick={clearFilters}
-                className="w-full border border-gray-300 text-navy py-2.5 rounded-lg text-sm font-semibold hover:bg-sky transition"
-              >
-                Clear filters
-              </button>
-            )}
-          </div>
-        </aside>
-
-        {/* ─── SONUÇLAR ─── */}
-        <section className="flex flex-col gap-3">
-          {filtered.length === 0 ? (
-            <div className="bg-white border border-dashed border-gray-300 rounded-xl p-10 text-center">
-              <p className="text-sm text-slate-body">
-                {hasApplied
-                  ? "No providers match these filters. Try clearing some filters."
-                  : "No providers listed here yet. New clinics are joining soon."}
-              </p>
-            </div>
-          ) : (
-            filtered.map((p) => {
-              const isPremium = p.plan === "premium";
-              return (
-                <Link
-                  key={p.id}
-                  href={`/${locale}/provider/${p.id}`}
-                  className={`bg-white rounded-xl p-3 flex gap-3 transition hover:shadow-md ${
-                    isPremium ? "border-2 border-gold" : "border border-gray-200"
-                  }`}
-                >
-                  <div className="w-20 h-20 bg-sky rounded-lg flex-shrink-0 relative overflow-hidden">
-                    {p.coverPhoto ? (
-                      <img src={p.coverPhoto} alt={p.business_name} className="w-full h-full object-cover" />
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center text-navy-muted">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                          <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" strokeWidth="1.5"/>
-                          <circle cx="8.5" cy="10" r="1.5" fill="currentColor"/>
-                          <path d="m4 17 5-4 4 3 3-2 4 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
-                      </div>
-                    )}
-                    {isPremium && (
-                      <span className="absolute top-1 left-1 bg-gold text-navy text-[8px] font-bold px-1.5 py-0.5 rounded">
-                        PREMIUM
-                      </span>
-                    )}
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <div className="text-sm font-semibold text-navy">{p.business_name}</div>
-                    {p.is_verified && (
-                      <div className="text-[10px] text-emerald-trust mt-0.5">✓ {labels.verified}</div>
-                    )}
-                    <div className="text-[10px] text-gray-500 mt-0.5">
-                      {cityName}
-                      {p.languages.length > 0 &&
-                        " · " + p.languages.map((l) => l.toUpperCase()).join(" · ")}
-                    </div>
-                    {p.techValues.length > 0 && (
-                      <div className="flex flex-wrap gap-1 mt-2">
-                        {p.techValues.slice(0, 4).map((v) => (
-                          <span key={v} className="text-[9px] bg-sky text-navy px-2 py-0.5 rounded">
-                            {v}
-                          </span>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                </Link>
-              );
-            })
-          )}
-        </section>
+      {/* Arama özeti çubuğu */}
+      <div className="bg-navy/95 border-b border-white/10">
+        <div className="max-w-container mx-auto px-5 py-3 flex items-center gap-2 text-sm text-white">
+          <span className="font-semibold">{tr.name}</span>
+          <span className="text-navy-muted">in</span>
+          <span className="font-semibold">{city.name}</span>
+        </div>
       </div>
-    </>
+
+      <div className="max-w-container mx-auto px-5 py-4">
+        <ListingResults
+          locale={locale}
+          cityName={city.name}
+          citySlug={city.slug}
+          providers={providers}
+          filterGroups={tr.fields}
+          districts={city.districts}
+          labels={{
+            filters: t.list.filters,
+            resultsFound: t.list.resultsFound,
+            verified: t.list.verified,
+          }}
+        />
+      </div>
+    </main>
   );
 }
