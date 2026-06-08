@@ -4,13 +4,13 @@ import Link from "next/link";
 export function TopBar({ locale }: { locale: string }) {
   return (
     <header className="bg-navy">
-      <div className="max-w-container mx-auto px-5 py-3.5 flex items-center justify-between">
-        <Link href={`/${locale}`} className="leading-none">
+      <div className="max-w-container mx-auto px-5 py-3.5 flex items-center justify-between gap-2">
+        <Link href={`/${locale}`} className="leading-none flex-shrink-0">
           <span className="font-display text-xl font-semibold text-white tracking-tight">
             Medi<span className="text-gold">Way</span>
           </span>
         </Link>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
           <Link
             href={`/${locale}/blog`}
             className="text-xs sm:text-sm text-sky hover:text-white transition"
@@ -18,8 +18,14 @@ export function TopBar({ locale }: { locale: string }) {
             Blog
           </Link>
           <Link
+            href={`/${locale}/login`}
+            className="text-xs sm:text-sm text-sky hover:text-white transition"
+          >
+            Log in
+          </Link>
+          <Link
             href={`/${locale}/list-your-business`}
-            className="text-xs sm:text-sm text-navy bg-gold px-3.5 py-2 rounded-md font-semibold hover:brightness-105 transition"
+            className="text-xs sm:text-sm text-navy bg-gold px-3 sm:px-3.5 py-2 rounded-md font-semibold hover:brightness-105 transition whitespace-nowrap"
           >
             List your business
           </Link>
