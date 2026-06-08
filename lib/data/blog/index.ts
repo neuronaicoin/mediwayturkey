@@ -35,6 +35,7 @@ import { post as peresadkaVolosTurtsiya2026 } from "./peresadka-volos-turtsiya-2
 import { post as lechenieZubovTurtsiya2026 } from "./lechenie-zubov-turtsiya-2026";
 import { post as plasticheskayaHirurgiyaTurtsiya2026 } from "./plasticheskaya-hirurgiya-turtsiya-2026";
 import { post as reklamMiPlatformMu } from "./reklam-mi-platform-mu-saglik-turizmi";
+import { post as transplantDeParInTurciaGhid2026 } from "./transplant-de-par-in-turcia-ghid-2026";
 
 export const ALL_POSTS: BlogPost[] = [
   hairTransplantTurkeyCost2026,
@@ -68,6 +69,7 @@ export const ALL_POSTS: BlogPost[] = [
   lechenieZubovTurtsiya2026,
   plasticheskayaHirurgiyaTurtsiya2026,
   reklamMiPlatformMu,
+  transplantDeParInTurciaGhid2026,
 ];
 
 // Bir dile ait yayınlanmış yazılar (en yeni önce)
