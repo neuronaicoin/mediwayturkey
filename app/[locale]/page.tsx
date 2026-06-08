@@ -64,20 +64,20 @@ export default function HomePage({ params }: { params: { locale: string } }) {
     <main className="min-h-screen bg-cream font-body flex flex-col">
       <HomeSchema />
       <header className="bg-navy">
-        <div className="max-w-container mx-auto px-5 py-4 flex items-center justify-between">
-          <Link href={`/${locale}`} className="leading-none">
-            <span className="font-display text-3xl font-semibold text-white tracking-tight">
+        <div className="max-w-container mx-auto px-4 sm:px-5 py-4 flex items-center justify-between gap-2">
+          <Link href={`/${locale}`} className="leading-none flex-shrink-0">
+            <span className="font-display text-2xl sm:text-3xl font-semibold text-white tracking-tight">
               Medi<span className="text-gold">Way</span>
             </span>
             <span className="block font-display text-[10px] font-medium text-navy-muted tracking-[4px]">
               {t.brandSuffix}
             </span>
           </Link>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 sm:gap-4">
             <details className="relative">
-              <summary className="list-none cursor-pointer text-sm text-sky flex items-center gap-1.5">
+              <summary className="list-none cursor-pointer text-xs sm:text-sm text-sky flex items-center gap-1.5">
                 <GlobeIcon />
-                {lang?.label ?? "English"}
+                <span className="hidden sm:inline">{lang?.label ?? "English"}</span>
               </summary>
               <div className="absolute right-0 mt-2 bg-white rounded-lg shadow-lg py-1.5 w-44 z-20 max-h-72 overflow-auto">
                 {LANGUAGES.map((l) => (
@@ -89,11 +89,15 @@ export default function HomePage({ params }: { params: { locale: string } }) {
               </div>
             </details>
             <Link href={`/${locale}/blog`}
-              className="text-sm text-sky hover:text-white transition">
+              className="hidden sm:inline text-sm text-sky hover:text-white transition">
               {t.nav.blog}
             </Link>
+            <Link href={`/${locale}/login`}
+              className="text-xs sm:text-sm text-sky hover:text-white transition whitespace-nowrap">
+              Sign in
+            </Link>
             <Link href={`/${locale}/list-your-business`}
-              className="text-xs sm:text-sm text-navy bg-gold px-3.5 py-2 rounded-md font-semibold hover:brightness-105 transition">
+              className="text-xs sm:text-sm text-navy bg-gold px-3 sm:px-3.5 py-2 rounded-md font-semibold hover:brightness-105 transition whitespace-nowrap">
               {t.nav.listBusiness}
             </Link>
           </div>
