@@ -28,6 +28,9 @@ const BUSINESS_TYPES = [
   { value: "clinic", label: "Clinic" },
   { value: "hospital", label: "Hospital" },
   { value: "doctor", label: "Doctor" },
+  { value: "medical-center", label: "Medical Center" },
+  { value: "dental-clinic", label: "Dental Clinic" },
+  { value: "aesthetic-center", label: "Aesthetic Center" },
   { value: "agency", label: "Agency" },
 ];
 
@@ -38,6 +41,7 @@ export function ProfileEditor({
   initialPhotos,
   onPublishedChange,
 }: Props) {
+  const [businessName, setBusinessName] = useState(initialProfile.business_name ?? "");
   const [businessType, setBusinessType] = useState(initialProfile.business_type ?? "clinic");
   const [cities, setCities] = useState<string[]>(initialProfile.cities ?? []);
   const [langs, setLangs] = useState<string[]>(initialProfile.languages ?? []);
@@ -51,6 +55,7 @@ export function ProfileEditor({
   const [saving, setSaving] = useState(false);
   const [uploading, setUploading] = useState(false);
   const [msg, setMsg] = useState("");
+  const [success, setSuccess] = useState("");
 
   function toggleArr(arr: string[], val: string): string[] {
     return arr.includes(val) ? arr.filter((x) => x !== val) : [...arr, val];
@@ -89,12 +94,10 @@ export function ProfileEditor({
     setUploading(true);
     setMsg("");
     const rawFile = files[0];
-    // Yüklemeden önce sıkıştır (3-5 MB → ~200-400 KB)
     const file = await compressImage(rawFile);
     const url = await uploadPhoto(providerId, file, photos.length);
     setUploading(false);
     if (url) {
-      // Yeniden yükleyip id almak yerine basit: sayfada göster (id sonradan reload'da gelir)
       setPhotos((prev) => [...prev, { id: `temp-${Date.now()}`, url }]);
     } else {
       setMsg("Photo upload failed. Try a smaller image.");
@@ -113,7 +116,9 @@ export function ProfileEditor({
   async function handleSave() {
     setSaving(true);
     setMsg("");
+    setSuccess("");
     const profileData: ProfileData = {
+      business_name: businessName,
       business_type: businessType,
       cities,
       districts: [],
@@ -128,28 +133,72 @@ export function ProfileEditor({
     const ok1 = await saveProfile(providerId, profileData);
     const ok2 = await saveTreatments(providerId, treatments);
     setSaving(false);
-    setMsg(ok1 && ok2 ? "Saved!" : "Something went wrong while saving.");
+    if (ok1 && ok2) {
+      setSuccess("Your changes have been saved.");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      setMsg("Something went wrong while saving.");
+    }
   }
 
+  const hasName = businessName.trim().length > 0;
   const hasTreatment = Object.keys(treatments).length > 0;
-  const canPublish = hasTreatment && photos.length > 0;
+  const canPublish = hasName && hasTreatment && photos.length > 0;
 
   async function handlePublish() {
     if (!canPublish) return;
-    // Önce kaydet, sonra yayına al
-    await handleSave();
-    const ok = await setPublished(providerId, true);
-    if (ok) {
+    setSaving(true);
+    setMsg("");
+    setSuccess("");
+    const profileData: ProfileData = {
+      business_name: businessName,
+      business_type: businessType,
+      cities,
+      districts: [],
+      languages: langs,
+      phone_country_code: "",
+      phone: "",
+      whatsapp_country_code: whatsappCC,
+      whatsapp,
+      website,
+      bio,
+    };
+    const ok1 = await saveProfile(providerId, profileData);
+    const ok2 = await saveTreatments(providerId, treatments);
+    const ok3 = ok1 && ok2 ? await setPublished(providerId, true) : false;
+    setSaving(false);
+    if (ok3) {
       onPublishedChange(true);
-      setMsg("Your profile is now live!");
+      setSuccess("Your profile is now live! Patients can find and contact you.");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      setMsg("Something went wrong. Please try again.");
     }
   }
 
   return (
     <div className="flex flex-col gap-5">
+      {/* BAŞARI MESAJI (yeşil tik) */}
+      {success && (
+        <div className="bg-emerald-trust/10 border border-emerald-trust/40 rounded-xl p-4 flex items-center gap-3">
+          <span className="flex-shrink-0 w-8 h-8 rounded-full bg-emerald-trust text-white flex items-center justify-center font-bold">
+            ✓
+          </span>
+          <p className="text-sm text-navy font-medium">{success}</p>
+        </div>
+      )}
+
       {/* TEMEL PROFİL */}
       <section className="bg-white border border-gray-200 rounded-xl p-5">
         <h2 className="text-sm font-semibold text-navy mb-3">Basic profile</h2>
+
+        <label className="block text-xs font-medium text-navy mb-1">Business name</label>
+        <input
+          value={businessName}
+          onChange={(e: ChangeEvent<HTMLInputElement>) => setBusinessName(e.target.value)}
+          placeholder="e.g. Perla Plus Medical Center"
+          className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm text-navy outline-none focus:border-gold mb-3"
+        />
 
         <label className="block text-xs font-medium text-navy mb-1">Business type</label>
         <select value={businessType} onChange={(e: ChangeEvent<HTMLSelectElement>) => setBusinessType(e.target.value)}
@@ -265,7 +314,7 @@ export function ProfileEditor({
       <section className="bg-white border border-gray-200 rounded-xl p-5">
         <h2 className="text-sm font-semibold text-navy mb-3">About (English)</h2>
         <textarea value={bio} onChange={(e: ChangeEvent<HTMLTextAreaElement>) => setBio(e.target.value)}
-          rows={4} placeholder="Tell patients about your clinic, experience, and what makes you stand out."
+          rows={4} placeholder="Tell patients about your business, experience, and what makes you stand out."
           className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm text-navy outline-none resize-none" />
       </section>
 
@@ -275,17 +324,17 @@ export function ProfileEditor({
           className="flex-1 w-full border border-navy text-navy py-3 rounded-lg text-sm font-semibold hover:bg-sky transition disabled:opacity-60">
           {saving ? "Saving..." : "Save draft"}
         </button>
-        <button onClick={handlePublish} disabled={!canPublish}
+        <button onClick={handlePublish} disabled={!canPublish || saving}
           className="flex-1 w-full bg-navy text-white py-3 rounded-lg text-sm font-semibold hover:bg-navy-light transition disabled:opacity-50 disabled:cursor-not-allowed">
-          Publish profile
+          {saving ? "Publishing..." : "Publish profile"}
         </button>
       </div>
       {!canPublish && (
         <p className="text-[11px] text-gray-500 text-center -mt-2">
-          Add at least one treatment and one photo to publish.
+          Add a business name, at least one treatment, and one photo to publish.
         </p>
       )}
-      {msg && <p className="text-xs text-center text-navy font-medium">{msg}</p>}
+      {msg && <p className="text-xs text-center text-red-500 font-medium">{msg}</p>}
     </div>
   );
 }
