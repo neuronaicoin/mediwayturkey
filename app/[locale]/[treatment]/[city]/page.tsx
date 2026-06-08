@@ -8,6 +8,10 @@ import { getCity, ACTIVE_CITIES } from "@/lib/data/cities";
 import { getProvidersForListing } from "@/lib/providers";
 import { ListingSchema } from "@/components/SchemaOrg";
 
+// Her ziyarette canlı veri çek (statik cache yok) — yeni provider'lar anında görünür
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 interface PageParams {
   params: { locale: string; treatment: string; city: string };
 }
