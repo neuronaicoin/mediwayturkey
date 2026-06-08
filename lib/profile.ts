@@ -2,6 +2,7 @@ import { supabase } from "@/lib/supabase";
 
 // Profil kaydetme için tip
 export interface ProfileData {
+  business_name: string;
   business_type: string;
   cities: string[];
   districts: string[];
@@ -62,6 +63,7 @@ export async function saveProfile(
   const { error } = await supabase
     .from("providers")
     .update({
+      business_name: data.business_name,
       business_type: data.business_type,
       cities: data.cities,
       districts: data.districts,
