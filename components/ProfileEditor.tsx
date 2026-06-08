@@ -2,7 +2,7 @@
 
 import { useState, type ChangeEvent } from "react";
 import { ACTIVE_TREATMENTS } from "@/lib/data/treatments";
-import { ACTIVE_CITIES } from "@/lib/data/cities";
+import { ACTIVE_CITIES, getCity } from "@/lib/data/cities";
 import { LANGUAGES } from "@/lib/data/languages";
 import { COUNTRY_CODES } from "@/lib/data/ai-flow";
 import {
@@ -44,6 +44,7 @@ export function ProfileEditor({
   const [businessName, setBusinessName] = useState(initialProfile.business_name ?? "");
   const [businessType, setBusinessType] = useState(initialProfile.business_type ?? "clinic");
   const [cities, setCities] = useState<string[]>(initialProfile.cities ?? []);
+  const [districts, setDistricts] = useState<string[]>(initialProfile.districts ?? []);
   const [langs, setLangs] = useState<string[]>(initialProfile.languages ?? []);
   const [whatsappCC, setWhatsappCC] = useState(initialProfile.whatsapp_country_code ?? "+90");
   const [whatsapp, setWhatsapp] = useState(initialProfile.whatsapp ?? "");
@@ -121,7 +122,7 @@ export function ProfileEditor({
       business_name: businessName,
       business_type: businessType,
       cities,
-      districts: [],
+      districts,
       languages: langs,
       phone_country_code: "",
       phone: "",
@@ -154,7 +155,7 @@ export function ProfileEditor({
       business_name: businessName,
       business_type: businessType,
       cities,
-      districts: [],
+      districts,
       languages: langs,
       phone_country_code: "",
       phone: "",
@@ -217,6 +218,26 @@ export function ProfileEditor({
             </button>
           ))}
         </div>
+
+        {/* İSTANBUL YAKA SEÇİMİ (tek seçim, sadece İstanbul seçiliyse) */}
+        {cities.includes("istanbul") && (
+          <div className="mb-3">
+            <label className="block text-xs font-medium text-navy mb-1">
+              Which side of Istanbul are you on?
+            </label>
+            <div className="flex flex-wrap gap-1.5">
+              {(getCity("istanbul")?.districts ?? []).map((d) => (
+                <button key={d.slug} type="button"
+                  onClick={() => setDistricts(districts.includes(d.slug) ? [] : [d.slug])}
+                  className={`text-xs px-3 py-1.5 rounded-full border transition ${
+                    districts.includes(d.slug) ? "bg-navy text-white border-navy" : "bg-white text-navy border-gray-300"
+                  }`}>
+                  {d.name}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
 
         <label className="block text-xs font-medium text-navy mb-1">Languages spoken</label>
         <div className="flex flex-wrap gap-1.5 mb-3">
