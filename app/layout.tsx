@@ -2,19 +2,16 @@ import type { Metadata } from "next";
 import { Manrope, Inter } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
-
 const manrope = Manrope({
   subsets: ["latin"],
   variable: "--font-manrope",
   display: "swap",
 });
-
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
 });
-
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.mediwayturkey.com"),
   title: "MediWayTurkey — Search, find & compare top health providers in Turkey",
@@ -35,7 +32,6 @@ export const metadata: Metadata = {
     type: "website",
   },
 };
-
 export default function RootLayout({
   children,
 }: {
@@ -44,6 +40,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${manrope.variable} ${inter.variable}`}>
       <body>{children}</body>
+      {/* Google Analytics */}
       <Script
         src="https://www.googletagmanager.com/gtag/js?id=G-68Y3R270WM"
         strategy="afterInteractive"
@@ -54,6 +51,16 @@ export default function RootLayout({
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
           gtag('config', 'G-68Y3R270WM');
+        `}
+      </Script>
+      {/* Microsoft Clarity */}
+      <Script id="microsoft-clarity" strategy="afterInteractive">
+        {`
+          (function(c,l,a,r,i,t,y){
+              c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+              t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";
+              y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+          })(window, document, "clarity", "script", "x3tlb2u5ke");
         `}
       </Script>
     </html>
