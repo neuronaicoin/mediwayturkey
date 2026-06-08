@@ -38,6 +38,8 @@ import { post as reklamMiPlatformMu } from "./reklam-mi-platform-mu-saglik-turiz
 import { post as transplantDeParInTurciaGhid2026 } from "./transplant-de-par-in-turcia-ghid-2026";
 import { post as haartransplantatieTurkijeKosten2026 } from "./haartransplantatie-turkije-kosten-2026";
 import { post as transplantacijaKoseTurskaVodic2026 } from "./transplantacija-kose-turska-vodic-2026";
+import { post as transplantatsiyaNaKosaTurtsiya2026 } from "./transplantatsiya-na-kosa-turtsiya-2026";
+import { post as limadhaTurkiyaAfdalZiraatShaar } from "./limadha-turkiya-afdal-zira3at-sha3r";
 
 export const ALL_POSTS: BlogPost[] = [
   hairTransplantTurkeyCost2026,
@@ -74,6 +76,8 @@ export const ALL_POSTS: BlogPost[] = [
   transplantDeParInTurciaGhid2026,
   haartransplantatieTurkijeKosten2026,
   transplantacijaKoseTurskaVodic2026,
+  transplantatsiyaNaKosaTurtsiya2026,
+  limadhaTurkiyaAfdalZiraatShaar,
 ];
 
 // Bir dile ait yayınlanmış yazılar (en yeni önce)
