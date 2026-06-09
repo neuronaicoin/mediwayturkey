@@ -10,8 +10,8 @@ export const post: BlogPost = {
   excerpt:
     "A successful hair transplant doesn't end in the operating room — aftercare is what protects your results. This complete guide explains exactly what to do and avoid in the days, weeks, and months after your procedure.",
   heroImage:
-    "https://images.unsplash.com/photo-1559757175-0eb30cd8c063?auto=format&fit=crop&w=1600&q=80",
-  heroAlt: "Patient following hair transplant aftercare instructions after treatment in Turkey",
+    "https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=1600&q=80",
+  heroAlt: "Doctor examining patient scalp during hair transplant aftercare consultation in Turkey",
   category: "Hair Transplant",
   publishedAt: "2026-06-09",
   readMinutes: 13,
