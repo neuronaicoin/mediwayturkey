@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/og-image.png",
+        url: "https://www.mediwayturkey.com/og-image.png",
         width: 1200,
         height: 630,
         alt: "MediWayTurkey — Compare verified health providers in Turkey",
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     title: "MediWayTurkey — Top health providers in Turkey",
     description:
       "Compare verified hair transplant, dental and aesthetic clinics in Turkey. Free for patients, no commission.",
-    images: ["/og-image.png"],
+    images: ["https://www.mediwayturkey.com/og-image.png"],
   },
 };
 export default function RootLayout({
