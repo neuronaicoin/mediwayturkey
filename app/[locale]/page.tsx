@@ -4,6 +4,7 @@ import { TreatmentCard } from "@/components/TreatmentCard";
 import { CityCard } from "@/components/CityCard";
 import { AiEntry } from "@/components/AiEntry";
 import { HomeSchema } from "@/components/SchemaOrg";
+import { ContactForm } from "@/components/ContactForm";
 import { getDictionary } from "@/lib/i18n";
 import { ACTIVE_TREATMENTS } from "@/lib/data/treatments";
 import { ACTIVE_CITIES } from "@/lib/data/cities";
@@ -173,12 +174,24 @@ export default function HomePage({ params }: { params: { locale: string } }) {
         </div>
       </section>
 
+      <section className="max-w-container mx-auto px-5 mb-14 w-full">
+        <ContactForm />
+      </section>
+
       <footer className="bg-navy mt-auto">
         <div className="max-w-container mx-auto px-5 py-8 text-center">
           <span className="font-display text-lg font-semibold text-white">
             Medi<span className="text-gold">Way</span>
           </span>
           <p className="text-xs text-navy-muted mt-2">{t.hero.trustLine}</p>
+          <div className="flex flex-wrap justify-center gap-x-4 gap-y-1 mt-4 text-[12px]">
+            <Link href={`/${locale}/about`} className="text-navy-muted hover:text-white transition">About</Link>
+            <Link href={`/${locale}/contact`} className="text-navy-muted hover:text-white transition">Contact</Link>
+            <Link href={`/${locale}/faq`} className="text-navy-muted hover:text-white transition">FAQ</Link>
+            <Link href={`/${locale}/blog`} className="text-navy-muted hover:text-white transition">Blog</Link>
+            <Link href={`/${locale}/terms`} className="text-navy-muted hover:text-white transition">Terms</Link>
+            <Link href={`/${locale}/privacy`} className="text-navy-muted hover:text-white transition">Privacy</Link>
+          </div>
           <p className="text-[11px] text-navy-muted/60 mt-3">
             {"\u00a9"} {new Date().getFullYear()} MediWayTurkey. {t.footer.rights}
           </p>
