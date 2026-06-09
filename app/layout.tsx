@@ -30,6 +30,21 @@ export const metadata: Metadata = {
     url: "https://www.mediwayturkey.com",
     siteName: "MediWayTurkey",
     type: "website",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "MediWayTurkey — Compare verified health providers in Turkey",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "MediWayTurkey — Top health providers in Turkey",
+    description:
+      "Compare verified hair transplant, dental and aesthetic clinics in Turkey. Free for patients, no commission.",
+    images: ["/og-image.png"],
   },
 };
 export default function RootLayout({
