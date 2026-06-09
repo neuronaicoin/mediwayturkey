@@ -40,6 +40,8 @@ import { post as haartransplantatieTurkijeKosten2026 } from "./haartransplantati
 import { post as transplantacijaKoseTurskaVodic2026 } from "./transplantacija-kose-turska-vodic-2026";
 import { post as transplantatsiyaNaKosaTurtsiya2026 } from "./transplantatsiya-na-kosa-turtsiya-2026";
 import { post as limadhaTurkiyaAfdalZiraatShaar } from "./limadha-turkiya-afdal-zira3at-sha3r";
+import { post as pourquoiSoinsDentairesTurquie } from "./pourquoi-soins-dentaires-turquie";
+import { post as rhinoplastyTurkeyCost2026 } from "./rhinoplasty-turkey-cost-2026";
 
 export const ALL_POSTS: BlogPost[] = [
   hairTransplantTurkeyCost2026,
@@ -78,6 +80,8 @@ export const ALL_POSTS: BlogPost[] = [
   transplantacijaKoseTurskaVodic2026,
   transplantatsiyaNaKosaTurtsiya2026,
   limadhaTurkiyaAfdalZiraatShaar,
+  pourquoiSoinsDentairesTurquie,
+  rhinoplastyTurkeyCost2026,
 ];
 
 // Bir dile ait yayınlanmış yazılar (en yeni önce)
