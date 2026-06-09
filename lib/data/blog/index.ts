@@ -44,6 +44,7 @@ import { post as pourquoiSoinsDentairesTurquie } from "./pourquoi-soins-dentaire
 import { post as rhinoplastyTurkeyCost2026 } from "./rhinoplasty-turkey-cost-2026";
 import { post as hairTransplantAftercareGuide } from "./hair-transplant-aftercare-guide";
 import { post as bestHairTransplantIstanbul } from "./best-hair-transplant-istanbul";
+import { post as hairTransplantResultsTimeline } from "./hair-transplant-results-timeline";
 
 export const ALL_POSTS: BlogPost[] = [
   hairTransplantTurkeyCost2026,
@@ -86,6 +87,7 @@ export const ALL_POSTS: BlogPost[] = [
   rhinoplastyTurkeyCost2026,
   hairTransplantAftercareGuide,
   bestHairTransplantIstanbul,
+  hairTransplantResultsTimeline,
 ];
 
 // Bir dile ait yayınlanmış yazılar (en yeni önce)
