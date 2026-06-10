@@ -52,6 +52,7 @@ import { post as turkiyeDisTedavisiNedenLider } from "./turkiye-dis-tedavisi-ned
 import { post as haartransplantationErgebnisseZeitplan } from "./haartransplantation-ergebnisse-zeitplan";
 import { post as trapiantoCapelliRisultatiTempistica } from "./trapianto-capelli-risultati-tempistica";
 import { post as injertoCapilarResultadosCronologia } from "./injerto-capilar-resultados-cronologia";
+import { post as hollywoodSmileVeneersIstanbul } from "./hollywood-smile-veneers-istanbul";
 
 export const ALL_POSTS: BlogPost[] = [
   hairTransplantTurkeyCost2026,
@@ -102,6 +103,7 @@ export const ALL_POSTS: BlogPost[] = [
   haartransplantationErgebnisseZeitplan,
   trapiantoCapelliRisultatiTempistica,
   injertoCapilarResultadosCronologia,
+  hollywoodSmileVeneersIstanbul,
 ];
 
 // Bir dile ait yayınlanmış yazılar (en yeni önce)
