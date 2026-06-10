@@ -55,6 +55,9 @@ import { post as injertoCapilarResultadosCronologia } from "./injerto-capilar-re
 import { post as hollywoodSmileVeneersIstanbul } from "./hollywood-smile-veneers-istanbul";
 import { post as womenHairTransplantTurkeyCost } from "./women-hair-transplant-turkey-cost";
 import { post as greffeCheveuxFemmeTurquiePrix } from "./greffe-cheveux-femme-turquie-prix";
+import { post as eyebrowTransplantIstanbulTurkey } from "./eyebrow-transplant-istanbul-turkey";
+import { post as greffeSourcilsIstanbulTurquie } from "./greffe-sourcils-istanbul-turquie";
+import { post as ziraatAlhawajibIstanbul } from "./ziraat-alhawajib-istanbul";
 
 export const ALL_POSTS: BlogPost[] = [
   hairTransplantTurkeyCost2026,
@@ -108,6 +111,9 @@ export const ALL_POSTS: BlogPost[] = [
   hollywoodSmileVeneersIstanbul,
   womenHairTransplantTurkeyCost,
   greffeCheveuxFemmeTurquiePrix,
+  eyebrowTransplantIstanbulTurkey,
+  greffeSourcilsIstanbulTurquie,
+  ziraatAlhawajibIstanbul,
 ];
 
 // Bir dile ait yayınlanmış yazılar (en yeni önce)
