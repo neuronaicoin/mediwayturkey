@@ -10,7 +10,7 @@ export const post: BlogPost = {
   excerpt:
     "Hair loss affects women too, and Turkey has become a leading destination for women's hair transplants — discreet, natural results at a fraction of Western prices. Here's the complete 2026 cost and treatment guide for women in Istanbul, Turkey.",
   heroImage:
-    "https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&w=1600&q=80",
+    "https://images.unsplash.com/photo-1605497788044-5a32c7078486?auto=format&fit=crop&w=1600&q=80",
   heroAlt: "Woman consulting about a hair transplant at a clinic in Istanbul, Turkey",
   category: "Hair Transplant",
   publishedAt: "2026-06-09",
