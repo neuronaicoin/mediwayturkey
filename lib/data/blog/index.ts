@@ -53,6 +53,7 @@ import { post as haartransplantationErgebnisseZeitplan } from "./haartransplanta
 import { post as trapiantoCapelliRisultatiTempistica } from "./trapianto-capelli-risultati-tempistica";
 import { post as injertoCapilarResultadosCronologia } from "./injerto-capilar-resultados-cronologia";
 import { post as hollywoodSmileVeneersIstanbul } from "./hollywood-smile-veneers-istanbul";
+import { post as womenHairTransplantTurkeyCost } from "./women-hair-transplant-turkey-cost";
 
 export const ALL_POSTS: BlogPost[] = [
   hairTransplantTurkeyCost2026,
@@ -104,6 +105,7 @@ export const ALL_POSTS: BlogPost[] = [
   trapiantoCapelliRisultatiTempistica,
   injertoCapilarResultadosCronologia,
   hollywoodSmileVeneersIstanbul,
+  womenHairTransplantTurkeyCost,
 ];
 
 // Bir dile ait yayınlanmış yazılar (en yeni önce)
