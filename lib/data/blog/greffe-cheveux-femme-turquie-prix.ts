@@ -10,7 +10,7 @@ export const post: BlogPost = {
   excerpt:
     "La chute de cheveux touche aussi les femmes, et la Turquie est devenue une destination de référence pour la greffe de cheveux féminine — des résultats naturels et discrets à une fraction des prix occidentaux. Voici le guide complet 2026 des prix et du traitement à Istanbul, en Turquie.",
   heroImage:
-    "https://images.unsplash.com/photo-1605497788044-5a32c7078486?auto=format&fit=crop&w=1600&q=80",
+    "https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=1600&q=80",
   heroAlt: "Femme en consultation pour une greffe de cheveux dans une clinique à Istanbul, en Turquie",
   category: "Greffe de cheveux",
   publishedAt: "2026-06-09",
