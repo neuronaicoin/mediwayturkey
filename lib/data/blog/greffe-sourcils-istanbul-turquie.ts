@@ -10,7 +10,7 @@ export const post: BlogPost = {
   excerpt:
     "Sourcils clairsemés ou trop fins ? Istanbul, en Turquie, est devenue une destination de référence pour la greffe de sourcils — des résultats naturels à une fraction des prix occidentaux. Voici le guide complet 2026 : prix, résultats, récupération et quand vos nouveaux sourcils poussent.",
   heroImage:
-    "https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=1600&q=80",
+    "https://plus.unsplash.com/premium_photo-1718626727207-854154e67324?auto=format&fit=crop&w=1600&q=80",
   heroAlt: "Consultation pour une greffe et un dessin des sourcils dans une clinique à Istanbul, en Turquie",
   category: "Greffe de cheveux",
   publishedAt: "2026-06-09",
