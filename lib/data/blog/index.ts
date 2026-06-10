@@ -50,6 +50,7 @@ import { post as nata2ijZira3atSha3rJadwal } from "./nata2ij-zira3at-sha3r-jadwa
 import { post as turkiyeSacEkimiNedenLider } from "./turkiye-sac-ekimi-neden-lider";
 import { post as turkiyeDisTedavisiNedenLider } from "./turkiye-dis-tedavisi-neden-lider";
 import { post as haartransplantationErgebnisseZeitplan } from "./haartransplantation-ergebnisse-zeitplan";
+import { post as trapiantoCapelliRisultatiTempistica } from "./trapianto-capelli-risultati-tempistica";
 
 export const ALL_POSTS: BlogPost[] = [
   hairTransplantTurkeyCost2026,
@@ -98,6 +99,7 @@ export const ALL_POSTS: BlogPost[] = [
   turkiyeSacEkimiNedenLider,
   turkiyeDisTedavisiNedenLider,
   haartransplantationErgebnisseZeitplan,
+  trapiantoCapelliRisultatiTempistica,
 ];
 
 // Bir dile ait yayınlanmış yazılar (en yeni önce)
