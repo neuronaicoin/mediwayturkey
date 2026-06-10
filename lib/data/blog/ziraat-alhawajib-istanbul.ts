@@ -10,7 +10,7 @@ export const post: BlogPost = {
   excerpt:
     "حواجب خفيفة أو متناثرة؟ أصبحت إسطنبول في تركيا وجهة رائدة لزراعة الحواجب — نتائج طبيعية بجزء بسيط من الأسعار الغربية. إليك دليل 2026 الكامل: التكلفة والنتائج والتعافي ومتى تنمو حواجبك الجديدة.",
   heroImage:
-    "https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=1600&q=80",
+    "https://plus.unsplash.com/premium_photo-1718626727207-854154e67324?auto=format&fit=crop&w=1600&q=80",
   heroAlt: "استشارة لزراعة الحواجب وتصميمها في عيادة في إسطنبول، تركيا",
   category: "زراعة الشعر",
   publishedAt: "2026-06-09",
