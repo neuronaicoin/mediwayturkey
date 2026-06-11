@@ -70,6 +70,7 @@ import { post as hairTransplantIstanbulCost2026 } from "./hair-transplant-istanb
 import { post as botoxIstanbulTurkey } from "./botox-istanbul-turkey";
 import { post as botoksIstanbulFiyatlari } from "./botoks-istanbul-fiyatlari";
 import { post as botoksIstanbulTurkiya } from "./botoks-istanbul-turkiya";
+import { post as botoxIstanbulTurquiePrix } from "./botox-istanbul-turquie-prix";
 
 export const ALL_POSTS: BlogPost[] = [
   hairTransplantTurkeyCost2026,
@@ -138,6 +139,7 @@ export const ALL_POSTS: BlogPost[] = [
   botoxIstanbulTurkey,
   botoksIstanbulFiyatlari,
   botoksIstanbulTurkiya,
+  botoxIstanbulTurquiePrix,
 ];
 
 // Bir dile ait yayınlanmış yazılar (en yeni önce)
