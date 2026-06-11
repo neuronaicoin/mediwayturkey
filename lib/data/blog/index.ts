@@ -67,6 +67,7 @@ import { post as rhinoplastieIstanbulTurquiePrix } from "./rhinoplastie-istanbul
 import { post as hairTransplantAntalyaTurkey } from "./hair-transplant-antalya-turkey";
 import { post as dentalTreatmentIzmirTurkey } from "./dental-treatment-izmir-turkey";
 import { post as hairTransplantIstanbulCost2026 } from "./hair-transplant-istanbul-cost-2026";
+import { post as botoxIstanbulTurkey } from "./botox-istanbul-turkey";
 
 export const ALL_POSTS: BlogPost[] = [
   hairTransplantTurkeyCost2026,
@@ -132,6 +133,7 @@ export const ALL_POSTS: BlogPost[] = [
   hairTransplantAntalyaTurkey,
   dentalTreatmentIzmirTurkey,
   hairTransplantIstanbulCost2026,
+  botoxIstanbulTurkey,
 ];
 
 // Bir dile ait yayınlanmış yazılar (en yeni önce)
