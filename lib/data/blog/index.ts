@@ -62,6 +62,7 @@ import { post as rhinoplastyTurkeyCostIstanbul } from "./rhinoplasty-turkey-cost
 import { post as peresadkaVolosTurtsiyaTsena } from "./peresadka-volos-turtsiya-tsena";
 import { post as bblBrazilianButtLiftIstanbulTurkey } from "./bbl-brazilian-butt-lift-istanbul-turkey";
 import { post as tajmilAlanfIstanbulTurkiya } from "./tajmil-alanf-istanbul-turkiya";
+import { post as ziraatAlasnanIstanbulTurkiya } from "./ziraat-alasnan-istanbul-turkiya";
 
 export const ALL_POSTS: BlogPost[] = [
   hairTransplantTurkeyCost2026,
@@ -122,6 +123,7 @@ export const ALL_POSTS: BlogPost[] = [
   peresadkaVolosTurtsiyaTsena,
   bblBrazilianButtLiftIstanbulTurkey,
   tajmilAlanfIstanbulTurkiya,
+  ziraatAlasnanIstanbulTurkiya,
 ];
 
 // Bir dile ait yayınlanmış yazılar (en yeni önce)
