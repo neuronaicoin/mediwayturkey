@@ -64,6 +64,9 @@ import { post as bblBrazilianButtLiftIstanbulTurkey } from "./bbl-brazilian-butt
 import { post as tajmilAlanfIstanbulTurkiya } from "./tajmil-alanf-istanbul-turkiya";
 import { post as ziraatAlasnanIstanbulTurkiya } from "./ziraat-alasnan-istanbul-turkiya";
 import { post as rhinoplastieIstanbulTurquiePrix } from "./rhinoplastie-istanbul-turquie-prix";
+import { post as hairTransplantAntalyaTurkey } from "./hair-transplant-antalya-turkey";
+import { post as dentalTreatmentIzmirTurkey } from "./dental-treatment-izmir-turkey";
+import { post as hairTransplantIstanbulCost2026 } from "./hair-transplant-istanbul-cost-2026";
 
 export const ALL_POSTS: BlogPost[] = [
   hairTransplantTurkeyCost2026,
@@ -126,6 +129,9 @@ export const ALL_POSTS: BlogPost[] = [
   tajmilAlanfIstanbulTurkiya,
   ziraatAlasnanIstanbulTurkiya,
   rhinoplastieIstanbulTurquiePrix,
+  hairTransplantAntalyaTurkey,
+  dentalTreatmentIzmirTurkey,
+  hairTransplantIstanbulCost2026,
 ];
 
 // Bir dile ait yayınlanmış yazılar (en yeni önce)
