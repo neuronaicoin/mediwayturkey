@@ -58,6 +58,7 @@ import { post as greffeCheveuxFemmeTurquiePrix } from "./greffe-cheveux-femme-tu
 import { post as eyebrowTransplantIstanbulTurkey } from "./eyebrow-transplant-istanbul-turkey";
 import { post as greffeSourcilsIstanbulTurquie } from "./greffe-sourcils-istanbul-turquie";
 import { post as ziraatAlhawajibIstanbul } from "./ziraat-alhawajib-istanbul";
+import { post as rhinoplastyTurkeyCostIstanbul } from "./rhinoplasty-turkey-cost-istanbul";
 
 export const ALL_POSTS: BlogPost[] = [
   hairTransplantTurkeyCost2026,
@@ -114,6 +115,7 @@ export const ALL_POSTS: BlogPost[] = [
   eyebrowTransplantIstanbulTurkey,
   greffeSourcilsIstanbulTurquie,
   ziraatAlhawajibIstanbul,
+  rhinoplastyTurkeyCostIstanbul,
 ];
 
 // Bir dile ait yayınlanmış yazılar (en yeni önce)
