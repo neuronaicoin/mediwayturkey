@@ -5,10 +5,11 @@ import { CityCard } from "@/components/CityCard";
 import { AiEntry } from "@/components/AiEntry";
 import { HomeSchema } from "@/components/SchemaOrg";
 import { ContactForm } from "@/components/ContactForm";
+import { LanguagePicker } from "@/components/LanguagePicker";
 import { getDictionary } from "@/lib/i18n";
 import { ACTIVE_TREATMENTS } from "@/lib/data/treatments";
 import { ACTIVE_CITIES } from "@/lib/data/cities";
-import { LANGUAGES, getLanguage } from "@/lib/data/languages";
+import { getLanguage } from "@/lib/data/languages";
 
 function IconHair() {
   return (
@@ -59,7 +60,6 @@ function treatmentSubtitle(slug: string): string {
 export default function HomePage({ params }: { params: { locale: string } }) {
   const t = getDictionary(params.locale);
   const locale = params.locale;
-  const lang = getLanguage(locale);
 
   return (
     <main className="min-h-screen bg-cream font-body flex flex-col">
@@ -67,28 +67,15 @@ export default function HomePage({ params }: { params: { locale: string } }) {
       <header className="bg-navy">
         <div className="max-w-container mx-auto px-4 sm:px-5 py-4 flex items-center justify-between gap-2">
           <Link href={`/${locale}`} className="leading-none flex-shrink-0">
-            <span className="font-display text-2xl sm:text-3xl font-semibold text-white tracking-tight">
+            <span className="font-display text-3xl sm:text-3xl font-semibold text-white tracking-tight">
               Medi<span className="text-gold">Way</span>
             </span>
-            <span className="block font-display text-[10px] font-medium text-navy-muted tracking-[4px]">
+            <span className="block font-display text-[11px] sm:text-[10px] font-medium text-navy-muted tracking-[4px]">
               {t.brandSuffix}
             </span>
           </Link>
           <div className="flex items-center gap-2 sm:gap-4">
-            <details className="relative">
-              <summary className="list-none cursor-pointer text-xs sm:text-sm text-sky flex items-center gap-1.5">
-                <GlobeIcon />
-                <span className="hidden sm:inline">{lang?.label ?? "English"}</span>
-              </summary>
-              <div className="absolute right-0 mt-2 bg-white rounded-lg shadow-lg py-1.5 w-44 z-20 max-h-72 overflow-auto">
-                {LANGUAGES.map((l) => (
-                  <Link key={l.code} href={`/${l.code}`}
-                    className="block px-4 py-1.5 text-sm text-navy hover:bg-sky">
-                    {l.label}
-                  </Link>
-                ))}
-              </div>
-            </details>
+            <LanguagePicker locale={locale} />
             <Link href={`/${locale}/blog`}
               className="hidden sm:inline text-sm text-sky hover:text-white transition">
               {t.nav.blog}
@@ -105,7 +92,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
         </div>
       </header>
 
-      <section className="bg-navy pb-16">
+      <section className="bg-navy pb-12 sm:pb-16">
         <div className="max-w-container mx-auto px-5 pt-8 text-center">
           <h1 className="font-display text-2xl sm:text-3xl md:text-4xl font-semibold text-white tracking-tight max-w-3xl mx-auto leading-tight">
             {t.hero.headline}
@@ -114,7 +101,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
         </div>
       </section>
 
-      <div className="max-w-container mx-auto px-5 -mt-9 w-full">
+      <div className="max-w-container mx-auto px-5 -mt-4 sm:-mt-9 w-full">
         <SearchBar locale={locale} labels={{ treatment: t.hero.treatmentLabel, city: t.hero.cityLabel, search: t.hero.searchButton }} />
       </div>
 
@@ -201,9 +188,6 @@ export default function HomePage({ params }: { params: { locale: string } }) {
   );
 }
 
-function GlobeIcon() {
-  return <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.6" /><path d="M3 12h18M12 3c2.5 2.5 2.5 15 0 18M12 3c-2.5 2.5-2.5 15 0 18" stroke="currentColor" strokeWidth="1.6" /></svg>;
-}
 function SearchIcon({ gold }: { gold?: boolean }) {
   const c = gold ? "#fbbf24" : "currentColor";
   const s = gold ? "20" : "16";
