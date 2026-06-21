@@ -5,10 +5,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { getDictionary } from "@/lib/i18n";
 import { SearchFlow } from "@/components/SearchFlow";
+import { AiAssistant } from "@/components/AiAssistant";
 
 // ─────────────────────────────────────────────────────────────
 // Mobil alt navigasyon barı (Home · Search · Ask AI · Saved · Menu)
-// Search butonu SearchFlow'u açar. Diğerleri linktir.
+// Search → SearchFlow açar. Ask AI → AiAssistant açar. Diğerleri link.
 // Sadece mobilde görünür. Admin sayfasında gizli.
 // ─────────────────────────────────────────────────────────────
 
@@ -16,6 +17,7 @@ export function BottomNav({ locale }: { locale: string }) {
   const pathname = usePathname();
   const t = getDictionary(locale);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [aiOpen, setAiOpen] = useState(false);
 
   if (pathname?.startsWith("/admin")) return null;
 
@@ -24,18 +26,17 @@ export function BottomNav({ locale }: { locale: string }) {
   const isBlog = pathname?.startsWith(`${base}/blog`);
   const isListBusiness = pathname?.startsWith(`${base}/list-your-business`);
 
-  function iconColor(active: boolean, highlight: boolean) {
-    if (highlight) return "#f0ad2f";
+  function iconColor(active: boolean) {
     return active ? "#0c2d4f" : "#8a8a82";
   }
-  function labelColor(active: boolean, highlight: boolean) {
-    if (highlight) return "#ba7517";
+  function labelColor(active: boolean) {
     return active ? "#0c2d4f" : "#8a8a82";
   }
 
   return (
     <>
       <SearchFlow locale={locale} open={searchOpen} onClose={() => setSearchOpen(false)} />
+      {aiOpen && <AiAssistant locale={locale} onClose={() => setAiOpen(false)} />}
 
       <nav
         className="sm:hidden fixed bottom-2 left-2 right-2 h-16 bg-white border-[1.5px] border-navy rounded-2xl flex items-stretch overflow-hidden z-50"
@@ -43,10 +44,10 @@ export function BottomNav({ locale }: { locale: string }) {
       >
         {/* Home */}
         <Link href={base} className="flex-1 flex flex-col items-center justify-center gap-0.5">
-          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke={iconColor(isHome, false)} strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke={iconColor(isHome)} strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
             <path d="M3 11.5 12 4l9 7.5M5 10v9a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1v-9" />
           </svg>
-          <span className="text-[9px] font-medium" style={{ color: labelColor(isHome, false) }}>{t.mobile.home}</span>
+          <span className="text-[9px] font-medium" style={{ color: labelColor(isHome) }}>{t.mobile.home}</span>
         </Link>
 
         {/* Search — açar */}
@@ -58,13 +59,13 @@ export function BottomNav({ locale }: { locale: string }) {
           <span className="text-[9px] font-medium" style={{ color: "#8a8a82" }}>{t.mobile.search}</span>
         </button>
 
-        {/* Ask AI — vurgulu */}
-        <Link href={`${base}#ai`} className="flex-1 flex flex-col items-center justify-center gap-0.5 border-l border-r border-gray-100 bg-[#fdf6e8]">
+        {/* Ask AI — açar, vurgulu */}
+        <button onClick={() => setAiOpen(true)} className="flex-1 flex flex-col items-center justify-center gap-0.5 border-l border-r border-gray-100 bg-[#fdf6e8]">
           <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#f0ad2f" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
             <path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3z" />
           </svg>
           <span className="text-[9px] font-medium" style={{ color: "#ba7517" }}>{t.mobile.askAI}</span>
-        </Link>
+        </button>
 
         {/* Saved */}
         <Link href={base} className="flex-1 flex flex-col items-center justify-center gap-0.5">
@@ -76,10 +77,10 @@ export function BottomNav({ locale }: { locale: string }) {
 
         {/* Menu */}
         <Link href={`${base}/blog`} className="flex-1 flex flex-col items-center justify-center gap-0.5 border-l border-gray-100">
-          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke={iconColor(!!(isBlog || isListBusiness), false)} strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke={iconColor(!!(isBlog || isListBusiness))} strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
             <path d="M4 6h16M4 12h16M4 18h16" />
           </svg>
-          <span className="text-[9px] font-medium" style={{ color: labelColor(!!(isBlog || isListBusiness), false) }}>{t.mobile.menu}</span>
+          <span className="text-[9px] font-medium" style={{ color: labelColor(!!(isBlog || isListBusiness)) }}>{t.mobile.menu}</span>
         </Link>
       </nav>
     </>
