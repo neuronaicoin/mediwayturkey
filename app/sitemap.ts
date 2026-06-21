@@ -3,10 +3,15 @@ import { LOCALE_CODES } from "@/lib/data/languages";
 import { ACTIVE_TREATMENTS } from "@/lib/data/treatments";
 import { ACTIVE_CITIES } from "@/lib/data/cities";
 import { ALL_POSTS } from "@/lib/data/blog";
+import { getAllPublishedProviderIds } from "@/lib/providers";
 
 const BASE_URL = "https://www.mediwayturkey.com";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+// Sitemap dinamik (veritabanından provider çeker). Saatte bir tazelenir;
+// yeni klinik en geç 1 saatte sitemap'e girer (anında için IndexNow kullanılır).
+export const revalidate = 3600;
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const entries: MetadataRoute.Sitemap = [];
 
   for (const locale of LOCALE_CODES) {
@@ -47,6 +52,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.8,
     });
+  }
+
+  // Provider (klinik) sayfaları — yayınlanmış tüm provider'lar, her dilde.
+  // Yeni klinik üye olup yayınlandığında otomatik sitemap'e girer.
+  const providerIds = await getAllPublishedProviderIds();
+  for (const { id } of providerIds) {
+    for (const locale of LOCALE_CODES) {
+      entries.push({
+        url: `${BASE_URL}/${locale}/provider/${id}`,
+        lastModified: new Date(),
+        changeFrequency: "weekly",
+        priority: 0.6,
+      });
+    }
   }
 
   return entries;
