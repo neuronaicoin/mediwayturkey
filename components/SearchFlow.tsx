@@ -6,19 +6,12 @@ import { ACTIVE_TREATMENTS } from "@/lib/data/treatments";
 import { ACTIVE_CITIES } from "@/lib/data/cities";
 import { getDictionary } from "@/lib/i18n";
 
-// ─────────────────────────────────────────────────────────────
-// SearchFlow — tam ekran adım adım arama.
-// Adım 1: tedavi seç → Adım 2: şehir seç → mevcut liste sayfasına git.
-// open=false iken hiç render edilmez. onClose ile kapanır.
-// ─────────────────────────────────────────────────────────────
-
 interface Props {
   locale: string;
   open: boolean;
   onClose: () => void;
 }
 
-// Basit ikonlar (saç, diş, estetik + genel)
 function TreatmentIcon({ icon }: { icon: string }) {
   if (icon === "hair") {
     return (
@@ -55,37 +48,28 @@ export function SearchFlow({ locale, open, onClose }: Props) {
     setStep(1);
     setTreatment(null);
   }
-
   function close() {
     reset();
     onClose();
   }
-
   function pickTreatment(slug: string) {
     setTreatment(slug);
     setStep(2);
   }
-
   function pickCity(citySlug: string) {
     const tr = treatment;
     close();
     router.push(`/${locale}/${tr}/${citySlug}`);
   }
-
   function back() {
     if (step === 2) setStep(1);
     else close();
   }
 
   return (
-    <div className="fixed inset-0 z-[60] bg-cream flex flex-col">
-      {/* Üst başlık */}
+    <div className="sm:hidden fixed top-0 left-0 right-0 z-[60] bg-cream flex flex-col" style={{ bottom: "84px" }}>
       <div className="bg-navy px-4 py-3.5 flex items-center gap-3 flex-shrink-0">
-        <button
-          onClick={back}
-          aria-label="Back"
-          className="w-9 h-9 rounded-lg bg-white/10 text-white flex items-center justify-center flex-shrink-0"
-        >
+        <button onClick={back} aria-label="Back" className="w-9 h-9 rounded-lg bg-white/10 text-white flex items-center justify-center flex-shrink-0">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M19 12H5M12 19l-7-7 7-7" />
           </svg>
@@ -93,18 +77,14 @@ export function SearchFlow({ locale, open, onClose }: Props) {
         <span className="text-white font-medium text-base flex-1">
           {step === 1 ? t.mobile.chooseTreatment : t.mobile.chooseCity}
         </span>
-        <button onClick={close} aria-label="Close" className="text-white/70 text-sm">
-          ✕
-        </button>
+        <button onClick={close} aria-label="Close" className="text-white/70 text-sm">✕</button>
       </div>
 
-      {/* İlerleme çubuğu */}
       <div className="px-4 pt-4 flex gap-1.5 flex-shrink-0">
         <div className="flex-1 h-1 rounded-full" style={{ background: "#0c2d4f" }} />
         <div className="flex-1 h-1 rounded-full" style={{ background: step >= 2 ? "#0c2d4f" : "#dcdcd2" }} />
       </div>
 
-      {/* İçerik */}
       <div className="flex-1 overflow-y-auto px-4 py-4">
         {step === 1 && (
           <>
@@ -112,11 +92,8 @@ export function SearchFlow({ locale, open, onClose }: Props) {
               {t.mobile.step} 1 {t.mobile.of} 2 · {t.mobile.whatLookingFor}
             </p>
             {ACTIVE_TREATMENTS.map((tr) => (
-              <button
-                key={tr.slug}
-                onClick={() => pickTreatment(tr.slug)}
-                className="w-full bg-white border-[1.5px] border-navy rounded-2xl p-4 mb-3 flex items-center gap-3.5 text-left"
-              >
+              <button key={tr.slug} onClick={() => pickTreatment(tr.slug)}
+                className="w-full bg-white border-[1.5px] border-navy rounded-2xl p-4 mb-3 flex items-center gap-3.5 text-left">
                 <span className="w-11 h-11 bg-[#eef3f8] border border-[#d5e0ea] rounded-xl flex items-center justify-center flex-shrink-0">
                   <TreatmentIcon icon={tr.icon} />
                 </span>
@@ -140,11 +117,8 @@ export function SearchFlow({ locale, open, onClose }: Props) {
               {t.mobile.step} 2 {t.mobile.of} 2 · {t.mobile.inWhichCity}
             </p>
             {ACTIVE_CITIES.map((c) => (
-              <button
-                key={c.slug}
-                onClick={() => pickCity(c.slug)}
-                className="w-full bg-white border-[1.5px] border-navy rounded-2xl p-3.5 mb-2.5 flex items-center gap-3 text-left"
-              >
+              <button key={c.slug} onClick={() => pickCity(c.slug)}
+                className="w-full bg-white border-[1.5px] border-navy rounded-2xl p-3.5 mb-2.5 flex items-center gap-3 text-left">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0c2d4f" strokeWidth="1.6" strokeLinejoin="round" className="flex-shrink-0">
                   <path d="M12 21s7-6 7-11a7 7 0 1 0-14 0c0 5 7 11 7 11Z" />
                   <circle cx="12" cy="10" r="2.5" />
