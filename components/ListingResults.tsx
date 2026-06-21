@@ -3,6 +3,7 @@
 import { useState, useMemo } from "react";
 import Link from "next/link";
 import { LANGUAGES } from "@/lib/data/languages";
+import { useSavedProviders } from "@/lib/useSavedProviders";
 
 // Server'dan gelen hafifletilmiş provider verisi
 export interface ListingProvider {
@@ -45,6 +46,8 @@ export function ListingResults({
   districts,
   labels,
 }: Props) {
+  const { isSaved, toggle } = useSavedProviders();
+
   // Seçili filtreler (henüz uygulanmamış)
   const [selTech, setSelTech] = useState<string[]>([]);
   const [selLangs, setSelLangs] = useState<string[]>([]);
@@ -56,7 +59,7 @@ export function ListingResults({
     districts: [],
   });
 
-  function toggle(arr: string[], val: string): string[] {
+  function toggleArr(arr: string[], val: string): string[] {
     return arr.includes(val) ? arr.filter((x) => x !== val) : [...arr, val];
   }
 
@@ -74,17 +77,14 @@ export function ListingResults({
   // Filtrelenmiş sonuçlar
   const filtered = useMemo(() => {
     return providers.filter((p) => {
-      // Teknik: seçili tekniklerden en az biri provider'da olmalı
       if (applied.tech.length > 0) {
         const has = applied.tech.some((t) => p.techValues.includes(t));
         if (!has) return false;
       }
-      // Dil: seçili dillerden en az biri
       if (applied.langs.length > 0) {
         const has = applied.langs.some((l) => p.languages.includes(l));
         if (!has) return false;
       }
-      // Yaka/bölge: seçili olanlardan en az biri
       if (applied.districts.length > 0) {
         const has = applied.districts.some((d) => p.districts.includes(d));
         if (!has) return false;
@@ -96,7 +96,6 @@ export function ListingResults({
   const hasSelection = selTech.length > 0 || selLangs.length > 0 || selDistricts.length > 0;
   const hasApplied = applied.tech.length > 0 || applied.langs.length > 0 || applied.districts.length > 0;
 
-  // Sadece içerikte gerçekten kullanılan dilleri göster (8 dil)
   const filterableLangs = LANGUAGES.filter((l) =>
     ["en", "tr", "de", "fr", "ar", "es", "it", "ru"].includes(l.code)
   );
@@ -115,7 +114,6 @@ export function ListingResults({
         <aside className="bg-white border border-gray-200 rounded-xl p-4 h-fit">
           <div className="text-base font-semibold text-navy mb-4">{labels.filters}</div>
 
-          {/* Tedaviye özel alanlar (Technique...) */}
           {filterGroups.map((g) => (
             <div key={g.key} className="mb-4">
               <div className="text-xs uppercase tracking-wide text-gray-500 font-semibold mb-2">
@@ -127,7 +125,7 @@ export function ListingResults({
                     type="checkbox"
                     className="accent-navy"
                     checked={selTech.includes(o.slug)}
-                    onChange={() => setSelTech((p) => toggle(p, o.slug))}
+                    onChange={() => setSelTech((p) => toggleArr(p, o.slug))}
                   />
                   {o.name}
                 </label>
@@ -135,7 +133,6 @@ export function ListingResults({
             </div>
           ))}
 
-          {/* Dil filtresi */}
           <div className="mb-4">
             <div className="text-xs uppercase tracking-wide text-gray-500 font-semibold mb-2">
               Language
@@ -146,14 +143,13 @@ export function ListingResults({
                   type="checkbox"
                   className="accent-navy"
                   checked={selLangs.includes(l.code)}
-                  onChange={() => setSelLangs((p) => toggle(p, l.code))}
+                  onChange={() => setSelLangs((p) => toggleArr(p, l.code))}
                 />
                 {l.label}
               </label>
             ))}
           </div>
 
-          {/* Bölge/yaka (sadece İstanbul'da districts dolu) */}
           {districts.length > 0 && (
             <div className="mb-4">
               <div className="text-xs uppercase tracking-wide text-gray-500 font-semibold mb-2">
@@ -165,7 +161,7 @@ export function ListingResults({
                     type="checkbox"
                     className="accent-navy"
                     checked={selDistricts.includes(d.slug)}
-                    onChange={() => setSelDistricts((p) => toggle(p, d.slug))}
+                    onChange={() => setSelDistricts((p) => toggleArr(p, d.slug))}
                   />
                   {d.name}
                 </label>
@@ -173,7 +169,6 @@ export function ListingResults({
             </div>
           )}
 
-          {/* APPLY + CLEAR */}
           <div className="flex flex-col gap-2 mt-5">
             <button
               onClick={applyFilters}
@@ -206,14 +201,45 @@ export function ListingResults({
           ) : (
             filtered.map((p) => {
               const isPremium = p.plan === "premium";
+              const saved = isSaved(p.id);
               return (
                 <Link
                   key={p.id}
                   href={`/${locale}/provider/${p.id}`}
-                  className={`bg-white rounded-xl p-3 flex gap-3 transition hover:shadow-md ${
+                  className={`relative bg-white rounded-xl p-3 flex gap-3 transition hover:shadow-md ${
                     isPremium ? "border-2 border-gold" : "border border-gray-200"
                   }`}
                 >
+                  {/* Kaydet (kalp) butonu */}
+                  <button
+                    type="button"
+                    aria-label={saved ? "Remove from saved" : "Save"}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      toggle({
+                        id: p.id,
+                        name: p.business_name,
+                        city: cityName,
+                        photo: p.coverPhoto ?? undefined,
+                      });
+                    }}
+                    className="absolute top-2 right-2 w-8 h-8 rounded-full bg-white border border-gray-200 flex items-center justify-center z-10 hover:border-gold"
+                  >
+                    <svg
+                      width="17"
+                      height="17"
+                      viewBox="0 0 24 24"
+                      fill={saved ? "#f0ad2f" : "none"}
+                      stroke={saved ? "#f0ad2f" : "#8a8a82"}
+                      strokeWidth="1.8"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5.5 6 5.5c2 0 3.2 1.2 4 2.3.8-1.1 2-2.3 4-2.3 3.5 0 5 3.5 3.5 6.5C19 16.5 12 21 12 21z" />
+                    </svg>
+                  </button>
+
                   <div className="w-20 h-20 bg-sky rounded-lg flex-shrink-0 relative overflow-hidden">
                     {p.coverPhoto ? (
                       <img src={p.coverPhoto} alt={p.business_name} className="w-full h-full object-cover" />
@@ -232,7 +258,7 @@ export function ListingResults({
                       </span>
                     )}
                   </div>
-                  <div className="flex-1 min-w-0">
+                  <div className="flex-1 min-w-0 pr-8">
                     <div className="text-sm font-semibold text-navy">{p.business_name}</div>
                     {p.is_verified && (
                       <div className="text-[10px] text-emerald-trust mt-0.5">✓ {labels.verified}</div>
