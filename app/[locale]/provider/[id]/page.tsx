@@ -177,7 +177,7 @@ export default async function ProviderPage({ params }: PageParams) {
           {/* İletişim */}
           <div className="flex flex-col sm:flex-row gap-2 mt-5">
             {provider.whatsapp && (
-              
+              <a
                 href={`https://wa.me/${(provider.whatsapp_country_code ?? "").replace("+", "")}${provider.whatsapp}`}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -186,14 +186,14 @@ export default async function ProviderPage({ params }: PageParams) {
                 {t.profile.whatsapp}
               </a>
             )}
-            
+            <a
               href={`mailto:${provider.email}`}
               className="flex-1 text-center text-sm bg-white border border-navy text-navy py-2.5 rounded-lg font-semibold hover:bg-sky transition"
             >
               {t.profile.email}
             </a>
             {provider.website && (
-              
+              <a
                 href={provider.website}
                 target="_blank"
                 rel="noopener noreferrer"
