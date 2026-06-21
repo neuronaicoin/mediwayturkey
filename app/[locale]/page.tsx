@@ -101,7 +101,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
         </div>
       </section>
 
-      <div className="max-w-container mx-auto px-5 -mt-4 sm:-mt-9 w-full">
+      <div className="max-w-container mx-auto px-5 mt-4 sm:-mt-9 w-full">
         <SearchBar locale={locale} labels={{ treatment: t.hero.treatmentLabel, city: t.hero.cityLabel, search: t.hero.searchButton }} />
       </div>
 
