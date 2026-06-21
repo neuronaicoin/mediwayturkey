@@ -73,6 +73,7 @@ import { post as botoksIstanbulTurkiya } from "./botoks-istanbul-turkiya";
 import { post as botoxIstanbulTurquiePrix } from "./botox-istanbul-turquie-prix";
 import { post as greffeCheveuxFueDhiSaphirComparatif } from "./greffe-cheveux-fue-dhi-saphir-comparatif";
 import { post as combinerSoinsTurquie } from "./combiner-greffe-cheveux-soins-dentaires-rhinoplastie-turquie";
+import { post as combinerLiposuccionMammaireDentaire } from "./combiner-liposuccion-chirurgie-mammaire-soins-dentaires-turquie";
 
 export const ALL_POSTS: BlogPost[] = [
   hairTransplantTurkeyCost2026,
@@ -144,6 +145,7 @@ export const ALL_POSTS: BlogPost[] = [
   botoxIstanbulTurquiePrix,
   greffeCheveuxFueDhiSaphirComparatif,
   combinerSoinsTurquie,
+  combinerLiposuccionMammaireDentaire,
 ];
 
 // Bir dile ait yayınlanmış yazılar (en yeni önce)
