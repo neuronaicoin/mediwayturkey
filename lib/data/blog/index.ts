@@ -71,6 +71,7 @@ import { post as botoxIstanbulTurkey } from "./botox-istanbul-turkey";
 import { post as botoksIstanbulFiyatlari } from "./botoks-istanbul-fiyatlari";
 import { post as botoksIstanbulTurkiya } from "./botoks-istanbul-turkiya";
 import { post as botoxIstanbulTurquiePrix } from "./botox-istanbul-turquie-prix";
+import { post as greffeCheveuxFueDhiSaphirComparatif } from "./greffe-cheveux-fue-dhi-saphir-comparatif";
 
 export const ALL_POSTS: BlogPost[] = [
   hairTransplantTurkeyCost2026,
@@ -140,6 +141,7 @@ export const ALL_POSTS: BlogPost[] = [
   botoksIstanbulFiyatlari,
   botoksIstanbulTurkiya,
   botoxIstanbulTurquiePrix,
+  greffeCheveuxFueDhiSaphirComparatif,
 ];
 
 // Bir dile ait yayınlanmış yazılar (en yeni önce)
