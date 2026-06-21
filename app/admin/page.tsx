@@ -1,5 +1,5 @@
 import { cookies } from "next/headers";
-import { isValidAdminToken } from "@/app/api/admin-login/route";
+import { isValidAdminToken, ADMIN_COOKIE_NAME } from "@/lib/adminAuth";
 import { getAdminStats } from "@/lib/adminStats";
 import { AdminClient } from "@/components/AdminClient";
 
@@ -14,7 +14,7 @@ export const metadata = {
 
 export default async function AdminPage() {
   const cookieStore = cookies();
-  const token = cookieStore.get("mw_admin")?.value;
+  const token = cookieStore.get(ADMIN_COOKIE_NAME)?.value;
   const authed = isValidAdminToken(token);
 
   if (!authed) {
