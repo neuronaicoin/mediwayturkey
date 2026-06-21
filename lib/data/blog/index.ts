@@ -85,6 +85,9 @@ import { post as hairBeardRhinoplasty } from "./hair-beard-transplant-rhinoplast
 import { post as fullMaleMakeover } from "./full-male-makeover-hair-beard-dental-rhinoplasty-turkey";
 import { post as fullMommyMakeover } from "./full-mommy-makeover-liposuction-breast-dental-rhinoplasty-turkey";
 import { post as fullFacialMakeover } from "./full-facial-makeover-hair-dental-rhinoplasty-eyelid-turkey";
+import { post as combineHairDental } from "./combine-hair-transplant-dental-work-turkey";
+import { post as combineDentalRhinoplasty } from "./combine-dental-rhinoplasty-turkey";
+import { post as combineHairEyelid } from "./combine-hair-transplant-eyelid-surgery-turkey";
 
 export const ALL_POSTS: BlogPost[] = [
   hairTransplantTurkeyCost2026,
@@ -168,6 +171,9 @@ export const ALL_POSTS: BlogPost[] = [
   fullMaleMakeover,
   fullMommyMakeover,
   fullFacialMakeover,
+  combineHairDental,
+  combineDentalRhinoplasty,
+  combineHairEyelid,
 ];
 
 // Bir dile ait yayınlanmış yazılar (en yeni önce)
