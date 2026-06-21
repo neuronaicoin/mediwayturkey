@@ -75,6 +75,8 @@ import { post as greffeCheveuxFueDhiSaphirComparatif } from "./greffe-cheveux-fu
 import { post as combinerSoinsTurquie } from "./combiner-greffe-cheveux-soins-dentaires-rhinoplastie-turquie";
 import { post as combinerLiposuccionMammaireDentaire } from "./combiner-liposuccion-chirurgie-mammaire-soins-dentaires-turquie";
 import { post as greffeCheveuxBarbeRhinoplastie } from "./greffe-cheveux-barbe-rhinoplastie-meme-temps-turquie";
+import { post as greffeCheveuxTurquieFranceBelgique } from "./greffe-cheveux-turquie-france-belgique-comparatif";
+import { post as eviterArnaquesGreffeCheveux } from "./eviter-arnaques-greffe-cheveux-istanbul-turquie";
 
 export const ALL_POSTS: BlogPost[] = [
   hairTransplantTurkeyCost2026,
@@ -148,6 +150,8 @@ export const ALL_POSTS: BlogPost[] = [
   combinerSoinsTurquie,
   combinerLiposuccionMammaireDentaire,
   greffeCheveuxBarbeRhinoplastie,
+  greffeCheveuxTurquieFranceBelgique,
+  eviterArnaquesGreffeCheveux,
 ];
 
 // Bir dile ait yayınlanmış yazılar (en yeni önce)
