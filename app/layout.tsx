@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Manrope, Inter } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
@@ -20,6 +20,16 @@ export const metadata: Metadata = {
   title: "MediWayTurkey — Search, find & compare top health providers in Turkey",
   description:
     "Compare verified hair transplant, dental and aesthetic clinics in Turkey. Free for patients, no commission. Connect directly with trusted providers.",
+  manifest: "/manifest.json",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "MediWay",
+  },
+  icons: {
+    icon: "/icons/icon-192.png",
+    apple: "/icons/apple-touch-icon.png",
+  },
   verification: {
     google: "ZgeNITUSMAJUJTNtZ8ycJVylrDaQeaLutNZjXutC1vw",
     other: {
@@ -49,6 +59,13 @@ export const metadata: Metadata = {
       "Compare verified hair transplant, dental and aesthetic clinics in Turkey. Free for patients, no commission.",
     images: ["https://www.mediwayturkey.com/og-image.png"],
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#0c2d4f",
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
 };
 
 export default function RootLayout({
