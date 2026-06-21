@@ -4,11 +4,6 @@ import Link from "next/link";
 import { getDictionary } from "@/lib/i18n";
 import { useSavedProviders } from "@/lib/useSavedProviders";
 
-// ─────────────────────────────────────────────────────────────
-// SavedSheet — kaydedilen klinikler (alt bardaki "Saved" butonu açar).
-// Boşsa boş durum gösterir. 14 dilli.
-// ─────────────────────────────────────────────────────────────
-
 interface Props {
   locale: string;
   open: boolean;
@@ -22,9 +17,14 @@ export function SavedSheet({ locale, open, onClose }: Props) {
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 z-[60] bg-cream flex flex-col">
-      {/* Üst başlık */}
+    <div className="sm:hidden fixed top-0 left-0 right-0 z-[60] bg-cream flex flex-col" style={{ bottom: "84px" }}>
+      {/* Üst başlık + geri tuşu */}
       <div className="bg-navy px-4 py-3.5 flex items-center gap-3 flex-shrink-0">
+        <button onClick={onClose} aria-label="Back" className="w-9 h-9 rounded-lg bg-white/10 text-white flex items-center justify-center flex-shrink-0">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M19 12H5M12 19l-7-7 7-7" />
+          </svg>
+        </button>
         <span className="text-white font-medium text-base flex-1">{t.mobile.saved}</span>
         <button onClick={onClose} aria-label="Close" className="text-white/80 text-xl leading-none">✕</button>
       </div>
