@@ -17,6 +17,27 @@ export function SearchBar({ locale, labels }: Props) {
 
   function handleSearch(e: FormEvent) {
     e.preventDefault();
+
+    // Aramayı arka planda kaydet (kullanıcıyı bekletmeden).
+    // Hata olursa sessizce yutulur, yönlendirme her durumda yapılır.
+    try {
+      fetch("/api/track", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        keepalive: true,
+        body: JSON.stringify({
+          type: "search",
+          treatment,
+          city,
+          locale,
+        }),
+      }).catch(() => {
+        // sessizce yut
+      });
+    } catch {
+      // sessizce yut
+    }
+
     router.push(`/${locale}/${treatment}/${city}`);
   }
 
@@ -48,7 +69,6 @@ export function SearchBar({ locale, labels }: Props) {
           </select>
         </div>
       </div>
-
       <div className="flex-1 flex items-center gap-3 px-4 py-3 sm:border-r border-gray-100">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <path d="M12 21s7-6 7-11a7 7 0 1 0-14 0c0 5 7 11 7 11Z" stroke="#0a2540" strokeWidth="1.6" strokeLinejoin="round" />
@@ -71,7 +91,6 @@ export function SearchBar({ locale, labels }: Props) {
           </select>
         </div>
       </div>
-
       <button
         type="submit"
         className="bg-navy text-white flex items-center justify-center gap-2 px-9 py-4 rounded-xl text-base font-semibold hover:bg-navy-light transition"
