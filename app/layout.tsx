@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Manrope, Inter } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
+import { VisitTracker } from "@/components/VisitTracker";
+
 const manrope = Manrope({
   subsets: ["latin"],
   variable: "--font-manrope",
@@ -12,6 +14,7 @@ const inter = Inter({
   variable: "--font-inter",
   display: "swap",
 });
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.mediwayturkey.com"),
   title: "MediWayTurkey — Search, find & compare top health providers in Turkey",
@@ -47,6 +50,7 @@ export const metadata: Metadata = {
     images: ["https://www.mediwayturkey.com/og-image.png"],
   },
 };
+
 export default function RootLayout({
   children,
 }: {
@@ -54,7 +58,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${manrope.variable} ${inter.variable}`}>
-      <body>{children}</body>
+      <body>
+        {children}
+        <VisitTracker />
+      </body>
       {/* Google Analytics */}
       <Script
         src="https://www.googletagmanager.com/gtag/js?id=G-68Y3R270WM"
