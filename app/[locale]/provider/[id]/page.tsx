@@ -1,10 +1,13 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { TopBar } from "@/components/TopBar";
+import { ProviderSchema } from "@/components/SchemaOrg";
 import { getDictionary } from "@/lib/i18n";
 import { getTreatment } from "@/lib/data/treatments";
 import { getCity } from "@/lib/data/cities";
 import { getProviderById } from "@/lib/providers";
+
+const BASE = "https://www.mediwayturkey.com";
 
 interface PageParams {
   params: { locale: string; id: string };
@@ -13,11 +16,36 @@ interface PageParams {
 export async function generateMetadata({ params }: PageParams): Promise<Metadata> {
   const data = await getProviderById(params.id);
   if (!data) return { title: "MediWayTurkey" };
+
+  const { provider, photos } = data;
+  const cityNames = provider.cities.map((c) => getCity(c)?.name ?? c).join(", ");
+
+  const title = `${provider.business_name} | MediWayTurkey`;
+  const description =
+    provider.bio?.slice(0, 155) ??
+    `${provider.business_name} — verified health provider in ${cityNames || "Turkey"}.`;
+
+  const shareImage = photos.length > 0 ? photos[0].url : `${BASE}/og-image.png`;
+  const pageUrl = `${BASE}/${params.locale}/provider/${params.id}`;
+
   return {
-    title: `${data.provider.business_name} | MediWayTurkey`,
-    description:
-      data.provider.bio?.slice(0, 155) ??
-      `${data.provider.business_name} — verified health provider in Turkey.`,
+    title,
+    description,
+    alternates: { canonical: pageUrl },
+    openGraph: {
+      title,
+      description,
+      url: pageUrl,
+      siteName: "MediWayTurkey",
+      type: "profile",
+      images: [{ url: shareImage, width: 1200, height: 630, alt: provider.business_name }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [shareImage],
+    },
   };
 }
 
@@ -35,6 +63,21 @@ export default async function ProviderPage({ params }: PageParams) {
 
   return (
     <main className="min-h-screen bg-cream font-body">
+      <ProviderSchema
+        id={provider.id}
+        businessName={provider.business_name}
+        businessType={provider.business_type}
+        bio={provider.bio}
+        cityNames={cityNames}
+        languages={provider.languages}
+        email={provider.email}
+        whatsapp={provider.whatsapp}
+        whatsappCountryCode={provider.whatsapp_country_code}
+        website={provider.website}
+        image={photos.length > 0 ? photos[0].url : null}
+        isVerified={provider.is_verified}
+        locale={locale}
+      />
       <TopBar locale={locale} />
 
       <div className="max-w-container mx-auto px-5 py-5">
@@ -134,7 +177,7 @@ export default async function ProviderPage({ params }: PageParams) {
           {/* İletişim */}
           <div className="flex flex-col sm:flex-row gap-2 mt-5">
             {provider.whatsapp && (
-              <a
+              
                 href={`https://wa.me/${(provider.whatsapp_country_code ?? "").replace("+", "")}${provider.whatsapp}`}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -143,14 +186,14 @@ export default async function ProviderPage({ params }: PageParams) {
                 {t.profile.whatsapp}
               </a>
             )}
-            <a
+            
               href={`mailto:${provider.email}`}
               className="flex-1 text-center text-sm bg-white border border-navy text-navy py-2.5 rounded-lg font-semibold hover:bg-sky transition"
             >
               {t.profile.email}
             </a>
             {provider.website && (
-              <a
+              
                 href={provider.website}
                 target="_blank"
                 rel="noopener noreferrer"
