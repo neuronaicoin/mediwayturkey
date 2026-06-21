@@ -14,6 +14,7 @@ import { submitLead } from "@/lib/leads";
 interface Props {
   locale: string;
   onClose: () => void;
+  embedded?: boolean; // true: alt bar görünür kalsın diye sarmalayıcı içinde, üstte açılır
 }
 
 interface ChatMessage {
@@ -21,18 +22,16 @@ interface ChatMessage {
   text: string;
 }
 
-export function AiAssistant({ locale, onClose }: Props) {
+export function AiAssistant({ locale, onClose, embedded = false }: Props) {
   const [messages, setMessages] = useState<ChatMessage[]>([
     { from: "bot", text: "Hi! I'll help you find the right care in Turkey. What treatment are you interested in?" },
   ]);
-  // Akış durumu
   const [phase, setPhase] = useState<"treatment" | "city" | "detail" | "timing" | "form" | "done">("treatment");
   const [treatment, setTreatment] = useState("");
   const [city, setCity] = useState("");
   const [detailIndex, setDetailIndex] = useState(0);
   const [details, setDetails] = useState<Record<string, string>>({});
 
-  // Form alanları
   const [name, setName] = useState("");
   const [countryCode, setCountryCode] = useState(COUNTRY_CODES[0].code);
   const [whatsapp, setWhatsapp] = useState("");
@@ -123,9 +122,18 @@ export function AiAssistant({ locale, onClose }: Props) {
     }
   }
 
+  // embedded: sarmalayıcı (BottomNav) konumu verir, burada sadece doldur.
+  // normal: tam ekran modal (alttan açılır) — ana sayfadaki AiEntry için.
+  const outerClass = embedded
+    ? "w-full h-full flex flex-col"
+    : "fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/40 p-0 sm:p-4";
+  const innerClass = embedded
+    ? "bg-cream w-full h-full overflow-hidden flex flex-col"
+    : "bg-cream w-full sm:max-w-md sm:rounded-2xl overflow-hidden flex flex-col max-h-[90vh] sm:max-h-[600px]";
+
   return (
-    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/40 p-0 sm:p-4">
-      <div className="bg-cream w-full sm:max-w-md sm:rounded-2xl overflow-hidden flex flex-col max-h-[90vh] sm:max-h-[600px]">
+    <div className={outerClass}>
+      <div className={innerClass}>
         {/* Üst bar */}
         <div className="bg-navy px-4 py-3 flex items-center gap-3 flex-shrink-0">
           <div className="w-8 h-8 rounded-full bg-gold flex items-center justify-center">
@@ -155,7 +163,6 @@ export function AiAssistant({ locale, onClose }: Props) {
             </div>
           ))}
 
-          {/* Seçenek butonları (faza göre) */}
           {phase === "treatment" && (
             <div className="flex flex-wrap gap-1.5 self-start mt-1">
               {ACTIVE_TREATMENTS.map((tr) => (
@@ -200,7 +207,6 @@ export function AiAssistant({ locale, onClose }: Props) {
             </div>
           )}
 
-          {/* WhatsApp formu */}
           {phase === "form" && (
             <div className="self-stretch bg-white border border-gray-200 rounded-xl p-3 mt-1">
               <div className="flex gap-1.5 mb-2">
