@@ -82,6 +82,9 @@ import { post as avoidHairTransplantScams } from "./avoid-hair-transplant-scams-
 import { post as combineHairDentalRhinoplasty } from "./combine-hair-transplant-dental-rhinoplasty-turkey";
 import { post as combineLiposuctionBreastDental } from "./combine-liposuction-breast-surgery-dental-turkey";
 import { post as hairBeardRhinoplasty } from "./hair-beard-transplant-rhinoplasty-same-time-turkey";
+import { post as fullMaleMakeover } from "./full-male-makeover-hair-beard-dental-rhinoplasty-turkey";
+import { post as fullMommyMakeover } from "./full-mommy-makeover-liposuction-breast-dental-rhinoplasty-turkey";
+import { post as fullFacialMakeover } from "./full-facial-makeover-hair-dental-rhinoplasty-eyelid-turkey";
 
 export const ALL_POSTS: BlogPost[] = [
   hairTransplantTurkeyCost2026,
@@ -162,6 +165,9 @@ export const ALL_POSTS: BlogPost[] = [
   combineHairDentalRhinoplasty,
   combineLiposuctionBreastDental,
   hairBeardRhinoplasty,
+  fullMaleMakeover,
+  fullMommyMakeover,
+  fullFacialMakeover,
 ];
 
 // Bir dile ait yayınlanmış yazılar (en yeni önce)
