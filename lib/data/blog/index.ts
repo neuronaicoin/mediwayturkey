@@ -77,6 +77,11 @@ import { post as combinerLiposuccionMammaireDentaire } from "./combiner-liposucc
 import { post as greffeCheveuxBarbeRhinoplastie } from "./greffe-cheveux-barbe-rhinoplastie-meme-temps-turquie";
 import { post as greffeCheveuxTurquieFranceBelgique } from "./greffe-cheveux-turquie-france-belgique-comparatif";
 import { post as eviterArnaquesGreffeCheveux } from "./eviter-arnaques-greffe-cheveux-istanbul-turquie";
+import { post as hairTransplantTurkeyVsUkUsaCanada } from "./hair-transplant-turkey-vs-uk-usa-canada";
+import { post as avoidHairTransplantScams } from "./avoid-hair-transplant-scams-istanbul-turkey";
+import { post as combineHairDentalRhinoplasty } from "./combine-hair-transplant-dental-rhinoplasty-turkey";
+import { post as combineLiposuctionBreastDental } from "./combine-liposuction-breast-surgery-dental-turkey";
+import { post as hairBeardRhinoplasty } from "./hair-beard-transplant-rhinoplasty-same-time-turkey";
 
 export const ALL_POSTS: BlogPost[] = [
   hairTransplantTurkeyCost2026,
@@ -152,6 +157,11 @@ export const ALL_POSTS: BlogPost[] = [
   greffeCheveuxBarbeRhinoplastie,
   greffeCheveuxTurquieFranceBelgique,
   eviterArnaquesGreffeCheveux,
+  hairTransplantTurkeyVsUkUsaCanada,
+  avoidHairTransplantScams,
+  combineHairDentalRhinoplasty,
+  combineLiposuctionBreastDental,
+  hairBeardRhinoplasty,
 ];
 
 // Bir dile ait yayınlanmış yazılar (en yeni önce)
