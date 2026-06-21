@@ -1,4 +1,5 @@
 import { supabase } from "@/lib/supabase";
+
 // ─── Tipler (veritabanı satırlarıyla eşleşir) ───
 export interface ProviderRow {
   id: string;
@@ -16,18 +17,21 @@ export interface ProviderRow {
   is_verified: boolean;
   is_published: boolean;
 }
+
 export interface ProviderTreatmentRow {
   id: string;
   provider_id: string;
   treatment_slug: string;
   details: Record<string, string[]>;
 }
+
 export interface ProviderPhotoRow {
   id: string;
   provider_id: string;
   url: string;
   sort_order: number;
 }
+
 export interface ProviderPackageRow {
   id: string;
   provider_id: string;
@@ -35,6 +39,7 @@ export interface ProviderPackageRow {
   name: string;
   includes: string[];
 }
+
 // Liste için: bir tedavi + şehirdeki yayınlanmış provider'lar.
 // Premium önce gelir (sıralama). Veritabanı boşsa boş dizi döner (hata vermez).
 // coverPhoto: her provider'ın ilk (kapak) fotoğrafı, liste kartında gösterilir.
@@ -95,6 +100,7 @@ export async function getProvidersForListing(
     coverPhoto: photoMap[provider.id] ?? null,
   }));
 }
+
 // Profil için: tek provider + tüm ilişkili verileri
 export async function getProviderById(id: string): Promise<{
   provider: ProviderRow;
@@ -125,4 +131,16 @@ export async function getProviderById(id: string): Promise<{
     photos: (photos as ProviderPhotoRow[]) ?? [],
     packages: (packages as ProviderPackageRow[]) ?? [],
   };
+}
+
+// Sitemap için: yayınlanmış tüm provider'ların id'si.
+// Sadece sitemap'e girecek minimum veriyi çeker (hafif sorgu).
+// Veritabanı boşsa veya hata olursa boş dizi döner (sitemap yine de üretilir).
+export async function getAllPublishedProviderIds(): Promise<{ id: string }[]> {
+  const { data, error } = await supabase
+    .from("providers")
+    .select("id")
+    .eq("is_published", true);
+  if (error || !data) return [];
+  return data as { id: string }[];
 }
