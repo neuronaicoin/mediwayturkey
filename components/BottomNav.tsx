@@ -7,10 +7,11 @@ import { getDictionary } from "@/lib/i18n";
 import { SearchFlow } from "@/components/SearchFlow";
 import { AiAssistant } from "@/components/AiAssistant";
 import { MenuSheet } from "@/components/MenuSheet";
+import { SavedSheet } from "@/components/SavedSheet";
 
 // ─────────────────────────────────────────────────────────────
 // Mobil alt navigasyon barı (Home · Search · Ask AI · Saved · Menu)
-// Search → SearchFlow · Ask AI → AiAssistant · Menu → MenuSheet
+// Search → SearchFlow · Ask AI → AiAssistant · Saved → SavedSheet · Menu → MenuSheet
 // Sadece mobilde görünür. Admin sayfasında gizli.
 // ─────────────────────────────────────────────────────────────
 
@@ -20,6 +21,7 @@ export function BottomNav({ locale }: { locale: string }) {
   const [searchOpen, setSearchOpen] = useState(false);
   const [aiOpen, setAiOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [savedOpen, setSavedOpen] = useState(false);
 
   if (pathname?.startsWith("/admin")) return null;
 
@@ -35,6 +37,7 @@ export function BottomNav({ locale }: { locale: string }) {
       <SearchFlow locale={locale} open={searchOpen} onClose={() => setSearchOpen(false)} />
       {aiOpen && <AiAssistant locale={locale} onClose={() => setAiOpen(false)} />}
       <MenuSheet locale={locale} open={menuOpen} onClose={() => setMenuOpen(false)} />
+      <SavedSheet locale={locale} open={savedOpen} onClose={() => setSavedOpen(false)} />
 
       <nav
         className="sm:hidden fixed bottom-2 left-2 right-2 h-16 bg-white border-[1.5px] border-navy rounded-2xl flex items-stretch overflow-hidden z-50"
@@ -65,15 +68,15 @@ export function BottomNav({ locale }: { locale: string }) {
           <span className="text-[9px] font-medium" style={{ color: "#ba7517" }}>{t.mobile.askAI}</span>
         </button>
 
-        {/* Saved */}
-        <Link href={base} className="flex-1 flex flex-col items-center justify-center gap-0.5">
+        {/* Saved — açar */}
+        <button onClick={() => setSavedOpen(true)} className="flex-1 flex flex-col items-center justify-center gap-0.5">
           <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#8a8a82" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
             <path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5.5 6 5.5c2 0 3.2 1.2 4 2.3.8-1.1 2-2.3 4-2.3 3.5 0 5 3.5 3.5 6.5C19 16.5 12 21 12 21z" />
           </svg>
           <span className="text-[9px] font-medium" style={{ color: "#8a8a82" }}>{t.mobile.saved}</span>
-        </Link>
+        </button>
 
-        {/* Menu — açar */}
+        {/* Menu */}
         <button onClick={() => setMenuOpen(true)} className="flex-1 flex flex-col items-center justify-center gap-0.5 border-l border-gray-100">
           <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#8a8a82" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
             <path d="M4 6h16M4 12h16M4 18h16" />
