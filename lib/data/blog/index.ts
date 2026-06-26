@@ -94,6 +94,7 @@ import { post as turkeyTeethDentalVeneersImplantsGuide } from "./turkey-teeth-de
 import { post as soinsDentairesTurquieFacettesImplantsGuide } from "./soins-dentaires-turquie-facettes-implants-guide";
 import { post as greffeCheveuxRateeResultatNaturelTurquie } from "./greffe-cheveux-ratee-resultat-naturel-turquie";
 import { post as mommyMakeoverTurquieLiposuccionAbdominoplastieGuide } from "./mommy-makeover-turquie-liposuccion-abdominoplastie-guide";
+import { post as greffeCheveuxSoinsApresRecuperationGuide } from "./greffe-cheveux-soins-apres-recuperation-guide";
 
 export const ALL_POSTS: BlogPost[] = [
   hairTransplantTurkeyCost2026,
@@ -186,6 +187,7 @@ export const ALL_POSTS: BlogPost[] = [
   soinsDentairesTurquieFacettesImplantsGuide,
   greffeCheveuxRateeResultatNaturelTurquie,
   mommyMakeoverTurquieLiposuccionAbdominoplastieGuide,
+  greffeCheveuxSoinsApresRecuperationGuide,
 ];
 
 // Bir dile ait yayınlanmış yazılar (en yeni önce)
