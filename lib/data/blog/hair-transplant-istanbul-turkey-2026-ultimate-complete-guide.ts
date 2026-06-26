@@ -89,7 +89,7 @@ export const post: BlogPost = {
       paragraphs: [
         "A transplant's success isn't decided only on the day of the procedure: aftercare is decisive. During the first 48 hours, grafts are fragile and need to settle. You must touch nothing, sleep with your head elevated, and avoid physical exertion, alcohol, and smoking.",
         "The gentle washing protocol, starting around day 3, gradually softens the crusts so they fall without pulling out grafts. The golden rule: never scratch. For several weeks, you must also avoid direct sun, swimming pools, the sea, saunas, steam rooms, and intense exercise.",
-        'Good remote follow-up, once you're home, is one of the best indicators of a clinic's seriousness. Ask before booking how that follow-up is provided. Our <a href="/en/blog/hair-transplant-aftercare-guide">complete aftercare guide</a> details each step.',
+        "Good remote follow-up, once you're home, is one of the best indicators of a clinic's seriousness. Ask before booking how that follow-up is provided. Our <a href='/en/blog/hair-transplant-aftercare-guide'>complete aftercare guide</a> details each step.",
       ],
     },
     {
