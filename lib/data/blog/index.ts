@@ -99,6 +99,7 @@ import { post as greffeCheveuxIstanbulUltimatePillar } from "./greffe-cheveux-is
 import { post as hairTransplantIstanbulUltimatePillar } from "./hair-transplant-istanbul-turkey-2026-ultimate-complete-guide";
 import { post as haartransplantationIstanbulUltimatePillar } from "./haartransplantation-istanbul-tuerkei-2026-ultimativer-komplettratgeber";
 import { post as ziraatAlshaarIstanbulUltimatePillar } from "./ziraat-alshaar-istanbul-turkiya-2026-dalil-shamil";
+import { post as sacEkimiIstanbulUltimatePillar } from "./sac-ekimi-istanbul-turkiye-2026-ultimate-kapsamli-rehber";
 
 export const ALL_POSTS: BlogPost[] = [
   hairTransplantTurkeyCost2026,
@@ -196,6 +197,7 @@ export const ALL_POSTS: BlogPost[] = [
   hairTransplantIstanbulUltimatePillar,
   haartransplantationIstanbulUltimatePillar,
   ziraatAlshaarIstanbulUltimatePillar,
+  sacEkimiIstanbulUltimatePillar,
 ];
 
 // Bir dile ait yayınlanmış yazılar (en yeni önce)
