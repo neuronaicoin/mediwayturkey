@@ -90,6 +90,7 @@ import { post as combineDentalRhinoplasty } from "./combine-dental-rhinoplasty-t
 import { post as combineHairEyelid } from "./combine-hair-transplant-eyelid-surgery-turkey";
 import { post as saglikTurizmiHastalarSiziNasilBuluyor } from "./saglik-turizmi-hastalar-sizi-nasil-buluyor";
 import { post as howToChooseHairTransplantClinicTurkey } from "./how-to-choose-hair-transplant-clinic-turkey";
+import { post as turkeyTeethDentalVeneersImplantsGuide } from "./turkey-teeth-dental-veneers-implants-guide";
 
 export const ALL_POSTS: BlogPost[] = [
   hairTransplantTurkeyCost2026,
@@ -178,6 +179,7 @@ export const ALL_POSTS: BlogPost[] = [
   combineHairEyelid,
   saglikTurizmiHastalarSiziNasilBuluyor,
   howToChooseHairTransplantClinicTurkey,
+  turkeyTeethDentalVeneersImplantsGuide,
 ];
 
 // Bir dile ait yayınlanmış yazılar (en yeni önce)
