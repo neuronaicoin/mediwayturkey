@@ -145,12 +145,19 @@ export default function BlogPostPage({ params }: PageParams) {
               Explore providers
             </h2>
             <div className="flex flex-col gap-2">
-              {post.relatedLinks.map((link, i) => (
-                <Link key={i} href={`/${locale}${link.href.replace(/^\/[a-z]{2}/, "")}`}
-                  className="text-sm text-gold hover:text-white transition">
-                  → {link.label}
-                </Link>
-              ))}
+              {post.relatedLinks.map((link, i) =>
+                /^https?:\/\//.test(link.href) ? (
+                  <a key={i} href={link.href} target="_blank" rel="noopener"
+                    className="text-sm text-gold hover:text-white transition">
+                    → {link.label}
+                  </a>
+                ) : (
+                  <Link key={i} href={`/${locale}${link.href.replace(/^\/[a-z]{2}/, "")}`}
+                    className="text-sm text-gold hover:text-white transition">
+                    → {link.label}
+                  </Link>
+                )
+              )}
             </div>
           </section>
         )}
