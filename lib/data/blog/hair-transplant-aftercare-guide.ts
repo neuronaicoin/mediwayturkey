@@ -67,7 +67,7 @@ export const post: BlogPost = {
       paragraphs: [
         "Once healed, transplanted hair is permanent because it comes from a donor area resistant to thinning. But protecting your overall hair health still matters, especially your remaining natural hair.",
         "Eat a balanced diet with enough protein, iron, and vitamins, stay hydrated, and manage stress. Some clinics recommend supplements or medication to protect existing non-transplanted hair — discuss this with your provider.",
-        "Be gentle with your hair long-term: avoid harsh chemical treatments right after recovery, and protect your scalp from prolonged sun. Follow up with your clinic if you have any concerns.",
+        'Be gentle with your hair long-term: avoid harsh chemical treatments right after recovery, and protect your scalp from prolonged sun. For non-surgical beauty and aftercare services such as skincare, scalp care and general grooming, you can also explore local providers on <a href="https://guzellikadresin.com" target="_blank" rel="noopener">GüzellikAdresin</a>. Follow up with your clinic if you have any concerns.',
       ],
     },
     {
@@ -121,6 +121,7 @@ export const post: BlogPost = {
     { label: "Hair transplant clinics in Antalya", href: "/en/hair-transplant/antalya" },
     { label: "Dental clinics in Istanbul", href: "/en/dental/istanbul" },
     { label: "Aesthetic clinics in Istanbul", href: "/en/aesthetics/istanbul" },
+    { label: "Beauty & aftercare services in Turkey (GüzellikAdresin)", href: "https://guzellikadresin.com" },
   ],
   translations: [],
 };
