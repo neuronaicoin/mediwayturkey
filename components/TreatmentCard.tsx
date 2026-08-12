@@ -11,11 +11,11 @@ interface Props {
   icon: ReactNode;
 }
 
-// Tedavi görselleri — gerçek fotoğraf
-const TREATMENT_IMAGES: Record<string, string> = {
-  "hair-transplant": "https://images.unsplash.com/photo-1621607512214-68297480165e?auto=format&fit=crop&w=500&q=75",
-  dental: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=500&q=75",
-  aesthetics: "https://images.unsplash.com/photo-1620331311520-246422fd82f9?auto=format&fit=crop&w=500&q=75",
+// Tedaviye özel zarif gradyan — fotoğraf riski yok, her zaman doğru ve tutarlı görünür
+const TREATMENT_GRADIENTS: Record<string, string> = {
+  "hair-transplant": "linear-gradient(150deg, #0a2540 0%, #1c3a55 100%)",
+  dental: "linear-gradient(150deg, #143a5e 0%, #21405e 100%)",
+  aesthetics: "linear-gradient(150deg, #0c2d4d 0%, #26485f 100%)",
 };
 
 // Tedavi kartı: tıklanınca ŞEHİR seçenekleri açılır (varsaymadan sorar).
@@ -28,25 +28,28 @@ export function TreatmentCard({
 }: Props) {
   const router = useRouter();
   const [open, setOpen] = useState(false);
-  const imageUrl = TREATMENT_IMAGES[treatmentSlug];
+  const gradient = TREATMENT_GRADIENTS[treatmentSlug] || TREATMENT_GRADIENTS["hair-transplant"];
 
   return (
     <div className="bg-white border-[1.5px] border-navy rounded-xl overflow-hidden">
       <button
         onClick={() => setOpen((v) => !v)}
-        className="w-full text-center hover:bg-sky/40 transition"
+        className="w-full text-center hover:opacity-95 transition"
       >
-        {imageUrl && (
-          <div className="relative w-full h-28 overflow-hidden">
-            <img src={imageUrl} alt="" aria-hidden="true" className="w-full h-full object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-t from-white via-white/10 to-transparent" />
-            <div className="absolute bottom-1.5 left-1/2 -translate-x-1/2 bg-white/95 rounded-full w-9 h-9 flex items-center justify-center shadow-sm">
-              {icon}
-            </div>
+        <div
+          className="relative w-full h-24 flex items-center justify-center overflow-hidden"
+          style={{ background: gradient }}
+        >
+          {/* zarif dekoratif desen */}
+          <div
+            className="absolute -top-6 -right-6 w-24 h-24 rounded-full opacity-[0.12]"
+            style={{ background: "radial-gradient(circle, #fbbf24 0%, transparent 70%)" }}
+          />
+          <div className="relative bg-white/95 rounded-full w-12 h-12 flex items-center justify-center shadow-sm">
+            {icon}
           </div>
-        )}
+        </div>
         <div className="p-4">
-          {!imageUrl && <div className="flex justify-center mb-2">{icon}</div>}
           <div className="text-sm font-semibold text-navy">{treatmentName}</div>
           <div className="text-[11px] text-gray-400 mt-0.5">{subtitle}</div>
         </div>
