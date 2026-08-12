@@ -100,30 +100,31 @@ export default function HomePage({ params }: { params: { locale: string } }) {
         }}
       />
       <header className="bg-navy">
-        <div className="max-w-container mx-auto px-4 sm:px-5 py-4 flex items-center justify-between gap-2">
+        <div className="max-w-container mx-auto px-3 sm:px-5 py-3 sm:py-4 flex items-center justify-between gap-1.5 sm:gap-2">
           <Link href={`/${locale}`} className="leading-none flex-shrink-0">
-            <span className="font-display text-3xl sm:text-3xl font-semibold text-white tracking-tight">
+            <span className="font-display text-xl sm:text-3xl font-semibold text-white tracking-tight">
               Medi<span className="text-gold">Way</span>
             </span>
-            <span className="block font-display text-[11px] sm:text-[10px] font-medium text-navy-muted tracking-[4px]">
+            <span className="hidden sm:block font-display text-[10px] font-medium text-navy-muted tracking-[4px]">
               {t.brandSuffix}
             </span>
           </Link>
-          <div className="flex items-center gap-2 sm:gap-4">
-            <span className="border border-gold/50 rounded-full px-2.5 py-1">
+          <div className="flex items-center gap-1 sm:gap-4 min-w-0">
+            <span className="border border-gold/50 rounded-full px-1.5 sm:px-2.5 py-1 flex-shrink-0">
               <LanguagePicker locale={locale} />
             </span>
             <Link href={`/${locale}/blog`}
-              className="hidden sm:inline text-sm text-sky hover:text-white transition border border-gold/50 rounded-full px-3 py-1">
+              className="hidden sm:inline text-sm text-sky hover:text-white transition border border-gold/50 rounded-full px-3 py-1 flex-shrink-0">
               {t.nav.blog}
             </Link>
             <Link href={`/${locale}/login`}
-              className="text-xs sm:text-sm text-sky hover:text-white transition whitespace-nowrap border border-gold/50 rounded-full px-3 py-1">
+              className="text-[11px] sm:text-sm text-sky hover:text-white transition whitespace-nowrap border border-gold/50 rounded-full px-2 sm:px-3 py-1 flex-shrink-0">
               Sign in
             </Link>
             <Link href={`/${locale}/list-your-business`}
-              className="text-xs sm:text-sm text-navy bg-gold px-3 sm:px-3.5 py-2 rounded-md font-semibold hover:brightness-105 transition whitespace-nowrap">
-              {t.nav.listBusiness}
+              className="text-[11px] sm:text-sm text-navy bg-gold px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-md font-semibold hover:brightness-105 transition whitespace-nowrap flex-shrink-0">
+              <span className="sm:hidden">List</span>
+              <span className="hidden sm:inline">{t.nav.listBusiness}</span>
             </Link>
           </div>
         </div>
