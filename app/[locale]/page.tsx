@@ -92,35 +92,36 @@ export default function HomePage({ params }: { params: { locale: string } }) {
         </div>
       </header>
 
-      <section className="relative bg-navy pb-12 sm:pb-16 overflow-hidden">
-        <div className="absolute inset-0" aria-hidden="true">
-          <img
-            src="https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?auto=format&fit=crop&w=1800&q=80"
-            alt=""
-            className="w-full h-full object-cover opacity-30"
+      <section className="relative bg-navy pb-14 sm:pb-20 overflow-hidden">
+        {/* Zarif arka plan deseni — dış görsele bağımlı değil, her zaman yüklenir */}
+        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+          <div
+            className="absolute -top-24 -right-24 w-[420px] h-[420px] rounded-full opacity-[0.14]"
+            style={{ background: "radial-gradient(circle, #fbbf24 0%, transparent 68%)" }}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-navy/60 via-navy/85 to-navy" />
+          <div
+            className="absolute -bottom-32 -left-20 w-[380px] h-[380px] rounded-full opacity-[0.10]"
+            style={{ background: "radial-gradient(circle, #3b82f6 0%, transparent 68%)" }}
+          />
+          <svg className="absolute inset-0 w-full h-full opacity-[0.06]" preserveAspectRatio="none">
+            <defs>
+              <pattern id="grid" width="42" height="42" patternUnits="userSpaceOnUse">
+                <path d="M 42 0 L 0 0 0 42" fill="none" stroke="#fbbf24" strokeWidth="1" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#grid)" />
+          </svg>
         </div>
-        <div className="relative max-w-container mx-auto px-5 pt-10 sm:pt-14 text-center">
-          <h1 className="font-display text-2xl sm:text-3xl md:text-4xl font-semibold text-white tracking-tight max-w-3xl mx-auto leading-tight">
+
+        <div className="relative max-w-container mx-auto px-5 pt-14 sm:pt-20 text-center">
+          <div className="inline-flex items-center gap-2 bg-white/[0.07] border border-gold/30 rounded-full px-4 py-1.5 mb-5">
+            <span className="w-1.5 h-1.5 rounded-full bg-gold" />
+            <span className="text-[11px] sm:text-xs font-semibold text-gold tracking-wide uppercase">Turkey&apos;s Trusted Medical Network</span>
+          </div>
+          <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight max-w-3xl mx-auto leading-[1.12]">
             {t.hero.headline}
           </h1>
-          <p className="text-sm text-navy-muted mt-3">{t.hero.trustLine}</p>
-
-          {/* Güven şeridi — gerçek sayılarla */}
-          <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 mt-6 sm:mt-7">
-            <span className="flex items-center gap-1.5 text-xs sm:text-sm text-white/90 font-medium">
-              <span className="text-gold font-display font-bold">{ACTIVE_CITIES.length}</span> Cities
-            </span>
-            <span className="w-1 h-1 rounded-full bg-white/30" />
-            <span className="flex items-center gap-1.5 text-xs sm:text-sm text-white/90 font-medium">
-              <span className="text-gold font-display font-bold">96</span> Guides · 17 Languages
-            </span>
-            <span className="w-1 h-1 rounded-full bg-white/30" />
-            <span className="flex items-center gap-1.5 text-xs sm:text-sm text-white/90 font-medium">
-              <span className="text-emerald-trust font-display font-bold">0%</span> Commission
-            </span>
-          </div>
+          <div className="w-14 h-[3px] bg-gold rounded-full mx-auto mt-6" />
         </div>
       </section>
 
@@ -193,7 +194,6 @@ export default function HomePage({ params }: { params: { locale: string } }) {
           <span className="font-display text-lg font-semibold text-white">
             Medi<span className="text-gold">Way</span>
           </span>
-          <p className="text-xs text-navy-muted mt-2">{t.hero.trustLine}</p>
           <div className="flex flex-wrap justify-center gap-x-4 gap-y-1 mt-4 text-[12px]">
             <Link href={`/${locale}/about`} className="text-navy-muted hover:text-white transition">About</Link>
             <Link href={`/${locale}/contact`} className="text-navy-muted hover:text-white transition">Contact</Link>
