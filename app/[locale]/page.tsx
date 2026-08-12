@@ -211,19 +211,34 @@ export default function HomePage({ params }: { params: { locale: string } }) {
       </section>
 
       <section className="max-w-container mx-auto px-5 mt-8 mb-14 w-full">
-        <h2 className="font-display text-lg font-semibold text-navy mb-4">{t.sections.howItWorks}</h2>
-        <div className="bg-navy rounded-xl py-5 px-4 flex justify-around text-center">
-          <div className="flex flex-col items-center gap-1.5">
-            <SearchIcon gold />
-            <span className="text-xs text-white font-semibold">1. {t.sections.step1}</span>
-          </div>
-          <div className="flex flex-col items-center gap-1.5">
-            <CompareIcon />
-            <span className="text-xs text-white font-semibold">2. {t.sections.step2}</span>
-          </div>
-          <div className="flex flex-col items-center gap-1.5">
-            <ChatIcon />
-            <span className="text-xs text-white font-semibold">3. {t.sections.step3}</span>
+        <div className="text-center mb-5">
+          <span className="inline-block bg-gold-tint border border-gold/60 rounded-full px-4 py-1.5">
+            <h2 className="font-display text-base sm:text-lg font-bold text-gold-deep">{t.sections.howItWorks}</h2>
+          </span>
+        </div>
+        <div className="relative bg-navy rounded-2xl py-8 px-5 sm:px-8 overflow-hidden">
+          {/* zarif arka plan dekoru */}
+          <div
+            className="absolute -top-16 -right-16 w-56 h-56 rounded-full opacity-[0.10] pointer-events-none"
+            style={{ background: "radial-gradient(circle, #fbbf24 0%, transparent 68%)" }}
+          />
+          <div className="relative grid grid-cols-3 gap-2 sm:gap-4">
+            {/* bağlantı çizgisi — kutucukların arkasında, ortadan geçiyor */}
+            <div className="absolute top-6 left-[16.5%] right-[16.5%] h-[2px] bg-gradient-to-r from-gold/10 via-gold/60 to-gold/10" />
+
+            {[
+              { label: t.sections.step1, Icon: SearchIcon },
+              { label: t.sections.step2, Icon: CompareIcon },
+              { label: t.sections.step3, Icon: ChatIcon },
+            ].map((s, i) => (
+              <div key={i} className="relative flex flex-col items-center text-center">
+                <div className="relative z-10 w-12 h-12 rounded-full bg-gold flex items-center justify-center shadow-[0_0_0_5px_#0a2540]">
+                  <s.Icon gold={false} navy />
+                </div>
+                <span className="text-[10px] font-bold text-gold mt-2.5 tracking-wide">STEP {i + 1}</span>
+                <span className="text-xs sm:text-sm text-white font-semibold mt-0.5">{s.label}</span>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -278,14 +293,16 @@ export default function HomePage({ params }: { params: { locale: string } }) {
   );
 }
 
-function SearchIcon({ gold }: { gold?: boolean }) {
-  const c = gold ? "#fbbf24" : "currentColor";
-  const s = gold ? "20" : "16";
+function SearchIcon({ gold, navy }: { gold?: boolean; navy?: boolean }) {
+  const c = navy ? "#0a2540" : gold ? "#fbbf24" : "currentColor";
+  const s = "20";
   return <svg width={s} height={s} viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke={c} strokeWidth="1.8" /><path d="m20 20-3.5-3.5" stroke={c} strokeWidth="1.8" strokeLinecap="round" /></svg>;
 }
-function CompareIcon() {
-  return <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="7" height="14" rx="1.5" stroke="#fbbf24" strokeWidth="1.8" /><rect x="14" y="5" width="7" height="14" rx="1.5" stroke="#fbbf24" strokeWidth="1.8" /></svg>;
+function CompareIcon({ navy }: { navy?: boolean } = {}) {
+  const c = navy ? "#0a2540" : "#fbbf24";
+  return <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="7" height="14" rx="1.5" stroke={c} strokeWidth="1.8" /><rect x="14" y="5" width="7" height="14" rx="1.5" stroke={c} strokeWidth="1.8" /></svg>;
 }
-function ChatIcon() {
-  return <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 5h16v11H9l-5 4V5Z" stroke="#fbbf24" strokeWidth="1.8" strokeLinejoin="round" /></svg>;
+function ChatIcon({ navy }: { navy?: boolean } = {}) {
+  const c = navy ? "#0a2540" : "#fbbf24";
+  return <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 5h16v11H9l-5 4V5Z" stroke={c} strokeWidth="1.8" strokeLinejoin="round" /></svg>;
 }
