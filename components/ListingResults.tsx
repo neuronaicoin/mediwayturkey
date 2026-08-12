@@ -47,6 +47,7 @@ export function ListingResults({
   labels,
 }: Props) {
   const { isSaved, toggle } = useSavedProviders();
+  const [filterOpen, setFilterOpen] = useState(false);
 
   // Seçili filtreler (henüz uygulanmamış)
   const [selTech, setSelTech] = useState<string[]>([]);
@@ -112,8 +113,26 @@ export function ListingResults({
       <div className="grid grid-cols-1 md:grid-cols-[230px_1fr] gap-5">
         {/* ─── FİLTRE PANELİ ─── */}
         <aside className="bg-white border border-gray-200 rounded-xl p-4 h-fit">
-          <div className="text-base font-semibold text-navy mb-4">{labels.filters}</div>
+          <button
+            type="button"
+            onClick={() => setFilterOpen((v) => !v)}
+            className="w-full flex items-center justify-between text-base font-semibold text-navy"
+          >
+            <span>{labels.filters}</span>
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              aria-hidden="true"
+              style={{ transform: filterOpen ? "rotate(180deg)" : "none", transition: "transform .15s" }}
+            >
+              <path d="m6 9 6 6 6-6" stroke="#0a2540" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
 
+          {filterOpen && (
+          <div className="mt-4">
           {filterGroups.map((g) => (
             <div key={g.key} className="mb-4">
               <div className="text-xs uppercase tracking-wide text-gray-500 font-semibold mb-2">
@@ -186,6 +205,8 @@ export function ListingResults({
               </button>
             )}
           </div>
+          </div>
+          )}
         </aside>
 
         {/* ─── SONUÇLAR ─── */}
