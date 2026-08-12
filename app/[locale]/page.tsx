@@ -58,6 +58,26 @@ function treatmentSubtitle(slug: string): string {
   return map[slug] ?? "";
 }
 
+// Ana sayfa FAQ — fiyat, güvenlik, süreç odaklı 4 soru (tam liste /faq sayfasında)
+const HOME_FAQS: { q: string; a: string }[] = [
+  {
+    q: "Is MediWayTurkey free for patients?",
+    a: "Yes. MediWayTurkey is completely free for patients and takes no commission on any treatment. Providers pay a subscription to be listed, so there is no markup added to your treatment.",
+  },
+  {
+    q: "Why is treatment in Turkey more affordable?",
+    a: "Lower operating costs and strong local competition mean prices are often far lower than in Western Europe, without a drop in quality at serious providers. Many offer all-inclusive packages covering hotel and transfers.",
+  },
+  {
+    q: "How do I know a provider is trustworthy?",
+    a: "We verify providers on the platform, but you should still do your own checks: ask who performs the procedure, request real before-and-after photos, get the package contents in writing, and notice how clearly they communicate.",
+  },
+  {
+    q: "How do I contact a provider?",
+    a: "Choose a treatment and city, browse and compare verified providers, then contact your chosen provider directly — usually via WhatsApp. There is no middleman in the conversation.",
+  },
+];
+
 export default function HomePage({ params }: { params: { locale: string } }) {
   const t = getDictionary(params.locale);
   const locale = params.locale;
@@ -65,6 +85,20 @@ export default function HomePage({ params }: { params: { locale: string } }) {
   return (
     <main className="min-h-screen bg-cream font-body flex flex-col">
       <HomeSchema />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: HOME_FAQS.map((f) => ({
+              "@type": "Question",
+              name: f.q,
+              acceptedAnswer: { "@type": "Answer", text: f.a },
+            })),
+          }),
+        }}
+      />
       <header className="bg-navy">
         <div className="max-w-container mx-auto px-4 sm:px-5 py-4 flex items-center justify-between gap-2">
           <Link href={`/${locale}`} className="leading-none flex-shrink-0">
@@ -191,6 +225,30 @@ export default function HomePage({ params }: { params: { locale: string } }) {
             <ChatIcon />
             <span className="text-xs text-white font-semibold">3. {t.sections.step3}</span>
           </div>
+        </div>
+      </section>
+
+      <section className="max-w-container mx-auto px-5 mt-8 mb-14 w-full">
+        <div className="text-center mb-4">
+          <span className="inline-block bg-gold-tint border border-gold/60 rounded-full px-4 py-1.5">
+            <h2 className="font-display text-base sm:text-lg font-bold text-gold-deep">Common questions</h2>
+          </span>
+        </div>
+        <div className="space-y-2.5 max-w-2xl mx-auto">
+          {HOME_FAQS.map((f, i) => (
+            <details key={i} className="bg-white rounded-xl border border-navy/10 p-4 group">
+              <summary className="list-none cursor-pointer font-semibold text-navy text-sm flex items-center justify-between gap-3">
+                {f.q}
+                <span className="text-gold text-xl flex-shrink-0 group-open:rotate-45 transition-transform">+</span>
+              </summary>
+              <p className="text-navy/70 leading-relaxed text-[13.5px] mt-2.5">{f.a}</p>
+            </details>
+          ))}
+        </div>
+        <div className="text-center mt-4">
+          <Link href={`/${locale}/faq`} className="text-sm text-navy-muted hover:text-gold-deep transition font-medium">
+            See all questions →
+          </Link>
         </div>
       </section>
 
