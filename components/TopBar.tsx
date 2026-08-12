@@ -1,15 +1,19 @@
 import Link from "next/link";
+import { BackButton } from "@/components/BackButton";
 
 // Liste ve profil sayfalarında kullanılan sade üst bar.
 export function TopBar({ locale }: { locale: string }) {
   return (
     <header className="bg-navy">
       <div className="max-w-container mx-auto px-5 py-3.5 flex items-center justify-between gap-2">
-        <Link href={`/${locale}`} className="leading-none flex-shrink-0">
-          <span className="font-display text-xl font-semibold text-white tracking-tight">
-            Medi<span className="text-gold">Way</span>
-          </span>
-        </Link>
+        <div className="flex items-center gap-2.5 min-w-0">
+          <BackButton />
+          <Link href={`/${locale}`} className="leading-none flex-shrink-0">
+            <span className="font-display text-xl font-semibold text-white tracking-tight">
+              Medi<span className="text-gold">Way</span>
+            </span>
+          </Link>
+        </div>
         <div className="flex items-center gap-2 sm:gap-3">
           <Link
             href={`/${locale}/blog`}
