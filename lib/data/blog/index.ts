@@ -102,6 +102,8 @@ import { post as ziraatAlshaarIstanbulUltimatePillar } from "./ziraat-alshaar-is
 import { post as sacEkimiIstanbulUltimatePillar } from "./sac-ekimi-istanbul-turkiye-2026-ultimate-kapsamli-rehber";
 import { post as hairTransplantWomenOver40 } from "./hair-transplant-women-over-40-turkey";
 import { post as sacEkimi40YasUstuKadin } from "./40-yas-ustu-kadinlarda-sac-ekimi-turkiye";
+import { post as greffeCheveuxFemme40AnsTurquie } from "./greffe-cheveux-femme-plus-40-ans-turquie";
+import { post as ziraatAlshaarNisaFouq40 } from "./hair-transplant-women-over-40-turkey-arabic";
 
 export const ALL_POSTS: BlogPost[] = [
   hairTransplantTurkeyCost2026,
@@ -202,6 +204,8 @@ export const ALL_POSTS: BlogPost[] = [
   sacEkimiIstanbulUltimatePillar,
   hairTransplantWomenOver40,
   sacEkimi40YasUstuKadin,
+  greffeCheveuxFemme40AnsTurquie,
+  ziraatAlshaarNisaFouq40,
 ];
 
 // Bir dile ait yayınlanmış yazılar (en yeni önce)
