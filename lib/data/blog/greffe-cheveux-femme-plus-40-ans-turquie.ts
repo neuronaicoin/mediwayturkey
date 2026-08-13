@@ -105,5 +105,6 @@ export const post: BlogPost = {
   translations: [
     { locale: "en", slug: "hair-transplant-women-over-40-turkey" },
     { locale: "tr", slug: "40-yas-ustu-kadinlarda-sac-ekimi-turkiye" },
+    { locale: "ar", slug: "hair-transplant-women-over-40-turkey-arabic" },
   ],
 };
