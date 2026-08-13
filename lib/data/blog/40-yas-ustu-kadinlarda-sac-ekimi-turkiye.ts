@@ -104,5 +104,7 @@ export const post: BlogPost = {
   ],
   translations: [
     { locale: "en", slug: "hair-transplant-women-over-40-turkey" },
+    { locale: "fr", slug: "greffe-cheveux-femme-plus-40-ans-turquie" },
+    { locale: "ar", slug: "hair-transplant-women-over-40-turkey-arabic" },
   ],
 };
