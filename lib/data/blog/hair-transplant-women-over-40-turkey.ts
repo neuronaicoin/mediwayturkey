@@ -102,5 +102,7 @@ export const post: BlogPost = {
     { label: "Hair transplant results timeline", href: "/en/blog/hair-transplant-results-timeline" },
     { label: "How to choose a hair transplant clinic in Turkey", href: "/en/blog/how-to-choose-hair-transplant-clinic-turkey" },
   ],
-  translations: [],
+  translations: [
+    { locale: "tr", slug: "40-yas-ustu-kadinlarda-sac-ekimi-turkiye" },
+  ],
 };
