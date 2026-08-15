@@ -104,6 +104,7 @@ import { post as hairTransplantWomenOver40 } from "./hair-transplant-women-over-
 import { post as sacEkimi40YasUstuKadin } from "./40-yas-ustu-kadinlarda-sac-ekimi-turkiye";
 import { post as greffeCheveuxFemme40AnsTurquie } from "./greffe-cheveux-femme-plus-40-ans-turquie";
 import { post as ziraatAlshaarNisaFouq40 } from "./hair-transplant-women-over-40-turkey-arabic";
+import { post as implantsAllOn4TurquieGuide } from "./implants-dentaires-all-on-4-turquie-prix-guide";
 
 export const ALL_POSTS: BlogPost[] = [
   hairTransplantTurkeyCost2026,
@@ -206,6 +207,7 @@ export const ALL_POSTS: BlogPost[] = [
   sacEkimi40YasUstuKadin,
   greffeCheveuxFemme40AnsTurquie,
   ziraatAlshaarNisaFouq40,
+  implantsAllOn4TurquieGuide,
 ];
 
 // Bir dile ait yayınlanmış yazılar (en yeni önce)
