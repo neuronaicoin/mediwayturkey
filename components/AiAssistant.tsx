@@ -125,11 +125,11 @@ export function AiAssistant({ locale, onClose, embedded = false }: Props) {
   // embedded: sarmalayıcı (BottomNav) konumu verir, burada sadece doldur.
   // normal: tam ekran modal (alttan açılır) — ana sayfadaki AiEntry için.
   const outerClass = embedded
-    ? "w-full h-full flex flex-col"
+    ? "w-full h-full min-h-0 flex flex-col"
     : "fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/40 p-0 sm:p-4";
   const innerClass = embedded
-    ? "bg-cream w-full h-full overflow-hidden flex flex-col"
-    : "bg-cream w-full sm:max-w-md sm:rounded-2xl overflow-hidden flex flex-col max-h-[90vh] sm:max-h-[600px]";
+    ? "bg-cream w-full h-full min-h-0 overflow-hidden flex flex-col"
+    : "bg-cream w-full sm:max-w-md sm:rounded-2xl overflow-hidden flex flex-col max-h-[90dvh] sm:max-h-[600px]";
 
   return (
     <div className={outerClass}>
