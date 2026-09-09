@@ -48,7 +48,10 @@ export function BottomNav({ locale }: { locale: string }) {
 
       {/* Ask AI — sadece asistan, alt bar görünür kalır */}
       {active === "ai" && (
-        <div className="sm:hidden fixed top-0 left-0 right-0 z-[60] flex flex-col" style={{ bottom: "84px" }}>
+        <div
+          className="sm:hidden fixed top-0 left-0 right-0 z-[60] flex flex-col"
+          style={{ bottom: "calc(84px + env(safe-area-inset-bottom))" }}
+        >
           <AiAssistant locale={locale} onClose={() => setActive(null)} embedded />
         </div>
       )}
