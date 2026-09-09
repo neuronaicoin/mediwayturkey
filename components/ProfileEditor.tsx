@@ -144,10 +144,24 @@ export function ProfileEditor({
 
   const hasName = businessName.trim().length > 0;
   const hasTreatment = Object.keys(treatments).length > 0;
-  const canPublish = hasName && hasTreatment && photos.length > 0;
+  const hasPhoto = photos.length > 0;
+  const canPublish = hasName && hasTreatment && hasPhoto;
+
+  // Eksik olan şeyleri, sadece genel bir ipucu değil, tam olarak HANGİLERİ
+  // eksikse onları listeleyen bir dizi olarak üretir.
+  const missingItems: string[] = [];
+  if (!hasName) missingItems.push("business name");
+  if (!hasTreatment) missingItems.push("at least one treatment");
+  if (!hasPhoto) missingItems.push("at least one photo");
 
   async function handlePublish() {
-    if (!canPublish) return;
+    if (!canPublish) {
+      // Buton her nedense devre dışı değilken de tıklanırsa (örn. state
+      // henüz güncellenmemişse), sessizce hiçbir şey yapmak yerine kullanıcıya
+      // NET, hangi alan(lar)ın eksik olduğunu söyleyen bir mesaj göster.
+      setMsg(`Please add ${missingItems.join(", ")} before publishing.`);
+      return;
+    }
     setSaving(true);
     setMsg("");
     setSuccess("");
@@ -351,9 +365,12 @@ export function ProfileEditor({
         </button>
       </div>
       {!canPublish && (
-        <p className="text-[11px] text-gray-500 text-center -mt-2">
-          Add a business name, at least one treatment, and one photo to publish.
-        </p>
+        <div className="flex items-start gap-2 bg-amber-50 border border-amber-300 rounded-lg px-3 py-2.5 text-center sm:text-left">
+          <span className="text-amber-500 text-sm leading-none mt-0.5">⚠</span>
+          <p className="text-xs text-amber-800 font-medium">
+            Missing to publish: <span className="font-semibold">{missingItems.join(", ")}</span>
+          </p>
+        </div>
       )}
       {msg && <p className="text-xs text-center text-red-500 font-medium">{msg}</p>}
     </div>
