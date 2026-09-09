@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { getDictionary } from "@/lib/i18n";
 import { SearchFlow } from "@/components/SearchFlow";
 import { AiAssistant } from "@/components/AiAssistant";
@@ -23,8 +23,24 @@ const GRAY = "#8a8a82";
 
 export function BottomNav({ locale }: { locale: string }) {
   const pathname = usePathname();
+  const router = useRouter();
+  const searchParams = useSearchParams();
   const t = getDictionary(locale);
   const [active, setActive] = useState<null | "search" | "ai" | "saved" | "menu">(null);
+
+  // Sayfanın başka bir yerinden (örn. ana sayfadaki AiEntry butonu)
+  // ?ai=1 ile gelindiyse, alt bardaki "Ask AI" sekmesini aç — aynı,
+  // kanıtlanmış çalışan görünümü kullan, ayrı bir modal açma.
+  useEffect(() => {
+    if (searchParams.get("ai") === "1") {
+      setActive("ai");
+      const params = new URLSearchParams(searchParams.toString());
+      params.delete("ai");
+      const query = params.toString();
+      router.replace(query ? `${pathname}?${query}` : pathname, { scroll: false });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchParams]);
 
   if (pathname?.startsWith("/admin")) return null;
 
