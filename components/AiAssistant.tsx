@@ -149,7 +149,10 @@ export function AiAssistant({ locale, onClose, embedded = false }: Props) {
         </div>
 
         {/* Mesajlar */}
-        <div className="flex-1 overflow-y-auto p-4 flex flex-col gap-2.5">
+        <div
+          className="flex-1 overflow-y-auto p-4 flex flex-col gap-2.5 overscroll-contain"
+          style={{ WebkitOverflowScrolling: "touch" }}
+        >
           {messages.map((m, i) => (
             <div
               key={i}
