@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import { isValidLocale, getLanguage, LOCALE_CODES } from "@/lib/data/languages";
 import { BottomNav } from "@/components/BottomNav";
@@ -24,7 +25,9 @@ export default function LocaleLayout({
       {children}
       {/* Mobilde alt barın arkasında içerik kalmasın diye boşluk */}
       <div className="sm:hidden h-24" aria-hidden="true" />
-      <BottomNav locale={params.locale} />
+      <Suspense fallback={null}>
+        <BottomNav locale={params.locale} />
+      </Suspense>
     </div>
   );
 }
