@@ -10,28 +10,29 @@ const config: Config = {
     extend: {
       colors: {
         navy: {
-          DEFAULT: "#0a2540",
+          DEFAULT: "#0b1c2c",
           light: "#0c2d4d",
           soft: "#143a5e",
           muted: "#9fb3c8",
         },
         gold: {
-          DEFAULT: "#fbbf24",
-          deep: "#d4960a",
-          dark: "#b8860b",
-          tint: "#fdf3e0",
+          DEFAULT: "#c9a84c",
+          deep: "#ad8a34",
+          dark: "#8a6f28",
+          tint: "#f6efdc",
         },
-        cream: "#faf8f5",
+        cream: "#f8f6f2",
         sky: "#e8f0f7",
         slate: {
           body: "#334155",
+          soft: "#5a6a7a",
         },
         emerald: {
           trust: "#10b981",
         },
       },
       fontFamily: {
-        display: ["var(--font-manrope)", "system-ui", "sans-serif"],
+        display: ["var(--font-display)", "Georgia", "serif"],
         body: ["var(--font-inter)", "system-ui", "sans-serif"],
       },
       maxWidth: {
