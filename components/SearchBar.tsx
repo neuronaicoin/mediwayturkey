@@ -44,7 +44,7 @@ export function SearchBar({ locale, labels }: Props) {
   return (
     <form
       onSubmit={handleSearch}
-      className="bg-white border-2 border-gold rounded-2xl p-2.5 flex flex-col sm:flex-row gap-2 shadow-xl"
+      className="bg-white/90 backdrop-blur-md border border-gold/40 rounded-2xl p-2.5 flex flex-col sm:flex-row gap-2 shadow-[0_20px_50px_-12px_rgba(11,28,44,0.45)]"
     >
       <div className="flex-1 flex items-center gap-3 px-4 py-3 sm:border-r border-gray-100">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -93,7 +93,7 @@ export function SearchBar({ locale, labels }: Props) {
       </div>
       <button
         type="submit"
-        className="bg-navy text-white flex items-center justify-center gap-2 px-9 py-4 rounded-xl text-base font-semibold hover:bg-navy-light transition"
+        className="bg-gradient-to-b from-navy-soft to-navy text-white flex items-center justify-center gap-2 px-9 py-4 rounded-xl text-base font-semibold shadow-lg active:scale-[0.98] transition-transform"
       >
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <circle cx="11" cy="11" r="7" stroke="currentColor" strokeWidth="1.8" />
