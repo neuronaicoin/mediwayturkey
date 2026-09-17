@@ -243,23 +243,25 @@ export default function HomePage({ params }: { params: { locale: string } }) {
         </div>
       </section>
 
-      <div className="max-w-container mx-auto px-5 mt-4 w-full">
+      {/* Arama karti - hero'nun disinda, negatif ust bosluk ile hero uzerine tasiyor.
+          Boylece hero'nun overflow-hidden'i karti KIRPMAZ (ayri bir eleman, sadece gorsel olarak binisir). */}
+      <div className="relative z-10 max-w-container mx-auto px-5 -mt-9 w-full">
         <SearchBar locale={locale} labels={{ treatment: t.hero.treatmentLabel, city: t.hero.cityLabel, search: t.hero.searchButton }} />
       </div>
 
-      <div className="max-w-container mx-auto px-5 mt-4 w-full">
+      <div className="max-w-container mx-auto px-5 pt-5 w-full">
         <AiEntry locale={locale} label={t.ai.entry} />
       </div>
 
-      <section className="max-w-container mx-auto px-5 mt-8 w-full">
-        <div className="text-center mb-4">
-          <span className="inline-block bg-gold-tint border border-gold/60 rounded-full px-4 py-1.5">
-            <h2 className="font-display text-base sm:text-lg font-bold text-gold-deep">{t.sections.searchTreatment}</h2>
-          </span>
+      <section className="max-w-container mx-auto px-5 mt-10 w-full">
+        <div className="text-center mb-5">
+          <h2 className="font-display text-xl sm:text-2xl font-semibold text-navy">{t.sections.searchTreatment}</h2>
+          <div className="w-10 h-[3px] bg-gold rounded-full mx-auto mt-2.5" />
         </div>
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+        <div className="grid grid-cols-2 gap-2.5">
           {ACTIVE_TREATMENTS.map((tr) => {
             const Icon = TREATMENT_ICONS[tr.icon] ?? IconHair;
+            const tag = tr.slug === "hair-transplant" || tr.slug === "dental" ? "Popular" : undefined;
             return (
               <TreatmentCard
                 key={tr.slug}
@@ -268,17 +270,17 @@ export default function HomePage({ params }: { params: { locale: string } }) {
                 treatmentName={tr.name}
                 subtitle={treatmentSubtitle(tr.slug)}
                 icon={<Icon />}
+                tag={tag}
               />
             );
           })}
         </div>
       </section>
 
-      <section className="max-w-container mx-auto px-5 mt-8 w-full">
-        <div className="text-center mb-4">
-          <span className="inline-block bg-gold-tint border border-gold/60 rounded-full px-4 py-1.5">
-            <h2 className="font-display text-base sm:text-lg font-bold text-gold-deep">{t.sections.popularDestinations}</h2>
-          </span>
+      <section className="max-w-container mx-auto px-5 mt-10 w-full">
+        <div className="text-center mb-5">
+          <h2 className="font-display text-xl sm:text-2xl font-semibold text-navy">{t.sections.popularDestinations}</h2>
+          <div className="w-10 h-[3px] bg-gold rounded-full mx-auto mt-2.5" />
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
           {ACTIVE_CITIES.map((c, i) => (
@@ -293,11 +295,10 @@ export default function HomePage({ params }: { params: { locale: string } }) {
         </div>
       </section>
 
-      <section className="max-w-container mx-auto px-5 mt-8 mb-14 w-full">
-        <div className="text-center mb-5">
-          <span className="inline-block bg-gold-tint border border-gold/60 rounded-full px-4 py-1.5">
-            <h2 className="font-display text-base sm:text-lg font-bold text-gold-deep">{t.sections.howItWorks}</h2>
-          </span>
+      <section className="max-w-container mx-auto px-5 mt-10 mb-14 w-full">
+        <div className="text-center mb-6">
+          <h2 className="font-display text-xl sm:text-2xl font-semibold text-navy">{t.sections.howItWorks}</h2>
+          <div className="w-10 h-[3px] bg-gold rounded-full mx-auto mt-2.5" />
         </div>
         <div className="relative bg-navy rounded-2xl py-8 px-5 sm:px-8 overflow-hidden">
           {/* zarif arka plan dekoru */}
@@ -327,10 +328,9 @@ export default function HomePage({ params }: { params: { locale: string } }) {
       </section>
 
       <section className="max-w-container mx-auto px-5 mt-8 mb-14 w-full">
-        <div className="text-center mb-4">
-          <span className="inline-block bg-gold-tint border border-gold/60 rounded-full px-4 py-1.5">
-            <h2 className="font-display text-base sm:text-lg font-bold text-gold-deep">Common questions</h2>
-          </span>
+        <div className="text-center mb-5">
+          <h2 className="font-display text-xl sm:text-2xl font-semibold text-navy">Common questions</h2>
+          <div className="w-10 h-[3px] bg-gold rounded-full mx-auto mt-2.5" />
         </div>
         <div className="space-y-2.5 max-w-2xl mx-auto">
           {HOME_FAQS.map((f, i) => (
