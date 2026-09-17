@@ -4,7 +4,7 @@ import { BackButton } from "@/components/BackButton";
 // Liste ve profil sayfalarında kullanılan sade üst bar.
 export function TopBar({ locale }: { locale: string }) {
   return (
-    <header className="bg-navy">
+    <header className="bg-navy sticky top-0 z-50 shadow-sm">
       <div className="max-w-container mx-auto px-5 py-3.5 flex items-center justify-between gap-2">
         <div className="flex items-center gap-2.5 min-w-0">
           <BackButton />
