@@ -56,6 +56,90 @@ export const AI_DETAIL_STEPS: Record<string, AiStep[]> = {
       ],
     },
   ],
+  "eye-surgery": [
+    {
+      key: "procedure_type",
+      question: "Which eye procedure are you interested in?",
+      options: [
+        { value: "lasik", label: "LASIK" },
+        { value: "cataract", label: "Cataract surgery" },
+        { value: "lens-replacement", label: "Lens replacement" },
+        { value: "unsure", label: "Not sure" },
+      ],
+    },
+  ],
+  bariatric: [
+    {
+      key: "procedure_type",
+      question: "Which procedure are you considering?",
+      options: [
+        { value: "gastric-sleeve", label: "Gastric sleeve" },
+        { value: "gastric-bypass", label: "Gastric bypass" },
+        { value: "gastric-balloon", label: "Gastric balloon" },
+        { value: "unsure", label: "Not sure" },
+      ],
+    },
+  ],
+  ivf: [
+    {
+      key: "treatment_type",
+      question: "Which treatment are you interested in?",
+      options: [
+        { value: "ivf", label: "IVF" },
+        { value: "egg-donation", label: "Egg donation" },
+        { value: "egg-freezing", label: "Egg freezing" },
+        { value: "unsure", label: "Not sure" },
+      ],
+    },
+  ],
+  orthopedics: [
+    {
+      key: "procedure_type",
+      question: "Which procedure are you interested in?",
+      options: [
+        { value: "knee-replacement", label: "Knee replacement" },
+        { value: "hip-replacement", label: "Hip replacement" },
+        { value: "spine-surgery", label: "Spine surgery" },
+        { value: "unsure", label: "Not sure" },
+      ],
+    },
+  ],
+  cardiology: [
+    {
+      key: "procedure_type",
+      question: "Which procedure are you interested in?",
+      options: [
+        { value: "bypass", label: "Bypass surgery" },
+        { value: "valve", label: "Valve surgery" },
+        { value: "angioplasty", label: "Angioplasty / Stent" },
+        { value: "unsure", label: "Not sure" },
+      ],
+    },
+  ],
+  checkup: [
+    {
+      key: "package_type",
+      question: "Which check-up package are you interested in?",
+      options: [
+        { value: "basic", label: "Basic" },
+        { value: "comprehensive", label: "Comprehensive" },
+        { value: "executive", label: "Executive" },
+        { value: "unsure", label: "Not sure" },
+      ],
+    },
+  ],
+  oncology: [
+    {
+      key: "treatment_type",
+      question: "Which treatment are you interested in?",
+      options: [
+        { value: "chemotherapy", label: "Chemotherapy" },
+        { value: "radiotherapy", label: "Radiotherapy" },
+        { value: "surgical-oncology", label: "Surgical oncology" },
+        { value: "unsure", label: "Not sure" },
+      ],
+    },
+  ],
 };
 // Tüm tedaviler için ortak son soru: zamanlama
 export const AI_TIMING_STEP: AiStep = {
