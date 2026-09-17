@@ -14,10 +14,10 @@ export function TopBar({ locale }: { locale: string }) {
             </span>
           </Link>
         </div>
-        <div className="flex items-center gap-2 sm:gap-3">
+        <div className="flex items-center gap-1.5 sm:gap-3">
           <Link
             href={`/${locale}/blog`}
-            className="text-xs sm:text-sm text-sky hover:text-white transition"
+            className="hidden sm:inline text-xs sm:text-sm text-sky hover:text-white transition"
           >
             Blog
           </Link>
@@ -29,9 +29,10 @@ export function TopBar({ locale }: { locale: string }) {
           </Link>
           <Link
             href={`/${locale}/list-your-business`}
-            className="text-xs sm:text-sm text-navy bg-gold px-3 sm:px-3.5 py-2 rounded-md font-semibold hover:brightness-105 transition whitespace-nowrap"
+            className="text-xs sm:text-sm text-navy bg-gold px-2.5 sm:px-3.5 py-2 rounded-md font-semibold hover:brightness-105 transition whitespace-nowrap"
           >
-            List your business
+            <span className="sm:hidden">List Business</span>
+            <span className="hidden sm:inline">List your business</span>
           </Link>
         </div>
       </div>
