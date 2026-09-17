@@ -1,12 +1,12 @@
 import type { Metadata, Viewport } from "next";
-import { Manrope, Inter } from "next/font/google";
+import { Playfair_Display, Inter } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import { VisitTracker } from "@/components/VisitTracker";
 
-const manrope = Manrope({
+const playfairDisplay = Playfair_Display({
   subsets: ["latin"],
-  variable: "--font-manrope",
+  variable: "--font-display",
   display: "swap",
 });
 const inter = Inter({
@@ -74,7 +74,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${manrope.variable} ${inter.variable}`}>
+    <html lang="en" className={`${playfairDisplay.variable} ${inter.variable}`}>
       <body>
         {children}
         <VisitTracker />
