@@ -9,54 +9,53 @@ interface Props {
   treatmentName: string;
   subtitle: string;
   icon: ReactNode;
+  tag?: string;
 }
 
-// Tedaviye özel zarif gradyan — fotoğraf riski yok, her zaman doğru ve tutarlı görünür
-const TREATMENT_GRADIENTS: Record<string, string> = {
-  "hair-transplant": "linear-gradient(150deg, #0a2540 0%, #1c3a55 100%)",
-  dental: "linear-gradient(150deg, #143a5e 0%, #21405e 100%)",
-  aesthetics: "linear-gradient(150deg, #0c2d4d 0%, #26485f 100%)",
-};
-
-// Tedavi kartı: tıklanınca ŞEHİR seçenekleri açılır (varsaymadan sorar).
+// Tedavi kartı — kompakt, tek satır. Tıklanınca ŞEHİR seçenekleri altında açılır.
 export function TreatmentCard({
   locale,
   treatmentSlug,
   treatmentName,
   subtitle,
   icon,
+  tag,
 }: Props) {
   const router = useRouter();
   const [open, setOpen] = useState(false);
-  const gradient = TREATMENT_GRADIENTS[treatmentSlug] || TREATMENT_GRADIENTS["hair-transplant"];
 
   return (
-    <div className="bg-white border-[1.5px] border-navy rounded-xl overflow-hidden">
+    <div
+      className={`bg-white rounded-2xl overflow-hidden border transition-shadow ${
+        open ? "border-gold shadow-md" : "border-gray-100 shadow-sm hover:shadow-md"
+      }`}
+    >
       <button
         onClick={() => setOpen((v) => !v)}
-        className="w-full text-center hover:opacity-95 transition"
+        className="w-full flex items-center gap-3 px-3.5 py-3 text-left active:scale-[0.98] transition-transform"
       >
-        <div
-          className="relative w-full h-24 flex items-center justify-center overflow-hidden"
-          style={{ background: gradient }}
+        <div className="relative flex-shrink-0 w-11 h-11 rounded-full bg-gold-tint flex items-center justify-center">
+          {icon}
+        </div>
+        <div className="min-w-0 flex-1">
+          <div className="text-[13.5px] font-semibold text-navy leading-tight truncate">{treatmentName}</div>
+          <div className="text-[11px] text-slate-soft mt-0.5 truncate">{subtitle}</div>
+        </div>
+        {tag && (
+          <span className="flex-shrink-0 text-[9.5px] font-semibold text-gold-deep bg-gold-tint px-2 py-1 rounded-full">
+            {tag}
+          </span>
+        )}
+        <svg
+          width="14" height="14" viewBox="0 0 24 24" fill="none"
+          className={`flex-shrink-0 text-slate-soft transition-transform ${open ? "rotate-90" : ""}`}
         >
-          {/* zarif dekoratif desen */}
-          <div
-            className="absolute -top-6 -right-6 w-24 h-24 rounded-full opacity-[0.12]"
-            style={{ background: "radial-gradient(circle, #fbbf24 0%, transparent 70%)" }}
-          />
-          <div className="relative bg-white/95 rounded-full w-12 h-12 flex items-center justify-center shadow-sm">
-            {icon}
-          </div>
-        </div>
-        <div className="p-4">
-          <div className="text-sm font-semibold text-navy">{treatmentName}</div>
-          <div className="text-[11px] text-gray-400 mt-0.5">{subtitle}</div>
-        </div>
+          <path d="M9 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
       </button>
       {open && (
         <div className="border-t border-gray-100 p-3 bg-cream">
-          <div className="text-[11px] uppercase tracking-wide text-gray-500 font-semibold mb-2 text-center">
+          <div className="text-[10.5px] uppercase tracking-wide text-slate-soft font-semibold mb-2 text-center">
             Choose a city
           </div>
           <div className="flex flex-wrap justify-center gap-1.5">
@@ -64,7 +63,7 @@ export function TreatmentCard({
               <button
                 key={c.slug}
                 onClick={() => router.push(`/${locale}/${treatmentSlug}/${c.slug}`)}
-                className="text-xs bg-white border border-gray-200 text-navy px-3 py-1.5 rounded-lg hover:border-gold hover:bg-gold-tint transition"
+                className="text-xs bg-white border border-gray-200 text-navy px-3 py-1.5 rounded-lg hover:border-gold hover:bg-gold-tint active:scale-95 transition"
               >
                 {c.name}
               </button>
