@@ -192,6 +192,11 @@ export default function HomePage({ params }: { params: { locale: string } }) {
             </span>
           </Link>
           <div className="flex items-center gap-1 sm:gap-4 min-w-0">
+            <Link href={`/${locale}/list-your-business`}
+              className="text-[11px] sm:text-sm text-navy bg-gold px-2 sm:px-3.5 py-1.5 sm:py-2 rounded-md font-semibold hover:brightness-105 transition whitespace-nowrap flex-shrink-0">
+              <span className="sm:hidden">List Business</span>
+              <span className="hidden sm:inline">{t.nav.listBusiness}</span>
+            </Link>
             <span className="border border-gold/50 rounded-full px-1.5 sm:px-2.5 py-1 flex-shrink-0">
               <LanguagePicker locale={locale} />
             </span>
@@ -200,13 +205,8 @@ export default function HomePage({ params }: { params: { locale: string } }) {
               {t.nav.blog}
             </Link>
             <Link href={`/${locale}/login`}
-              className="text-[11px] sm:text-sm text-sky hover:text-white transition whitespace-nowrap border border-gold/50 rounded-full px-2 sm:px-3 py-1 flex-shrink-0">
+              className="hidden sm:inline text-sm text-sky hover:text-white transition whitespace-nowrap border border-gold/50 rounded-full px-3 py-1 flex-shrink-0">
               Sign in
-            </Link>
-            <Link href={`/${locale}/list-your-business`}
-              className="text-[11px] sm:text-sm text-navy bg-gold px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-md font-semibold hover:brightness-105 transition whitespace-nowrap flex-shrink-0">
-              <span className="sm:hidden">List</span>
-              <span className="hidden sm:inline">{t.nav.listBusiness}</span>
             </Link>
           </div>
         </div>
