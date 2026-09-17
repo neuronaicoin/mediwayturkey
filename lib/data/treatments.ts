@@ -155,6 +155,165 @@ export const TREATMENTS: Treatment[] = [
       },
     ],
   },
+
+  // ─── GÖZ ───
+  {
+    slug: "eye-surgery",
+    name: "Eye Surgery",
+    shortName: "Eye",
+    icon: "eye",
+    active: true,
+    fields: [
+      {
+        key: "procedure",
+        label: "Procedures",
+        type: "multi",
+        options: [
+          { slug: "lasik", name: "LASIK" },
+          { slug: "prk", name: "PRK" },
+          { slug: "cataract", name: "Cataract surgery" },
+          { slug: "lens-replacement", name: "Lens replacement" },
+          { slug: "smile", name: "SMILE" },
+        ],
+      },
+    ],
+  },
+
+  // ─── OBEZİTE ───
+  {
+    slug: "bariatric",
+    name: "Bariatric Surgery",
+    shortName: "Bariatric",
+    icon: "bariatric",
+    active: true,
+    fields: [
+      {
+        key: "procedure",
+        label: "Procedures",
+        type: "multi",
+        options: [
+          { slug: "gastric-sleeve", name: "Gastric sleeve" },
+          { slug: "gastric-bypass", name: "Gastric bypass" },
+          { slug: "mini-bypass", name: "Mini gastric bypass" },
+          { slug: "gastric-balloon", name: "Gastric balloon" },
+        ],
+      },
+    ],
+  },
+
+  // ─── TÜP BEBEK ───
+  {
+    slug: "ivf",
+    name: "IVF / Fertility",
+    shortName: "IVF",
+    icon: "ivf",
+    active: true,
+    fields: [
+      {
+        key: "procedure",
+        label: "Treatments",
+        type: "multi",
+        options: [
+          { slug: "ivf", name: "IVF" },
+          { slug: "icsi", name: "ICSI" },
+          { slug: "egg-donation", name: "Egg donation" },
+          { slug: "egg-freezing", name: "Egg freezing" },
+          { slug: "sperm-donation", name: "Sperm donation" },
+          { slug: "pgt", name: "Genetic testing (PGT)" },
+        ],
+      },
+    ],
+  },
+
+  // ─── ORTOPEDİ ───
+  {
+    slug: "orthopedics",
+    name: "Orthopedics",
+    shortName: "Ortho",
+    icon: "orthopedics",
+    active: true,
+    fields: [
+      {
+        key: "procedure",
+        label: "Procedures",
+        type: "multi",
+        options: [
+          { slug: "knee-replacement", name: "Knee replacement" },
+          { slug: "hip-replacement", name: "Hip replacement" },
+          { slug: "shoulder-surgery", name: "Shoulder surgery" },
+          { slug: "spine-surgery", name: "Spine surgery" },
+          { slug: "sports-injury", name: "Sports injury surgery" },
+        ],
+      },
+    ],
+  },
+
+  // ─── KARDİYOLOJİ ───
+  {
+    slug: "cardiology",
+    name: "Cardiology",
+    shortName: "Cardiology",
+    icon: "cardiology",
+    active: true,
+    fields: [
+      {
+        key: "procedure",
+        label: "Procedures",
+        type: "multi",
+        options: [
+          { slug: "bypass", name: "Bypass surgery" },
+          { slug: "valve", name: "Valve replacement / repair" },
+          { slug: "angioplasty", name: "Angioplasty / Stent" },
+          { slug: "pacemaker", name: "Pacemaker" },
+        ],
+      },
+    ],
+  },
+
+  // ─── CHECK-UP ───
+  {
+    slug: "checkup",
+    name: "Check-up Packages",
+    shortName: "Check-up",
+    icon: "checkup",
+    active: true,
+    fields: [
+      {
+        key: "package",
+        label: "Package type",
+        type: "single",
+        options: [
+          { slug: "basic", name: "Basic health check" },
+          { slug: "comprehensive", name: "Comprehensive check-up" },
+          { slug: "executive", name: "Executive check-up" },
+          { slug: "cancer-screening", name: "Cancer screening panel" },
+        ],
+      },
+    ],
+  },
+
+  // ─── ONKOLOJİ ───
+  {
+    slug: "oncology",
+    name: "Oncology",
+    shortName: "Oncology",
+    icon: "oncology",
+    active: true,
+    fields: [
+      {
+        key: "treatment",
+        label: "Treatment type",
+        type: "multi",
+        options: [
+          { slug: "chemotherapy", name: "Chemotherapy" },
+          { slug: "radiotherapy", name: "Radiotherapy" },
+          { slug: "surgical-oncology", name: "Surgical oncology" },
+          { slug: "immunotherapy", name: "Immunotherapy" },
+          { slug: "bone-marrow", name: "Bone marrow transplant" },
+        ],
+      },
+    ],
+  },
 ];
 
 // ─── Paket tipleri (tüm tedaviler için ortak) ───
