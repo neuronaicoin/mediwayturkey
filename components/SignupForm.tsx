@@ -64,7 +64,7 @@ export function SignupForm({ locale }: { locale: string }) {
         List your business
       </h1>
       <p className="text-sm text-slate-body mb-5">
-        Create your account. First month free, no card required.
+        Create your account. Free during our launch — no card, no hidden fees.
       </p>
 
       <label className="block text-xs font-medium text-navy mb-1">Business name</label>
