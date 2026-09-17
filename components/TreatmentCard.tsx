@@ -26,32 +26,26 @@ export function TreatmentCard({
 
   return (
     <div
-      className={`bg-white rounded-2xl overflow-hidden border transition-shadow ${
+      className={`relative bg-white rounded-2xl overflow-hidden border transition-shadow ${
         open ? "border-gold shadow-md" : "border-gray-100 shadow-sm hover:shadow-md"
       }`}
     >
+      {tag && (
+        <span className="absolute top-1.5 right-1.5 z-10 text-[8.5px] font-semibold text-gold-deep bg-gold-tint px-1.5 py-0.5 rounded-full leading-none">
+          {tag}
+        </span>
+      )}
       <button
         onClick={() => setOpen((v) => !v)}
-        className="w-full flex items-center gap-3 px-3.5 py-3 text-left active:scale-[0.98] transition-transform"
+        className="w-full flex items-center gap-2.5 px-3 py-2.5 text-left active:scale-[0.98] transition-transform"
       >
-        <div className="relative flex-shrink-0 w-11 h-11 rounded-full bg-gold-tint flex items-center justify-center">
+        <div className="relative flex-shrink-0 w-10 h-10 rounded-full bg-gold-tint flex items-center justify-center">
           {icon}
         </div>
-        <div className="min-w-0 flex-1">
-          <div className="text-[13.5px] font-semibold text-navy leading-tight truncate">{treatmentName}</div>
-          <div className="text-[11px] text-slate-soft mt-0.5 truncate">{subtitle}</div>
+        <div className="min-w-0 flex-1 overflow-hidden">
+          <div className="text-[12.5px] font-semibold text-navy leading-tight truncate">{treatmentName}</div>
+          <div className="text-[10.5px] text-slate-soft mt-0.5 truncate">{subtitle}</div>
         </div>
-        {tag && (
-          <span className="flex-shrink-0 text-[9.5px] font-semibold text-gold-deep bg-gold-tint px-2 py-1 rounded-full">
-            {tag}
-          </span>
-        )}
-        <svg
-          width="14" height="14" viewBox="0 0 24 24" fill="none"
-          className={`flex-shrink-0 text-slate-soft transition-transform ${open ? "rotate-90" : ""}`}
-        >
-          <path d="M9 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
       </button>
       {open && (
         <div className="border-t border-gray-100 p-3 bg-cream">
