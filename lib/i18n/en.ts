@@ -45,7 +45,7 @@ export const en = {
   hero: {
     headline: "Search, find & compare top health providers in Turkey",
     trustLine: "Free for patients · No commission · Verified providers",
-    treatmentLabel: "Treatment",
+    treatmentLabel: "Search Treatment",
     cityLabel: "City",
     searchButton: "Search",
   },
