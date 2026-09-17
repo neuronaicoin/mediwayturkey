@@ -43,10 +43,85 @@ function IconAesthetics() {
     </svg>
   );
 }
+function IconEye() {
+  return (
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M2 12c2.5-4.5 6-7 10-7s7.5 2.5 10 7c-2.5 4.5-6 7-10 7s-7.5-2.5-10-7Z"
+        stroke="#0a2540" strokeWidth="1.5" strokeLinejoin="round" />
+      <circle cx="12" cy="12" r="3" fill="#fbbf24" />
+    </svg>
+  );
+}
+function IconBariatric() {
+  return (
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M8 3c0 2.5-2 3.5-2 7 0 4 2.5 7 6 7s6-3 6-7c0-2-.7-3-1.5-4"
+        stroke="#0a2540" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M14 3c.8.8 1.2 1.6 1.2 2.5" stroke="#fbbf24" strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M9 12c1 1.2 2 1.2 3 0" stroke="#fbbf24" strokeWidth="1.3" strokeLinecap="round" />
+    </svg>
+  );
+}
+function IconIvf() {
+  return (
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <circle cx="12" cy="10" r="5.5" stroke="#0a2540" strokeWidth="1.5" />
+      <path d="M12 15.5V21M9 18.5h6" stroke="#0a2540" strokeWidth="1.5" strokeLinecap="round" />
+      <circle cx="12" cy="10" r="1.6" fill="#fbbf24" />
+    </svg>
+  );
+}
+function IconOrthopedics() {
+  return (
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M5.5 5.5a2.2 2.2 0 1 1 3 3L9 8l7 7 .5-.5a2.2 2.2 0 1 1 3 3 2.2 2.2 0 0 1-3-3L16 14 9 7l-.5.5a2.2 2.2 0 0 1-3-3Z"
+        stroke="#0a2540" strokeWidth="1.4" strokeLinejoin="round" fill="none" />
+      <circle cx="6.3" cy="6.3" r="1" fill="#fbbf24" />
+      <circle cx="17.7" cy="17.7" r="1" fill="#fbbf24" />
+    </svg>
+  );
+}
+function IconCardiology() {
+  return (
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M12 20.5c-5-3.2-9-6.7-9-11A5 5 0 0 1 12 6a5 5 0 0 1 9 3.5c0 4.3-4 7.8-9 11Z"
+        stroke="#0a2540" strokeWidth="1.5" strokeLinejoin="round" />
+      <path d="M4.5 12h3l1.5-3 2 5 1.5-2.5h7" stroke="#fbbf24" strokeWidth="1.4"
+        strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+function IconCheckup() {
+  return (
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <rect x="5" y="3.5" width="14" height="17" rx="2" stroke="#0a2540" strokeWidth="1.5" />
+      <path d="M9 3.5h6v2H9z" fill="#0a2540" />
+      <path d="M8 13l2.5 2.5L16 10" stroke="#fbbf24" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+function IconOncology() {
+  return (
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M9 3c0 3 1.5 4.5 3 6 1.5-1.5 3-3 3-6" stroke="#0a2540" strokeWidth="1.5"
+        strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M12 9c-3 2-5 5-4.5 8.5C8 20 10 21 12 21s4-1 4.5-3.5C17 14 15 11 12 9Z"
+        stroke="#0a2540" strokeWidth="1.5" strokeLinejoin="round" fill="none" />
+      <circle cx="12" cy="15" r="1.4" fill="#fbbf24" />
+    </svg>
+  );
+}
 const TREATMENT_ICONS: Record<string, () => JSX.Element> = {
   hair: IconHair,
   dental: IconDental,
   aesthetics: IconAesthetics,
+  eye: IconEye,
+  bariatric: IconBariatric,
+  ivf: IconIvf,
+  orthopedics: IconOrthopedics,
+  cardiology: IconCardiology,
+  checkup: IconCheckup,
+  oncology: IconOncology,
 };
 
 function treatmentSubtitle(slug: string): string {
@@ -54,6 +129,13 @@ function treatmentSubtitle(slug: string): string {
     "hair-transplant": "FUE \u00b7 DHI \u00b7 Sapphire",
     dental: "Implants \u00b7 Veneers \u00b7 Smile",
     aesthetics: "Face \u00b7 Body \u00b7 Skin",
+    "eye-surgery": "LASIK \u00b7 Cataract \u00b7 PRK",
+    bariatric: "Sleeve \u00b7 Bypass \u00b7 Balloon",
+    ivf: "IVF \u00b7 ICSI \u00b7 Egg donation",
+    orthopedics: "Knee \u00b7 Hip \u00b7 Spine",
+    cardiology: "Bypass \u00b7 Valve \u00b7 Stent",
+    checkup: "Basic \u00b7 Comprehensive \u00b7 Executive",
+    oncology: "Chemo \u00b7 Radio \u00b7 Surgery",
   };
   return map[slug] ?? "";
 }
@@ -175,7 +257,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
             <h2 className="font-display text-base sm:text-lg font-bold text-gold-deep">{t.sections.searchTreatment}</h2>
           </span>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
           {ACTIVE_TREATMENTS.map((tr) => {
             const Icon = TREATMENT_ICONS[tr.icon] ?? IconHair;
             return (
