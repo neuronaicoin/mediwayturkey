@@ -243,13 +243,14 @@ export default function HomePage({ params }: { params: { locale: string } }) {
         </div>
       </section>
 
-      {/* Arama karti - hero'nun disinda, negatif ust bosluk ile hero uzerine tasiyor.
-          Boylece hero'nun overflow-hidden'i karti KIRPMAZ (ayri bir eleman, sadece gorsel olarak binisir). */}
-      <div className="relative z-10 max-w-container mx-auto px-5 -mt-9 w-full">
+      {/* Arama karti - hero'nun disinda. Mobilde form dikey (uzun) oldugu icin
+          bindirme yapmiyoruz (normal akista, kucuk bosluk); sadece masaustunde
+          (form tek satir, kisa) hero uzerine hafifce biniyor. */}
+      <div className="relative z-10 max-w-container mx-auto px-5 mt-4 sm:-mt-9 w-full">
         <SearchBar locale={locale} labels={{ treatment: t.hero.treatmentLabel, city: t.hero.cityLabel, search: t.hero.searchButton }} />
       </div>
 
-      <div className="max-w-container mx-auto px-5 pt-5 w-full">
+      <div className="max-w-container mx-auto px-5 mt-4 w-full">
         <AiEntry locale={locale} label={t.ai.entry} />
       </div>
 
