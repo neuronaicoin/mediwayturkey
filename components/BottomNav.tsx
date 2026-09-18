@@ -17,8 +17,8 @@ import { SavedSheet } from "@/components/SavedSheet";
 // - Admin sayfasında gizli
 // ─────────────────────────────────────────────────────────────
 
-const GOLD = "#f0ad2f";
-const GOLD_TEXT = "#ba7517";
+const GOLD = "#c9a84c";
+const GOLD_TEXT = "#ad8a34";
 const GRAY = "#8a8a82";
 
 export function BottomNav({ locale }: { locale: string }) {
@@ -54,7 +54,7 @@ export function BottomNav({ locale }: { locale: string }) {
     return on ? GOLD_TEXT : GRAY;
   }
 
-  const divider = "border-l-[1.5px] border-[#f0ad2f]/40";
+  const divider = "border-l-[1.5px] border-[#c9a84c]/35";
 
   return (
     <>
@@ -80,7 +80,7 @@ export function BottomNav({ locale }: { locale: string }) {
         <Link
           href={base}
           onClick={() => setActive(null)}
-          className="flex-1 flex flex-col items-center justify-center gap-0.5"
+          className={`flex-1 flex flex-col items-center justify-center gap-0.5 active:scale-90 transition-transform ${isHome ? "bg-gold-tint" : ""}`}
         >
           <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke={color(isHome)} strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
             <path d="M3 11.5 12 4l9 7.5M5 10v9a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1v-9" />
@@ -91,7 +91,7 @@ export function BottomNav({ locale }: { locale: string }) {
         {/* Search */}
         <button
           onClick={() => setActive(active === "search" ? null : "search")}
-          className={`flex-1 flex flex-col items-center justify-center gap-0.5 ${divider}`}
+          className={`flex-1 flex flex-col items-center justify-center gap-0.5 active:scale-90 transition-transform ${divider} ${active === "search" ? "bg-gold-tint" : ""}`}
         >
           <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke={color(active === "search")} strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
             <circle cx="11" cy="11" r="7" />
@@ -103,7 +103,7 @@ export function BottomNav({ locale }: { locale: string }) {
         {/* Ask AI */}
         <button
           onClick={() => setActive(active === "ai" ? null : "ai")}
-          className={`flex-1 flex flex-col items-center justify-center gap-0.5 ${divider}`}
+          className={`flex-1 flex flex-col items-center justify-center gap-0.5 active:scale-90 transition-transform ${divider} ${active === "ai" ? "bg-gold-tint" : ""}`}
         >
           <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke={color(active === "ai")} strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
             <path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3z" />
@@ -114,7 +114,7 @@ export function BottomNav({ locale }: { locale: string }) {
         {/* Saved */}
         <button
           onClick={() => setActive(active === "saved" ? null : "saved")}
-          className={`flex-1 flex flex-col items-center justify-center gap-0.5 ${divider}`}
+          className={`flex-1 flex flex-col items-center justify-center gap-0.5 active:scale-90 transition-transform ${divider} ${active === "saved" ? "bg-gold-tint" : ""}`}
         >
           <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke={color(active === "saved")} strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
             <path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5.5 6 5.5c2 0 3.2 1.2 4 2.3.8-1.1 2-2.3 4-2.3 3.5 0 5 3.5 3.5 6.5C19 16.5 12 21 12 21z" />
@@ -125,7 +125,7 @@ export function BottomNav({ locale }: { locale: string }) {
         {/* Menu */}
         <button
           onClick={() => setActive(active === "menu" ? null : "menu")}
-          className={`flex-1 flex flex-col items-center justify-center gap-0.5 ${divider}`}
+          className={`flex-1 flex flex-col items-center justify-center gap-0.5 active:scale-90 transition-transform ${divider} ${active === "menu" ? "bg-gold-tint" : ""}`}
         >
           <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke={color(active === "menu")} strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
             <path d="M4 6h16M4 12h16M4 18h16" />
