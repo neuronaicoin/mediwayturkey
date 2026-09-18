@@ -3,6 +3,7 @@ import { SearchBar } from "@/components/SearchBar";
 import { TreatmentCard } from "@/components/TreatmentCard";
 import { CityCard } from "@/components/CityCard";
 import { AiEntry } from "@/components/AiEntry";
+import { LiveInfoTicker } from "@/components/LiveInfoTicker";
 import { HomeSchema } from "@/components/SchemaOrg";
 import { ContactForm } from "@/components/ContactForm";
 import { LanguagePicker } from "@/components/LanguagePicker";
@@ -253,6 +254,8 @@ export default function HomePage({ params }: { params: { locale: string } }) {
       <div className="max-w-container mx-auto px-5 mt-4 w-full">
         <AiEntry locale={locale} label={t.ai.entry} />
       </div>
+
+      <LiveInfoTicker />
 
       <section className="max-w-container mx-auto px-5 mt-10 w-full">
         <div className="text-center mb-5">
