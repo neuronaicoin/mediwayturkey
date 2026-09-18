@@ -47,10 +47,10 @@ export function TreatmentCityTabs({
       </div>
 
       {/* Sekme geçişi */}
-      <div className="flex bg-white border border-gray-100 rounded-full p-1 max-w-xs mx-auto mb-5 shadow-sm">
+      <div className="flex bg-white border border-gray-100 rounded-full p-1 max-w-sm mx-auto mb-5 shadow-sm">
         <button
           onClick={() => setTab("treatment")}
-          className={`flex-1 text-[13px] font-semibold py-2 rounded-full transition-all active:scale-95 ${
+          className={`flex-1 text-[11.5px] sm:text-[13px] font-semibold py-2 px-1 rounded-full transition-all active:scale-95 whitespace-nowrap ${
             tab === "treatment" ? "bg-navy text-white shadow" : "text-slate-soft"
           }`}
         >
@@ -58,7 +58,7 @@ export function TreatmentCityTabs({
         </button>
         <button
           onClick={() => setTab("city")}
-          className={`flex-1 text-[13px] font-semibold py-2 rounded-full transition-all active:scale-95 ${
+          className={`flex-1 text-[11.5px] sm:text-[13px] font-semibold py-2 px-1 rounded-full transition-all active:scale-95 whitespace-nowrap ${
             tab === "city" ? "bg-navy text-white shadow" : "text-slate-soft"
           }`}
         >
