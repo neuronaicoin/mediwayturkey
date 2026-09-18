@@ -215,41 +215,8 @@ export default function HomePage({ params }: { params: { locale: string } }) {
         </div>
       </header>
 
-      <section className="relative bg-navy pb-4 sm:pb-6 overflow-hidden">
-        {/* Zarif arka plan deseni — dış görsele bağımlı değil, her zaman yüklenir */}
-        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-          <div
-            className="absolute -top-24 -right-24 w-[420px] h-[420px] rounded-full opacity-[0.14]"
-            style={{ background: "radial-gradient(circle, #fbbf24 0%, transparent 68%)" }}
-          />
-          <div
-            className="absolute -bottom-32 -left-20 w-[380px] h-[380px] rounded-full opacity-[0.10]"
-            style={{ background: "radial-gradient(circle, #3b82f6 0%, transparent 68%)" }}
-          />
-          <svg className="absolute inset-0 w-full h-full opacity-[0.06]" preserveAspectRatio="none">
-            <defs>
-              <pattern id="grid" width="42" height="42" patternUnits="userSpaceOnUse">
-                <path d="M 42 0 L 0 0 0 42" fill="none" stroke="#fbbf24" strokeWidth="1" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#grid)" />
-          </svg>
-        </div>
-
-        <div className="relative max-w-container mx-auto px-5 pt-5 sm:pt-7 text-center">
-          <div className="inline-flex items-center gap-1.5 bg-white/[0.07] border border-gold/30 rounded-full px-3 py-[5px] mb-2.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-gold" />
-            <span className="text-[9.5px] sm:text-xs font-semibold text-gold tracking-wide uppercase">Verified Health Providers in Turkey</span>
-          </div>
-          <HeroRotator />
-          <div className="w-14 h-[3px] bg-gold rounded-full mx-auto mt-2.5" />
-        </div>
-      </section>
-
-      {/* Arama karti - hero'nun disinda. Mobilde form dikey (uzun) oldugu icin
-          bindirme yapmiyoruz (normal akista, kucuk bosluk); sadece masaustunde
-          (form tek satir, kisa) hero uzerine hafifce biniyor. */}
-      <div className="relative z-10 max-w-container mx-auto px-5 mt-4 sm:-mt-9 w-full">
+      {/* Buyuk lacivert hero blogu kaldirildi - dogrudan sade arama alanina geciliyor */}
+      <div className="relative max-w-container mx-auto px-5 pt-6 w-full">
         <SearchBar locale={locale} labels={{ treatment: t.hero.treatmentLabel, city: t.hero.cityLabel, search: t.hero.searchButton }} />
       </div>
 
@@ -258,6 +225,11 @@ export default function HomePage({ params }: { params: { locale: string } }) {
       </div>
 
       <LiveInfoTicker />
+
+      {/* Donen basliklar artik burada, "Find the right care" baslığının hemen ustunde */}
+      <div className="max-w-container mx-auto px-5 mt-10 w-full">
+        <HeroRotator />
+      </div>
 
       <TreatmentCityTabs
         locale={locale}
