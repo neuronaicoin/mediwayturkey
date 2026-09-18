@@ -144,3 +144,57 @@ export async function getAllPublishedProviderIds(): Promise<{ id: string }[]> {
   if (error || !data) return [];
   return data as { id: string }[];
 }
+
+// Ana sayfa "yeni katılanlar" şeridi için: en son yayınlanmış provider'lar.
+// En yeni önce (created_at DESC). Veritabanı boşsa/hata olursa boş dizi
+// döner — çağıran taraf bunu zaten güvenli şekilde ele alıyor.
+export async function getRecentPublishedProviders(
+  limit: number = 12
+): Promise<
+  {
+    id: string;
+    businessName: string;
+    cities: string[];
+    treatmentSlug: string | null;
+    coverPhoto: string | null;
+  }[]
+> {
+  const { data: providers, error } = await supabase
+    .from("providers")
+    .select("id, business_name, cities, created_at")
+    .eq("is_published", true)
+    .order("created_at", { ascending: false })
+    .limit(limit);
+  if (error || !providers || providers.length === 0) return [];
+
+  const ids = providers.map((p: any) => p.id);
+
+  const [{ data: treatments }, { data: photos }] = await Promise.all([
+    supabase
+      .from("provider_treatments")
+      .select("provider_id, treatment_slug")
+      .in("provider_id", ids),
+    supabase
+      .from("provider_photos")
+      .select("provider_id, url, sort_order")
+      .in("provider_id", ids)
+      .order("sort_order"),
+  ]);
+
+  const treatmentMap: Record<string, string> = {};
+  for (const t of (treatments as any[]) ?? []) {
+    if (!treatmentMap[t.provider_id]) treatmentMap[t.provider_id] = t.treatment_slug;
+  }
+  const photoMap: Record<string, string> = {};
+  for (const ph of (photos as any[]) ?? []) {
+    if (!photoMap[ph.provider_id]) photoMap[ph.provider_id] = ph.url;
+  }
+
+  return providers.map((p: any) => ({
+    id: p.id,
+    businessName: p.business_name,
+    cities: p.cities ?? [],
+    treatmentSlug: treatmentMap[p.id] ?? null,
+    coverPhoto: photoMap[p.id] ?? null,
+  }));
+}
