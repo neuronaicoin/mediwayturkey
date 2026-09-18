@@ -200,6 +200,15 @@ export default function HomePage({ params }: { params: { locale: string } }) {
               <span className="sm:hidden">List Business</span>
               <span className="hidden sm:inline">{t.nav.listBusiness}</span>
             </Link>
+            {/* Mobilde kompakt login ikonu - uye olmus provider dogrudan dashboardina girsin */}
+            <Link href={`/${locale}/login`}
+              className="sm:hidden flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full border border-gold/50"
+              aria-label="Login">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="8" r="3.5" stroke="#fbbf24" strokeWidth="1.6" />
+                <path d="M5 20c1.5-3.5 4.5-5 7-5s5.5 1.5 7 5" stroke="#fbbf24" strokeWidth="1.6" strokeLinecap="round" />
+              </svg>
+            </Link>
             <span className="border border-gold/50 rounded-full px-1.5 sm:px-2.5 py-1 flex-shrink-0">
               <LanguagePicker locale={locale} />
             </span>
