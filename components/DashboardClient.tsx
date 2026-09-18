@@ -6,6 +6,7 @@ import { supabase } from "@/lib/supabase";
 import { ProfileEditor } from "@/components/ProfileEditor";
 import { LeadsList } from "@/components/LeadsList";
 import { loadProfile, type ProfileData, type TreatmentSelection } from "@/lib/profile";
+import { NotificationBell } from "@/components/NotificationBell";
 
 interface ProviderInfo {
   business_name: string;
@@ -98,10 +99,13 @@ export function DashboardClient({ locale }: { locale: string }) {
           </h1>
           <p className="text-xs text-slate-body mt-1">{email}</p>
         </div>
-        <button onClick={handleLogout}
-          className="text-xs border border-gray-300 text-navy px-3 py-2 rounded-lg hover:bg-sky transition">
-          Log out
-        </button>
+        <div className="flex items-center gap-2">
+          <NotificationBell providerId={providerId} />
+          <button onClick={handleLogout}
+            className="text-xs border border-gray-300 text-navy px-3 py-2 rounded-lg hover:bg-sky transition">
+            Log out
+          </button>
+        </div>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6">
@@ -130,7 +134,7 @@ export function DashboardClient({ locale }: { locale: string }) {
       )}
 
       {/* GELEN LEAD'LER */}
-      <div className="mb-8">
+      <div className="mb-8" id="patient-leads-section">
         <h2 className="font-display text-lg font-semibold text-navy mb-3">Patient leads</h2>
         <LeadsList providerId={providerId} />
       </div>
