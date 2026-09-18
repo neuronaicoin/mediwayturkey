@@ -19,9 +19,13 @@ export async function RecentProvidersStrip({ locale }: Props) {
   // boş bir şerit göstermek "buraya gelen"e daha kötü görünür.
   if (providers.length === 0) return null;
 
-  function treatmentName(slug: string | null) {
-    if (!slug) return null;
-    return ACTIVE_TREATMENTS.find((t) => t.slug === slug)?.shortName ?? null;
+  function treatmentNames(slugs: string[]) {
+    if (!slugs || slugs.length === 0) return null;
+    const names = slugs
+      .map((s) => ACTIVE_TREATMENTS.find((t) => t.slug === s)?.shortName)
+      .filter(Boolean);
+    if (names.length === 0) return null;
+    return names.slice(0, 2).join(", ") + (names.length > 2 ? ` +${names.length - 2}` : "");
   }
   function cityNames(slugs: string[]) {
     if (!slugs || slugs.length === 0) return null;
@@ -33,7 +37,7 @@ export async function RecentProvidersStrip({ locale }: Props) {
   }
 
   const cards = providers.map((p) => {
-    const tName = treatmentName(p.treatmentSlug);
+    const tName = treatmentNames(p.treatmentSlugs);
     const cNames = cityNames(p.cities);
     return (
       <Link
