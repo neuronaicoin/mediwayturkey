@@ -283,7 +283,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
           <h2 className="font-display text-xl sm:text-2xl font-semibold text-navy">{t.sections.popularDestinations}</h2>
           <div className="w-10 h-[3px] bg-gold rounded-full mx-auto mt-2.5" />
         </div>
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+        <div className="grid grid-cols-3 gap-2.5">
           {ACTIVE_CITIES.map((c, i) => (
             <CityCard
               key={c.slug}
