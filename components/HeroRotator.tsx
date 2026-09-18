@@ -27,7 +27,7 @@ export function HeroRotator() {
 
   return (
     <h1
-      className={`font-display text-[28px] sm:text-4xl md:text-5xl font-bold text-white tracking-tight max-w-2xl mx-auto leading-[1.2] transition-opacity duration-300 min-h-[1.3em] flex items-center justify-center ${
+      className={`font-display text-[26px] sm:text-4xl md:text-5xl font-bold text-navy tracking-tight max-w-2xl mx-auto leading-[1.2] transition-opacity duration-300 min-h-[1.3em] flex items-center justify-center text-center ${
         visible ? "opacity-100" : "opacity-0"
       }`}
     >
