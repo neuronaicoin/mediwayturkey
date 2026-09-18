@@ -207,7 +207,7 @@ export function ProfileEditor({
       <section className="bg-white border border-gray-200 rounded-xl p-5">
         <h2 className="text-sm font-semibold text-navy mb-3">Basic profile</h2>
 
-        <label className="block text-xs font-medium text-navy mb-1">Business name</label>
+        <label className="block text-[12.5px] font-bold text-navy mb-1.5 uppercase tracking-wide">Business name</label>
         <input
           value={businessName}
           onChange={(e: ChangeEvent<HTMLInputElement>) => setBusinessName(e.target.value)}
@@ -215,13 +215,13 @@ export function ProfileEditor({
           className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm text-navy outline-none focus:border-gold mb-3"
         />
 
-        <label className="block text-xs font-medium text-navy mb-1">Business type</label>
+        <label className="block text-[12.5px] font-bold text-navy mb-1.5 uppercase tracking-wide">Business type</label>
         <select value={businessType} onChange={(e: ChangeEvent<HTMLSelectElement>) => setBusinessType(e.target.value)}
           className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm text-navy outline-none mb-3">
           {BUSINESS_TYPES.map((b) => <option key={b.value} value={b.value}>{b.label}</option>)}
         </select>
 
-        <label className="block text-xs font-medium text-navy mb-1">Cities you serve</label>
+        <label className="block text-[12.5px] font-bold text-navy mb-1.5 uppercase tracking-wide">Cities you serve</label>
         <div className="flex flex-wrap gap-1.5 mb-3">
           {ACTIVE_CITIES.map((c) => (
             <button key={c.slug} type="button" onClick={() => setCities((p) => toggleArr(p, c.slug))}
@@ -236,7 +236,7 @@ export function ProfileEditor({
         {/* İSTANBUL YAKA SEÇİMİ (tek seçim, sadece İstanbul seçiliyse) */}
         {cities.includes("istanbul") && (
           <div className="mb-3">
-            <label className="block text-xs font-medium text-navy mb-1">
+            <label className="block text-[12.5px] font-bold text-navy mb-1.5 uppercase tracking-wide">
               Which side of Istanbul are you on?
             </label>
             <div className="flex flex-wrap gap-1.5">
@@ -253,7 +253,7 @@ export function ProfileEditor({
           </div>
         )}
 
-        <label className="block text-xs font-medium text-navy mb-1">Languages spoken</label>
+        <label className="block text-[12.5px] font-bold text-navy mb-1.5 uppercase tracking-wide">Languages spoken</label>
         <div className="flex flex-wrap gap-1.5 mb-3">
           {LANGUAGES.map((l) => (
             <button key={l.code} type="button" onClick={() => setLangs((p) => toggleArr(p, l.code))}
@@ -265,7 +265,7 @@ export function ProfileEditor({
           ))}
         </div>
 
-        <label className="block text-xs font-medium text-navy mb-1">WhatsApp</label>
+        <label className="block text-[12.5px] font-bold text-navy mb-1.5 uppercase tracking-wide">WhatsApp</label>
         <div className="flex gap-1.5 mb-3">
           <select value={whatsappCC} onChange={(e: ChangeEvent<HTMLSelectElement>) => setWhatsappCC(e.target.value)}
             className="border border-gray-300 rounded-lg px-2 py-2 text-sm text-navy outline-none">
@@ -276,7 +276,7 @@ export function ProfileEditor({
             className="flex-1 border border-gray-300 rounded-lg px-3 py-2 text-sm text-navy outline-none" />
         </div>
 
-        <label className="block text-xs font-medium text-navy mb-1">Website (optional)</label>
+        <label className="block text-[12.5px] font-bold text-navy mb-1.5 uppercase tracking-wide">Website (optional)</label>
         <input value={website} onChange={(e: ChangeEvent<HTMLInputElement>) => setWebsite(e.target.value)}
           placeholder="https://..."
           className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm text-navy outline-none" />
@@ -289,7 +289,7 @@ export function ProfileEditor({
           {ACTIVE_TREATMENTS.map((tr) => {
             const selected = !!treatments[tr.slug];
             return (
-              <div key={tr.slug} className={`border rounded-lg p-3 ${selected ? "border-gold bg-gold-tint/30" : "border-gray-200"}`}>
+              <div key={tr.slug} className={`border-2 rounded-lg p-3 transition-colors ${selected ? "border-gold bg-gold-tint/30 shadow-sm" : "border-sky-200 hover:border-sky-300"}`}>
                 <label className="flex items-center gap-2 cursor-pointer">
                   <input type="checkbox" checked={selected} onChange={() => toggleTreatment(tr.slug)} className="accent-navy" />
                   <span className="text-sm font-semibold text-navy">{tr.name}</span>
