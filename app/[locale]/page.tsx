@@ -3,6 +3,7 @@ import { SearchBar } from "@/components/SearchBar";
 import { TreatmentCard } from "@/components/TreatmentCard";
 import { CityCard } from "@/components/CityCard";
 import { TreatmentCityTabs } from "@/components/TreatmentCityTabs";
+import { RecentProvidersStrip } from "@/components/RecentProvidersStrip";
 import { AiEntry } from "@/components/AiEntry";
 import { LiveInfoTicker } from "@/components/LiveInfoTicker";
 import { HomeSchema } from "@/components/SchemaOrg";
@@ -280,6 +281,8 @@ export default function HomePage({ params }: { params: { locale: string } }) {
           gradientTo: ["#21405e", "#2a5168", "#26485f", "#1c3a55", "#234862", "#1e4058"][i % 6],
         }))}
       />
+
+      <RecentProvidersStrip locale={locale} />
 
       <section className="max-w-container mx-auto px-5 mt-10 mb-14 w-full">
         <div className="text-center mb-6">
