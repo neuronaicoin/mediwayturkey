@@ -283,7 +283,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
           <h2 className="font-display text-xl sm:text-2xl font-semibold text-navy">{t.sections.popularDestinations}</h2>
           <div className="w-10 h-[3px] bg-gold rounded-full mx-auto mt-2.5" />
         </div>
-        <div className="grid grid-cols-3 gap-2.5">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
           {ACTIVE_CITIES.map((c, i) => (
             <CityCard
               key={c.slug}
@@ -333,14 +333,14 @@ export default function HomePage({ params }: { params: { locale: string } }) {
           <h2 className="font-display text-xl sm:text-2xl font-semibold text-navy">Common questions</h2>
           <div className="w-10 h-[3px] bg-gold rounded-full mx-auto mt-2.5" />
         </div>
-        <div className="space-y-2.5 max-w-2xl mx-auto">
+        <div className="space-y-2 max-w-2xl mx-auto">
           {HOME_FAQS.map((f, i) => (
-            <details key={i} className="bg-white rounded-xl border border-navy/10 p-4 group">
-              <summary className="list-none cursor-pointer font-semibold text-navy text-sm flex items-center justify-between gap-3">
+            <details key={i} className="bg-white rounded-2xl border border-gray-100 shadow-sm open:shadow-md open:border-gold/40 p-4 group transition-shadow">
+              <summary className="list-none cursor-pointer font-semibold text-navy text-[13.5px] flex items-center justify-between gap-3 active:scale-[0.99] transition-transform">
                 {f.q}
-                <span className="text-gold text-xl flex-shrink-0 group-open:rotate-45 transition-transform">+</span>
+                <span className="flex-shrink-0 w-6 h-6 rounded-full bg-gold-tint flex items-center justify-center text-gold-deep text-base group-open:rotate-45 transition-transform">+</span>
               </summary>
-              <p className="text-navy/70 leading-relaxed text-[13.5px] mt-2.5">{f.a}</p>
+              <p className="text-slate-soft leading-relaxed text-[13px] mt-3 pr-8">{f.a}</p>
             </details>
           ))}
         </div>
