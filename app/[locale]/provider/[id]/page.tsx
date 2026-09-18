@@ -178,7 +178,9 @@ export default async function ProviderPage({ params }: PageParams) {
           <div className="flex flex-col sm:flex-row gap-2 mt-5">
             {provider.whatsapp && (
               <a
-                href={`https://wa.me/${(provider.whatsapp_country_code ?? "").replace("+", "")}${provider.whatsapp}`}
+                href={`https://wa.me/${(provider.whatsapp_country_code ?? "").replace("+", "")}${provider.whatsapp}?text=${encodeURIComponent(
+                  `Hi, I found you on MediWayTurkey and I'm interested in ${provider.business_name}.`
+                )}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex-1 text-center text-sm bg-navy text-white py-2.5 rounded-lg font-semibold hover:bg-navy-light transition"
@@ -187,7 +189,11 @@ export default async function ProviderPage({ params }: PageParams) {
               </a>
             )}
             <a
-              href={`mailto:${provider.email}`}
+              href={`mailto:${provider.email}?subject=${encodeURIComponent(
+                `Inquiry via MediWayTurkey`
+              )}&body=${encodeURIComponent(
+                `Hi, I found you on MediWayTurkey and I'm interested in your services.`
+              )}`}
               className="flex-1 text-center text-sm bg-white border border-navy text-navy py-2.5 rounded-lg font-semibold hover:bg-sky transition"
             >
               {t.profile.email}
