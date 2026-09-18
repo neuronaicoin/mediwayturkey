@@ -1,15 +1,17 @@
 import Link from "next/link";
 import { getRecentPublishedProviders } from "@/lib/providers";
 import { ACTIVE_TREATMENTS } from "@/lib/data/treatments";
+import { ACTIVE_CITIES } from "@/lib/data/cities";
+import { ProviderCarousel } from "@/components/ProviderCarousel";
 
 interface Props {
   locale: string;
 }
 
-// Yeni katılan (gerçek, yayınlanmış) provider'ları gösteren, sürekli
-// yatayda kayan bir şerit. Az provider varken bile boş görünmesin diye
-// sona her zaman "Yerinizi alın" kartı eklenir — sayı arttıkça şerit
-// otomatik uzar, ekstra bir değişiklik gerekmez.
+// Yeni katılan (gerçek, yayınlanmış) provider'ları gösteren şerit.
+// Hem otomatik kayar hem kullanıcı elle kaydırabilir (ProviderCarousel).
+// Her kartın altında provider'ın kayıt sırasında girdiği gerçek
+// kategori + şehir bilgisi gösterilir.
 export async function RecentProvidersStrip({ locale }: Props) {
   const providers = await getRecentPublishedProviders(12);
 
@@ -21,33 +23,49 @@ export async function RecentProvidersStrip({ locale }: Props) {
     if (!slug) return null;
     return ACTIVE_TREATMENTS.find((t) => t.slug === slug)?.shortName ?? null;
   }
+  function cityNames(slugs: string[]) {
+    if (!slugs || slugs.length === 0) return null;
+    const names = slugs
+      .map((s) => ACTIVE_CITIES.find((c) => c.slug === s)?.name)
+      .filter(Boolean);
+    if (names.length === 0) return null;
+    return names.slice(0, 2).join(", ") + (names.length > 2 ? ` +${names.length - 2}` : "");
+  }
 
-  const cards = providers.map((p) => (
-    <Link
-      key={p.id}
-      href={`/${locale}/provider/${p.id}`}
-      className="flex-shrink-0 w-40 bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md active:scale-[0.97] transition-all overflow-hidden mr-3"
-    >
-      <div className="w-full h-24 bg-gold-tint flex items-center justify-center overflow-hidden">
-        {p.coverPhoto ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img src={p.coverPhoto} alt={p.businessName} className="w-full h-full object-cover" />
-        ) : (
-          <span className="text-2xl font-display font-bold text-gold-deep">
-            {p.businessName.charAt(0)}
-          </span>
-        )}
-      </div>
-      <div className="p-2.5">
-        <div className="text-[12px] font-semibold text-navy truncate">{p.businessName}</div>
-        {treatmentName(p.treatmentSlug) && (
-          <div className="text-[10.5px] text-slate-soft truncate mt-0.5">
-            {treatmentName(p.treatmentSlug)}
-          </div>
-        )}
-      </div>
-    </Link>
-  ));
+  const cards = providers.map((p) => {
+    const tName = treatmentName(p.treatmentSlug);
+    const cNames = cityNames(p.cities);
+    return (
+      <Link
+        key={p.id}
+        href={`/${locale}/provider/${p.id}`}
+        className="flex-shrink-0 w-40 bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md active:scale-[0.97] transition-all overflow-hidden mr-3"
+      >
+        <div className="w-full h-24 bg-gold-tint flex items-center justify-center overflow-hidden">
+          {p.coverPhoto ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={p.coverPhoto} alt={p.businessName} className="w-full h-full object-cover" />
+          ) : (
+            <span className="text-2xl font-display font-bold text-gold-deep">
+              {p.businessName.charAt(0)}
+            </span>
+          )}
+        </div>
+        <div className="p-2.5">
+          <div className="text-[12px] font-semibold text-navy truncate">{p.businessName}</div>
+          {tName && <div className="text-[10.5px] text-slate-soft truncate mt-0.5">{tName}</div>}
+          {cNames && (
+            <div className="text-[9.5px] text-gold-deep truncate mt-0.5 flex items-center gap-1">
+              <svg width="9" height="9" viewBox="0 0 24 24" fill="none" className="flex-shrink-0">
+                <path d="M12 21s-6.5-5.6-6.5-11A6.5 6.5 0 0 1 12 3.5 6.5 6.5 0 0 1 18.5 10c0 5.4-6.5 11-6.5 11Z" fill="#c9a84c" />
+              </svg>
+              {cNames}
+            </div>
+          )}
+        </div>
+      </Link>
+    );
+  });
 
   // Sona her zaman eklenen katılım daveti kartı
   const joinCard = (
@@ -71,15 +89,9 @@ export async function RecentProvidersStrip({ locale }: Props) {
       <div className="text-center mb-5 px-5">
         <h2 className="font-display text-xl sm:text-2xl font-semibold text-navy">Recently joined</h2>
         <div className="w-10 h-[3px] bg-gold rounded-full mx-auto mt-2.5" />
+        <p className="text-[11px] text-slate-soft mt-1.5">Swipe to browse →</p>
       </div>
-      <style>{`
-        .rp-scroll{display:flex;align-items:stretch;width:max-content;animation:rpscroll 30s linear infinite;padding:0 20px}
-        .rp-scroll:hover{animation-play-state:paused}
-        @keyframes rpscroll{to{transform:translateX(-50%)}}
-      `}</style>
-      <div style={{ overflow: "hidden", width: "100%" }}>
-        <div className="rp-scroll">{loop}</div>
-      </div>
+      <ProviderCarousel>{loop}</ProviderCarousel>
     </section>
   );
 }
