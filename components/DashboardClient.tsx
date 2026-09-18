@@ -105,19 +105,19 @@ export function DashboardClient({ locale }: { locale: string }) {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6">
-        <div className="bg-white border border-gray-200 rounded-xl p-4">
-          <div className="text-[10px] uppercase tracking-wide text-gray-400">Plan</div>
-          <div className="text-base font-semibold text-navy capitalize">{provider?.plan ?? "standard"}</div>
+        <div className="bg-white border-2 border-gold/50 rounded-xl p-4 shadow-sm">
+          <div className="text-[10px] uppercase tracking-wide text-gold-deep font-semibold">Plan</div>
+          <div className="text-base font-semibold text-navy capitalize mt-0.5">{provider?.plan ?? "standard"}</div>
         </div>
-        <div className="bg-white border border-gray-200 rounded-xl p-4">
-          <div className="text-[10px] uppercase tracking-wide text-gray-400">Free trial</div>
-          <div className="text-base font-semibold text-emerald-trust">
+        <div className="bg-white border-2 border-emerald-trust/50 rounded-xl p-4 shadow-sm">
+          <div className="text-[10px] uppercase tracking-wide text-emerald-trust font-semibold">Free trial</div>
+          <div className="text-base font-semibold text-emerald-trust mt-0.5">
             {days !== null ? `${days} days left` : "Active"}
           </div>
         </div>
-        <div className="bg-white border border-gray-200 rounded-xl p-4">
-          <div className="text-[10px] uppercase tracking-wide text-gray-400">Status</div>
-          <div className="text-base font-semibold text-navy">{isPublished ? "Published" : "Draft"}</div>
+        <div className={`bg-white border-2 rounded-xl p-4 shadow-sm ${isPublished ? "border-sky-500/50" : "border-amber-400/50"}`}>
+          <div className={`text-[10px] uppercase tracking-wide font-semibold ${isPublished ? "text-sky-600" : "text-amber-600"}`}>Status</div>
+          <div className="text-base font-semibold text-navy mt-0.5">{isPublished ? "Published" : "Draft"}</div>
         </div>
       </div>
 
