@@ -155,7 +155,7 @@ export async function getRecentPublishedProviders(
     id: string;
     businessName: string;
     cities: string[];
-    treatmentSlug: string | null;
+    treatmentSlugs: string[];
     coverPhoto: string | null;
   }[]
 > {
@@ -181,9 +181,11 @@ export async function getRecentPublishedProviders(
       .order("sort_order"),
   ]);
 
-  const treatmentMap: Record<string, string> = {};
+  // Bir provider'ın verdiği TÜM tedavileri topla (sadece ilkini değil).
+  const treatmentMap: Record<string, string[]> = {};
   for (const t of (treatments as any[]) ?? []) {
-    if (!treatmentMap[t.provider_id]) treatmentMap[t.provider_id] = t.treatment_slug;
+    if (!treatmentMap[t.provider_id]) treatmentMap[t.provider_id] = [];
+    treatmentMap[t.provider_id].push(t.treatment_slug);
   }
   const photoMap: Record<string, string> = {};
   for (const ph of (photos as any[]) ?? []) {
@@ -194,7 +196,7 @@ export async function getRecentPublishedProviders(
     id: p.id,
     businessName: p.business_name,
     cities: p.cities ?? [],
-    treatmentSlug: treatmentMap[p.id] ?? null,
+    treatmentSlugs: treatmentMap[p.id] ?? [],
     coverPhoto: photoMap[p.id] ?? null,
   }));
 }
