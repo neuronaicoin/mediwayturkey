@@ -2,6 +2,7 @@ import Link from "next/link";
 import { SearchBar } from "@/components/SearchBar";
 import { TreatmentCard } from "@/components/TreatmentCard";
 import { CityCard } from "@/components/CityCard";
+import { TreatmentCityTabs } from "@/components/TreatmentCityTabs";
 import { AiEntry } from "@/components/AiEntry";
 import { LiveInfoTicker } from "@/components/LiveInfoTicker";
 import { HomeSchema } from "@/components/SchemaOrg";
@@ -257,47 +258,28 @@ export default function HomePage({ params }: { params: { locale: string } }) {
 
       <LiveInfoTicker />
 
-      <section className="max-w-container mx-auto px-5 mt-10 w-full">
-        <div className="text-center mb-5">
-          <h2 className="font-display text-xl sm:text-2xl font-semibold text-navy">{t.sections.searchTreatment}</h2>
-          <div className="w-10 h-[3px] bg-gold rounded-full mx-auto mt-2.5" />
-        </div>
-        <div className="grid grid-cols-2 gap-2.5">
-          {ACTIVE_TREATMENTS.map((tr) => {
-            const Icon = TREATMENT_ICONS[tr.icon] ?? IconHair;
-            const tag = tr.slug === "hair-transplant" || tr.slug === "dental" ? "Popular" : undefined;
-            return (
-              <TreatmentCard
-                key={tr.slug}
-                locale={locale}
-                treatmentSlug={tr.slug}
-                treatmentName={tr.name}
-                subtitle={treatmentSubtitle(tr.slug)}
-                icon={<Icon />}
-                tag={tag}
-              />
-            );
-          })}
-        </div>
-      </section>
-
-      <section className="max-w-container mx-auto px-5 mt-10 w-full">
-        <div className="text-center mb-5">
-          <h2 className="font-display text-xl sm:text-2xl font-semibold text-navy">{t.sections.popularDestinations}</h2>
-          <div className="w-10 h-[3px] bg-gold rounded-full mx-auto mt-2.5" />
-        </div>
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-          {ACTIVE_CITIES.map((c, i) => (
-            <CityCard
-              key={c.slug}
-              locale={locale}
-              citySlug={c.slug}
-              cityName={c.name}
-              gradientTo={["#21405e", "#2a5168", "#26485f", "#1c3a55", "#234862", "#1e4058"][i % 6]}
-            />
-          ))}
-        </div>
-      </section>
+      <TreatmentCityTabs
+        locale={locale}
+        title="Find the right care"
+        treatmentTabLabel="By Treatment"
+        cityTabLabel="By City"
+        treatments={ACTIVE_TREATMENTS.map((tr) => {
+          const Icon = TREATMENT_ICONS[tr.icon] ?? IconHair;
+          const tag = tr.slug === "hair-transplant" || tr.slug === "dental" ? "Popular" : undefined;
+          return {
+            slug: tr.slug,
+            name: tr.name,
+            subtitle: treatmentSubtitle(tr.slug),
+            icon: <Icon />,
+            tag,
+          };
+        })}
+        cities={ACTIVE_CITIES.map((c, i) => ({
+          slug: c.slug,
+          name: c.name,
+          gradientTo: ["#21405e", "#2a5168", "#26485f", "#1c3a55", "#234862", "#1e4058"][i % 6],
+        }))}
+      />
 
       <section className="max-w-container mx-auto px-5 mt-10 mb-14 w-full">
         <div className="text-center mb-6">
