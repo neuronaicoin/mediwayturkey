@@ -215,7 +215,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
         </div>
       </header>
 
-      <section className="relative bg-navy pb-6 sm:pb-8 overflow-hidden">
+      <section className="relative bg-navy pb-4 sm:pb-6 overflow-hidden">
         {/* Zarif arka plan deseni — dış görsele bağımlı değil, her zaman yüklenir */}
         <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
           <div
@@ -236,13 +236,13 @@ export default function HomePage({ params }: { params: { locale: string } }) {
           </svg>
         </div>
 
-        <div className="relative max-w-container mx-auto px-5 pt-6 sm:pt-8 text-center">
-          <div className="inline-flex items-center gap-2 bg-white/[0.07] border border-gold/30 rounded-full px-4 py-1 mb-3">
+        <div className="relative max-w-container mx-auto px-5 pt-5 sm:pt-7 text-center">
+          <div className="inline-flex items-center gap-1.5 bg-white/[0.07] border border-gold/30 rounded-full px-3 py-[5px] mb-2.5">
             <span className="w-1.5 h-1.5 rounded-full bg-gold" />
-            <span className="text-[10px] sm:text-xs font-semibold text-gold tracking-wide uppercase">Turkey&apos;s Trusted Medical Network</span>
+            <span className="text-[9.5px] sm:text-xs font-semibold text-gold tracking-wide uppercase">Verified Health Providers in Turkey</span>
           </div>
           <HeroRotator />
-          <div className="w-14 h-[3px] bg-gold rounded-full mx-auto mt-3" />
+          <div className="w-14 h-[3px] bg-gold rounded-full mx-auto mt-2.5" />
         </div>
       </section>
 
@@ -262,8 +262,8 @@ export default function HomePage({ params }: { params: { locale: string } }) {
       <TreatmentCityTabs
         locale={locale}
         title="Find the right care"
-        treatmentTabLabel="By Treatment"
-        cityTabLabel="By City"
+        treatmentTabLabel="Search Treatment"
+        cityTabLabel="Popular Destinations"
         treatments={ACTIVE_TREATMENTS.map((tr) => {
           const Icon = TREATMENT_ICONS[tr.icon] ?? IconHair;
           const tag = tr.slug === "hair-transplant" || tr.slug === "dental" ? "Popular" : undefined;
