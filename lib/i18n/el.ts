@@ -58,6 +58,7 @@ export const el: Dictionary = {
     footnote: "Δωρεάν · Χωρίς προμήθεια · Τα στοιχεία σας πηγαίνουν μόνο σε αντίστοιχους παρόχους",
     namePlaceholder: "Το όνομά σας",
     whatsappPlaceholder: "Αριθμός WhatsApp",
+    answersInSeconds: "Απαντήσεις σε δευτερόλεπτα",
   },
   sections: {
     searchTreatment: "Αναζήτηση θεραπείας",
@@ -66,6 +67,12 @@ export const el: Dictionary = {
     step1: "Αναζήτηση",
     step2: "Σύγκριση",
     step3: "Σύνδεση",
+    findRightCare: "Βρείτε τη σωστή φροντίδα",
+    recentlyJoined: "Πρόσφατα εγγεγραμμένοι",
+    swipeToBrowse: "Σύρετε για περιήγηση",
+    clinicCouldBeHere: "Η κλινική σας θα μπορούσε να είναι εδώ",
+    joinFree: "Εγγραφείτε δωρεάν",
+    commonQuestions: "Συχνές ερωτήσεις",
   },
   list: {
     resultsFound: "πάροχοι βρέθηκαν",
@@ -90,6 +97,14 @@ export const el: Dictionary = {
     email: "Email",
     website: "Ιστότοπος",
   },
+  ticker: [
+    "10 κατηγορίες θεραπειών διαθέσιμες",
+    "Συγκρίνετε παρόχους σε 6 μεγάλες πόλεις",
+    "Καμία προμήθεια — ποτέ, για τους παρόχους",
+    "Πάντα δωρεάν αναζήτηση για ασθενείς",
+    "Άμεση επικοινωνία, χωρίς μεσάζοντα",
+    "Οι νέοι πάροχοι μπορούν να εγγραφούν σε λίγα λεπτά",
+  ],
   footer: {
     forPatients: "Για ασθενείς",
     forProviders: "Για παρόχους",
