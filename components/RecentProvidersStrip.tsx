@@ -3,6 +3,7 @@ import { getRecentPublishedProviders } from "@/lib/providers";
 import { ACTIVE_TREATMENTS } from "@/lib/data/treatments";
 import { ACTIVE_CITIES } from "@/lib/data/cities";
 import { ProviderCarousel } from "@/components/ProviderCarousel";
+import { getDictionary } from "@/lib/i18n";
 
 interface Props {
   locale: string;
@@ -13,6 +14,7 @@ interface Props {
 // Her kartın altında provider'ın kayıt sırasında girdiği gerçek
 // kategori + şehir bilgisi gösterilir.
 export async function RecentProvidersStrip({ locale }: Props) {
+  const t = getDictionary(locale);
   const providers = await getRecentPublishedProviders(12);
 
   // Hiç yayınlanmış provider yoksa, bölümü tamamen gizle —
@@ -79,8 +81,8 @@ export async function RecentProvidersStrip({ locale }: Props) {
       className="flex-shrink-0 w-40 bg-navy rounded-2xl flex flex-col items-center justify-center text-center p-3 active:scale-[0.97] transition-transform mr-3"
     >
       <span className="text-gold text-2xl leading-none mb-1">+</span>
-      <span className="text-[12px] font-semibold text-white leading-tight">Your clinic could be here</span>
-      <span className="text-[10.5px] text-gold-tint mt-1">Join free →</span>
+      <span className="text-[12px] font-semibold text-white leading-tight">{t.sections.clinicCouldBeHere}</span>
+      <span className="text-[10.5px] text-gold-tint mt-1">{t.sections.joinFree} →</span>
     </Link>
   );
 
@@ -91,9 +93,9 @@ export async function RecentProvidersStrip({ locale }: Props) {
   return (
     <section className="mt-10 w-full">
       <div className="text-center mb-5 px-5">
-        <h2 className="font-display text-xl sm:text-2xl font-semibold text-navy">Recently joined</h2>
+        <h2 className="font-display text-xl sm:text-2xl font-semibold text-navy">{t.sections.recentlyJoined}</h2>
         <div className="w-10 h-[3px] bg-gold rounded-full mx-auto mt-2.5" />
-        <p className="text-[11px] text-slate-soft mt-1.5">Swipe to browse →</p>
+        <p className="text-[11px] text-slate-soft mt-1.5">{t.sections.swipeToBrowse} →</p>
       </div>
       <ProviderCarousel>{loop}</ProviderCarousel>
     </section>
