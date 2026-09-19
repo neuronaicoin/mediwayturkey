@@ -1,20 +1,13 @@
 // Yatayda otomatik kayan bilgi şeridi — SCF'deki LiveActivityStrip'ten
-// esinlenildi. MediWayTurkey'de gerçek provider sayısı henüz düşük
-// olduğu için (uydurma aktivite rakamı YOK), şu an gerçek olan platform
-// bilgilerine (kategori/şehir sayısı, komisyonsuz model) odaklanıyor.
-// Gerçek provider sayısı arttıkça buraya canlı veri eklenebilir.
+// esinlenildi. Metinler artık DIŞARIDAN (t.ticker, dil dosyasından) geliyor,
+// böylece dil değişince şerit de değişiyor.
 
-const TICKER_ITEMS: string[] = [
-  "10 treatment categories covered",
-  "Compare providers across 6 major cities",
-  "No commission — ever, for providers",
-  "Free to search for patients, always",
-  "Direct contact, no middleman",
-  "New providers can join in minutes",
-];
+interface Props {
+  items: string[];
+}
 
-export function LiveInfoTicker() {
-  const loop = [...TICKER_ITEMS, ...TICKER_ITEMS];
+export function LiveInfoTicker({ items }: Props) {
+  const loop = [...items, ...items];
 
   return (
     <section className="max-w-container mx-auto px-5 mt-4 w-full">
