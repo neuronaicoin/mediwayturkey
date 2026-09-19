@@ -58,6 +58,7 @@ export const es: Dictionary = {
     footnote: "Gratis · Sin comisión · Tus datos solo se envían a proveedores compatibles",
     namePlaceholder: "Tu nombre",
     whatsappPlaceholder: "Número de WhatsApp",
+    answersInSeconds: "Respuestas en segundos",
   },
   sections: {
     searchTreatment: "Buscar tratamiento",
@@ -66,6 +67,12 @@ export const es: Dictionary = {
     step1: "Buscar",
     step2: "Comparar",
     step3: "Conectar",
+    findRightCare: "Encuentre la atención adecuada",
+    recentlyJoined: "Incorporados recientemente",
+    swipeToBrowse: "Deslice para explorar",
+    clinicCouldBeHere: "Su clínica podría estar aquí",
+    joinFree: "Únase gratis",
+    commonQuestions: "Preguntas frecuentes",
   },
   list: {
     resultsFound: "proveedores encontrados",
@@ -90,6 +97,14 @@ export const es: Dictionary = {
     email: "Correo electrónico",
     website: "Sitio web",
   },
+  ticker: [
+    "10 categorías de tratamiento cubiertas",
+    "Compare proveedores en 6 grandes ciudades",
+    "Sin comisión — nunca, para los proveedores",
+    "Búsqueda siempre gratuita para pacientes",
+    "Contacto directo, sin intermediarios",
+    "Los nuevos proveedores pueden unirse en minutos",
+  ],
   footer: {
     forPatients: "Para pacientes",
     forProviders: "Para proveedores",
