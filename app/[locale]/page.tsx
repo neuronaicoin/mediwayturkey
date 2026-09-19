@@ -236,7 +236,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
       <LiveInfoTicker />
 
       {/* Donen basliklar artik burada, "Find the right care" baslığının hemen ustunde */}
-      <div className="max-w-container mx-auto px-5 mt-10 w-full">
+      <div className="max-w-container mx-auto px-5 mt-6 w-full">
         <HeroRotator />
       </div>
 
