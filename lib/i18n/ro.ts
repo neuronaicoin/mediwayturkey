@@ -58,6 +58,7 @@ export const ro: Dictionary = {
     footnote: "Gratuit · Fără comision · Datele tale ajung doar la furnizorii potriviți",
     namePlaceholder: "Numele tău",
     whatsappPlaceholder: "Număr WhatsApp",
+    answersInSeconds: "Răspunsuri în câteva secunde",
   },
   sections: {
     searchTreatment: "Caută un tratament",
@@ -66,6 +67,12 @@ export const ro: Dictionary = {
     step1: "Caută",
     step2: "Compară",
     step3: "Conectează",
+    findRightCare: "Găsiți îngrijirea potrivită",
+    recentlyJoined: "Înscriși recent",
+    swipeToBrowse: "Glisați pentru a răsfoi",
+    clinicCouldBeHere: "Clinica dumneavoastră ar putea fi aici",
+    joinFree: "Înscrieți-vă gratuit",
+    commonQuestions: "Întrebări frecvente",
   },
   list: {
     resultsFound: "furnizori găsiți",
@@ -90,6 +97,14 @@ export const ro: Dictionary = {
     email: "E-mail",
     website: "Site web",
   },
+  ticker: [
+    "10 categorii de tratament acoperite",
+    "Comparați furnizorii în 6 orașe majore",
+    "Fără comision — niciodată, pentru furnizori",
+    "Căutare mereu gratuită pentru pacienți",
+    "Contact direct, fără intermediari",
+    "Furnizorii noi se pot înscrie în câteva minute",
+  ],
   footer: {
     forPatients: "Pentru pacienți",
     forProviders: "Pentru furnizori",
