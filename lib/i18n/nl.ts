@@ -58,6 +58,7 @@ export const nl: Dictionary = {
     footnote: "Gratis · Geen commissie · Je gegevens gaan alleen naar passende aanbieders",
     namePlaceholder: "Je naam",
     whatsappPlaceholder: "WhatsApp-nummer",
+    answersInSeconds: "Antwoorden binnen seconden",
   },
   sections: {
     searchTreatment: "Behandeling zoeken",
@@ -66,6 +67,12 @@ export const nl: Dictionary = {
     step1: "Zoeken",
     step2: "Vergelijken",
     step3: "Verbinden",
+    findRightCare: "Vind de juiste zorg",
+    recentlyJoined: "Onlangs toegetreden",
+    swipeToBrowse: "Swipe om te bladeren",
+    clinicCouldBeHere: "Uw kliniek zou hier kunnen staan",
+    joinFree: "Word gratis lid",
+    commonQuestions: "Veelgestelde vragen",
   },
   list: {
     resultsFound: "aanbieders gevonden",
@@ -90,6 +97,14 @@ export const nl: Dictionary = {
     email: "E-mail",
     website: "Website",
   },
+  ticker: [
+    "10 behandelcategorieën beschikbaar",
+    "Vergelijk aanbieders in 6 grote steden",
+    "Geen commissie — nooit, voor aanbieders",
+    "Altijd gratis zoeken voor patiënten",
+    "Rechtstreeks contact, geen tussenpersoon",
+    "Nieuwe aanbieders kunnen binnen enkele minuten aansluiten",
+  ],
   footer: {
     forPatients: "Voor patiënten",
     forProviders: "Voor aanbieders",
