@@ -2,6 +2,7 @@
 import { useState, type ReactNode } from "react";
 import { useRouter } from "next/navigation";
 import { ACTIVE_CITIES } from "@/lib/data/cities";
+import { getDictionary } from "@/lib/i18n";
 
 interface Props {
   locale: string;
@@ -23,6 +24,7 @@ export function TreatmentCard({
 }: Props) {
   const router = useRouter();
   const [open, setOpen] = useState(false);
+  const t = getDictionary(locale);
 
   return (
     <div
@@ -50,7 +52,7 @@ export function TreatmentCard({
       {open && (
         <div className="border-t border-gray-100 p-3 bg-cream">
           <div className="text-[10.5px] uppercase tracking-wide text-slate-soft font-semibold mb-2 text-center">
-            Choose a city
+            {t.mobile.chooseCity}
           </div>
           <div className="flex flex-wrap justify-center gap-1.5">
             {ACTIVE_CITIES.map((c) => (
