@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { ACTIVE_TREATMENTS } from "@/lib/data/treatments";
+import { getDictionary } from "@/lib/i18n";
 
 interface Props {
   locale: string;
@@ -26,6 +27,7 @@ function PinIcon() {
 export function CityCard({ locale, citySlug, cityName, gradientTo }: Props) {
   const router = useRouter();
   const [open, setOpen] = useState(false);
+  const t = getDictionary(locale);
 
   return (
     <div
@@ -46,7 +48,7 @@ export function CityCard({ locale, citySlug, cityName, gradientTo }: Props) {
       {open && (
         <div className="border-t border-gray-100 p-3 bg-cream">
           <div className="text-[10.5px] uppercase tracking-wide text-slate-soft font-semibold mb-2 text-center">
-            Choose a treatment
+            {t.mobile.chooseTreatment}
           </div>
           <div className="flex flex-wrap justify-center gap-1.5">
             {ACTIVE_TREATMENTS.map((tr) => (
