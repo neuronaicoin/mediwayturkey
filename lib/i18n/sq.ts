@@ -58,6 +58,7 @@ export const sq: Dictionary = {
     footnote: "Falas · Pa komision · Të dhënat tuaja shkojnë vetëm te ofruesit përkatës",
     namePlaceholder: "Emri juaj",
     whatsappPlaceholder: "Numri i WhatsApp",
+    answersInSeconds: "Përgjigje brenda sekondave",
   },
   sections: {
     searchTreatment: "Kërko trajtim",
@@ -66,6 +67,12 @@ export const sq: Dictionary = {
     step1: "Kërko",
     step2: "Krahaso",
     step3: "Lidhu",
+    findRightCare: "Gjeni kujdesin e duhur",
+    recentlyJoined: "Të regjistruar kohët e fundit",
+    swipeToBrowse: "Rrëshqisni për të shfletuar",
+    clinicCouldBeHere: "Klinika juaj mund të jetë këtu",
+    joinFree: "Regjistrohuni falas",
+    commonQuestions: "Pyetje të shpeshta",
   },
   list: {
     resultsFound: "ofrues u gjetën",
@@ -90,6 +97,14 @@ export const sq: Dictionary = {
     email: "Email",
     website: "Faqja e internetit",
   },
+  ticker: [
+    "10 kategori trajtimesh të mbuluara",
+    "Krahasoni ofruesit në 6 qytete kryesore",
+    "Pa komision — kurrë, për ofruesit",
+    "Kërkim gjithmonë falas për pacientët",
+    "Kontakt i drejtpërdrejtë, pa ndërmjetës",
+    "Ofruesit e rinj mund të bashkohen brenda minutash",
+  ],
   footer: {
     forPatients: "Për pacientët",
     forProviders: "Për ofruesit",
