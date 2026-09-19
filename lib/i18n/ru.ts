@@ -58,6 +58,7 @@ export const ru: Dictionary = {
     footnote: "Бесплатно · Без комиссии · Ваши данные передаются только подходящим поставщикам",
     namePlaceholder: "Ваше имя",
     whatsappPlaceholder: "Номер WhatsApp",
+    answersInSeconds: "Ответы за секунды",
   },
   sections: {
     searchTreatment: "Поиск процедуры",
@@ -66,6 +67,12 @@ export const ru: Dictionary = {
     step1: "Поиск",
     step2: "Сравнение",
     step3: "Связь",
+    findRightCare: "Найдите подходящую помощь",
+    recentlyJoined: "Недавно присоединились",
+    swipeToBrowse: "Проведите пальцем для просмотра",
+    clinicCouldBeHere: "Здесь могла бы быть ваша клиника",
+    joinFree: "Присоединиться бесплатно",
+    commonQuestions: "Частые вопросы",
   },
   list: {
     resultsFound: "поставщиков найдено",
@@ -90,6 +97,14 @@ export const ru: Dictionary = {
     email: "Эл. почта",
     website: "Сайт",
   },
+  ticker: [
+    "Охвачено 10 категорий лечения",
+    "Сравните поставщиков в 6 крупных городах",
+    "Без комиссии — никогда, для поставщиков",
+    "Поиск для пациентов всегда бесплатный",
+    "Прямой контакт, без посредников",
+    "Новые поставщики могут присоединиться за считанные минуты",
+  ],
   footer: {
     forPatients: "Для пациентов",
     forProviders: "Для поставщиков",
