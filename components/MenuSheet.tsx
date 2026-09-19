@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { getDictionary } from "@/lib/i18n";
@@ -23,20 +24,21 @@ function swapLocale(pathname: string | null, current: string, next: string): str
 export function MenuSheet({ locale, open, onClose }: Props) {
   const pathname = usePathname();
   const t = getDictionary(locale);
+  const [langOpen, setLangOpen] = useState(false);
 
   if (!open) return null;
 
   const base = `/${locale}`;
 
   const links = [
-    { href: `${base}/list-your-business`, label: t.nav.listBusiness, icon: "building" },
-    { href: `${base}/about`, label: "About", icon: "info" },
-    { href: `${base}/contact`, label: "Contact", icon: "mail" },
-    { href: `${base}/blog`, label: t.nav.blog, icon: "book" },
-    { href: `${base}/faq`, label: "FAQ", icon: "help" },
-    { href: `${base}/login`, label: "Log in", icon: "user" },
-    { href: `${base}/privacy`, label: "Privacy", icon: "shield" },
-    { href: `${base}/terms`, label: "Terms", icon: "file" },
+    { href: `${base}/list-your-business`, label: t.nav.listBusiness, icon: "building", color: "border-gold" },
+    { href: `${base}/about`, label: "About", icon: "info", color: "border-sky-400" },
+    { href: `${base}/contact`, label: "Contact", icon: "mail", color: "border-emerald-trust" },
+    { href: `${base}/blog`, label: t.nav.blog, icon: "book", color: "border-purple-300" },
+    { href: `${base}/faq`, label: "FAQ", icon: "help", color: "border-orange-300" },
+    { href: `${base}/login`, label: "Log in", icon: "user", color: "border-rose-300" },
+    { href: `${base}/privacy`, label: "Privacy", icon: "shield", color: "border-slate-400" },
+    { href: `${base}/terms`, label: "Terms", icon: "file", color: "border-teal-300" },
   ];
 
   function icon(name: string) {
@@ -68,32 +70,51 @@ export function MenuSheet({ locale, open, onClose }: Props) {
       </div>
 
       <div className="flex-1 overflow-y-auto px-4 py-4">
-        {/* Dil seçimi — KUTU içinde, dış lacivert çizgi */}
-        <div className="bg-white border-[1.5px] border-navy rounded-2xl p-3.5 mb-4">
-          <div className="text-[11px] uppercase tracking-wide text-gray-500 font-medium mb-2.5">{t.mobile.language}</div>
-          <div className="flex flex-wrap gap-1.5">
-            {LANGUAGES.map((l) => (
-              <Link
-                key={l.code}
-                href={swapLocale(pathname, locale, l.code)}
-                onClick={onClose}
-                className={`text-xs px-3 py-1.5 rounded-full border ${
-                  l.code === locale ? "bg-navy text-white border-navy" : "bg-white text-navy border-gray-300"
-                }`}
-              >
-                {l.label}
-              </Link>
-            ))}
+        {/* Dil seçimi — artik DIGER kutular gibi kapali basliyor, tiklayinca acilir */}
+        <button
+          onClick={() => setLangOpen((v) => !v)}
+          className="w-full bg-white border-[1.5px] border-indigo-300 rounded-2xl p-3.5 mb-2.5 flex items-center gap-3"
+        >
+          <span className="flex-shrink-0">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0c2d4f" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="12" cy="12" r="9" />
+              <path d="M3 12h18M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18Z" />
+            </svg>
+          </span>
+          <span className="flex-1 text-left text-[15px] text-navy font-medium">
+            {t.mobile.language} · {LANGUAGES.find((l) => l.code === locale)?.label ?? locale}
+          </span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0c2d4f" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"
+            className={`transition-transform ${langOpen ? "rotate-90" : ""}`} style={{ opacity: 0.4 }}>
+            <path d="m9 18 6-6-6-6" />
+          </svg>
+        </button>
+        {langOpen && (
+          <div className="bg-white border-[1.5px] border-indigo-200 rounded-2xl p-3.5 mb-4">
+            <div className="flex flex-wrap gap-1.5">
+              {LANGUAGES.map((l) => (
+                <Link
+                  key={l.code}
+                  href={swapLocale(pathname, locale, l.code)}
+                  onClick={onClose}
+                  className={`text-xs px-3 py-1.5 rounded-full border ${
+                    l.code === locale ? "bg-navy text-white border-navy" : "bg-white text-navy border-gray-300"
+                  }`}
+                >
+                  {l.label}
+                </Link>
+              ))}
+            </div>
           </div>
-        </div>
+        )}
 
-        {/* Sayfa linkleri — dış lacivert çizgili kutular */}
+        {/* Sayfa linkleri — her biri farkli renkli kenarlik */}
         {links.map((item) => (
           <Link
             key={item.href}
             href={item.href}
             onClick={onClose}
-            className="w-full bg-white border-[1.5px] border-navy rounded-2xl p-3.5 mb-2.5 flex items-center gap-3"
+            className={`w-full bg-white border-[1.5px] ${item.color} rounded-2xl p-3.5 mb-2.5 flex items-center gap-3`}
           >
             <span className="flex-shrink-0">{icon(item.icon)}</span>
             <span className="flex-1 text-[15px] text-navy font-medium">{item.label}</span>
