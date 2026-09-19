@@ -58,6 +58,7 @@ export const sr: Dictionary = {
     footnote: "Бесплатно · Без провизије · Ваши подаци иду само одговарајућим пружаоцима",
     namePlaceholder: "Ваше име",
     whatsappPlaceholder: "WhatsApp број",
+    answersInSeconds: "Одговори за неколико секунди",
   },
   sections: {
     searchTreatment: "Тражи третман",
@@ -66,6 +67,12 @@ export const sr: Dictionary = {
     step1: "Претрага",
     step2: "Упоређивање",
     step3: "Повезивање",
+    findRightCare: "Пронађите праву негу",
+    recentlyJoined: "Недавно придружени",
+    swipeToBrowse: "Превуците за преглед",
+    clinicCouldBeHere: "Ваша клиника би могла бити овде",
+    joinFree: "Придружите се бесплатно",
+    commonQuestions: "Често постављана питања",
   },
   list: {
     resultsFound: "пронађених пружалаца",
@@ -90,6 +97,14 @@ export const sr: Dictionary = {
     email: "Имејл",
     website: "Веб-сајт",
   },
+  ticker: [
+    "10 категорија лечења обухваћено",
+    "Упоредите пружаоце услуга у 6 великих градова",
+    "Без провизије — никада, за пружаоце услуга",
+    "Увек бесплатна претрага за пацијенте",
+    "Директан контакт, без посредника",
+    "Нови пружаоци услуга могу се придружити за неколико минута",
+  ],
   footer: {
     forPatients: "За пацијенте",
     forProviders: "За пружаоце",
