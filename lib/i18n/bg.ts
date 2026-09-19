@@ -58,6 +58,7 @@ export const bg: Dictionary = {
     footnote: "Безплатно · Без комисиона · Данните ви отиват само при съответстващи доставчици",
     namePlaceholder: "Вашето име",
     whatsappPlaceholder: "WhatsApp номер",
+    answersInSeconds: "Отговори за секунди",
   },
   sections: {
     searchTreatment: "Търсене на лечение",
@@ -66,6 +67,12 @@ export const bg: Dictionary = {
     step1: "Търсене",
     step2: "Сравнение",
     step3: "Свързване",
+    findRightCare: "Намерете подходящата грижа",
+    recentlyJoined: "Наскоро присъединили се",
+    swipeToBrowse: "Плъзнете за преглед",
+    clinicCouldBeHere: "Вашата клиника може да бъде тук",
+    joinFree: "Присъединете се безплатно",
+    commonQuestions: "Често задавани въпроси",
   },
   list: {
     resultsFound: "намерени доставчици",
@@ -90,6 +97,14 @@ export const bg: Dictionary = {
     email: "Имейл",
     website: "Уебсайт",
   },
+  ticker: [
+    "10 категории лечение обхванати",
+    "Сравнете доставчици в 6 големи града",
+    "Без комисиона — никога, за доставчиците",
+    "Винаги безплатно търсене за пациенти",
+    "Директен контакт, без посредник",
+    "Нови доставчици могат да се присъединят за минути",
+  ],
   footer: {
     forPatients: "За пациенти",
     forProviders: "За доставчици",
