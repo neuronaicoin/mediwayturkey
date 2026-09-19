@@ -230,10 +230,10 @@ export default function HomePage({ params }: { params: { locale: string } }) {
       </div>
 
       <div className="max-w-container mx-auto px-5 mt-4 w-full">
-        <AiEntry locale={locale} label={t.ai.entry} />
+        <AiEntry locale={locale} label={t.ai.entry} subtitle={t.ai.answersInSeconds} />
       </div>
 
-      <LiveInfoTicker />
+      <LiveInfoTicker items={t.ticker} />
 
       {/* Donen basliklar artik burada, "Find the right care" baslığının hemen ustunde */}
       <div className="max-w-container mx-auto px-5 mt-6 w-full">
@@ -242,9 +242,9 @@ export default function HomePage({ params }: { params: { locale: string } }) {
 
       <TreatmentCityTabs
         locale={locale}
-        title="Find the right care"
-        treatmentTabLabel="Search Treatment"
-        cityTabLabel="Popular Destinations"
+        title={t.sections.findRightCare}
+        treatmentTabLabel={t.sections.searchTreatment}
+        cityTabLabel={t.sections.popularDestinations}
         treatments={ACTIVE_TREATMENTS.map((tr) => {
           const Icon = TREATMENT_ICONS[tr.icon] ?? IconHair;
           const tag = tr.slug === "hair-transplant" || tr.slug === "dental" ? "Popular" : undefined;
@@ -299,7 +299,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
 
       <section className="max-w-container mx-auto px-5 mt-8 mb-14 w-full">
         <div className="text-center mb-5">
-          <h2 className="font-display text-xl sm:text-2xl font-semibold text-navy">Common questions</h2>
+          <h2 className="font-display text-xl sm:text-2xl font-semibold text-navy">{t.sections.commonQuestions}</h2>
           <div className="w-10 h-[3px] bg-gold rounded-full mx-auto mt-2.5" />
         </div>
         <div className="space-y-2 max-w-2xl mx-auto">
