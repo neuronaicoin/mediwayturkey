@@ -5,13 +5,14 @@ import { useRouter, usePathname } from "next/navigation";
 interface Props {
   locale: string;
   label: string;
+  subtitle: string;
 }
 
 // Ana sayfadaki "Let our AI assistant guide you" butonu.
 // Kendi modalını açmak yerine, alt bardaki (BottomNav) "Ask AI" sekmesiyle
 // AYNI, kanıtlanmış çalışan görünümü tetikler — URL'e ?ai=1 ekleyerek.
 // BottomNav bunu bir useEffect ile yakalayıp kendi "ai" sekmesini açar.
-export function AiEntry({ locale, label }: Props) {
+export function AiEntry({ locale, label, subtitle }: Props) {
   const router = useRouter();
   const pathname = usePathname();
 
@@ -35,7 +36,7 @@ export function AiEntry({ locale, label }: Props) {
       </span>
       <span className="flex-1">
         <span className="block text-sm text-navy font-semibold">{label}</span>
-        <span className="block text-[11px] text-slate-soft mt-0.5">Answers in seconds</span>
+        <span className="block text-[11px] text-slate-soft mt-0.5">{subtitle}</span>
       </span>
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
         <path d="M5 12h14m-6-6 6 6-6 6" stroke="#0a2540" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
