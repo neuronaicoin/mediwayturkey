@@ -58,6 +58,7 @@ export const tr: Dictionary = {
     footnote: "Ücretsiz · Komisyon yok · Bilgileriniz yalnızca eşleşen sağlayıcılara iletilir",
     namePlaceholder: "Adınız",
     whatsappPlaceholder: "WhatsApp numarası",
+    answersInSeconds: "Saniyeler içinde cevap",
   },
   sections: {
     searchTreatment: "Tedavi ara",
@@ -66,6 +67,12 @@ export const tr: Dictionary = {
     step1: "Ara",
     step2: "Karşılaştır",
     step3: "İletişime geç",
+    findRightCare: "Doğru bakımı bulun",
+    recentlyJoined: "Yeni katılanlar",
+    swipeToBrowse: "Kaydırarak gezin",
+    clinicCouldBeHere: "Kliniğiniz burada olabilir",
+    joinFree: "Ücretsiz katılın",
+    commonQuestions: "Sık sorulan sorular",
   },
   list: {
     resultsFound: "sağlayıcı bulundu",
@@ -90,6 +97,14 @@ export const tr: Dictionary = {
     email: "E-posta",
     website: "Web sitesi",
   },
+  ticker: [
+    "10 tedavi kategorisi mevcut",
+    "6 büyük şehirde sağlayıcıları karşılaştırın",
+    "Sağlayıcılar için komisyon yok — asla",
+    "Hastalar için her zaman ücretsiz arama",
+    "Aracısız doğrudan iletişim",
+    "Yeni sağlayıcılar dakikalar içinde katılabilir",
+  ],
   footer: {
     forPatients: "Hastalar için",
     forProviders: "Sağlayıcılar için",
