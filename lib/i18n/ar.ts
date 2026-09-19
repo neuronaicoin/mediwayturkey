@@ -58,6 +58,7 @@ export const ar: Dictionary = {
     footnote: "مجاني · بدون عمولة · تُرسَل بياناتك فقط إلى مقدمي الخدمات المطابقين",
     namePlaceholder: "اسمك",
     whatsappPlaceholder: "رقم واتساب",
+    answersInSeconds: "إجابات خلال ثوانٍ",
   },
   sections: {
     searchTreatment: "ابحث عن علاج",
@@ -66,6 +67,12 @@ export const ar: Dictionary = {
     step1: "ابحث",
     step2: "قارن",
     step3: "تواصل",
+    findRightCare: "اعثر على الرعاية المناسبة",
+    recentlyJoined: "المنضمون حديثًا",
+    swipeToBrowse: "اسحب للتصفح",
+    clinicCouldBeHere: "يمكن أن تكون عيادتك هنا",
+    joinFree: "انضم مجانًا",
+    commonQuestions: "الأسئلة الشائعة",
   },
   list: {
     resultsFound: "مقدم خدمة",
@@ -90,6 +97,14 @@ export const ar: Dictionary = {
     email: "البريد الإلكتروني",
     website: "الموقع الإلكتروني",
   },
+  ticker: [
+    "10 فئات علاجية مغطاة",
+    "قارن مزودي الخدمة في 6 مدن رئيسية",
+    "بدون عمولة — أبدًا، لمزودي الخدمة",
+    "بحث مجاني دائمًا للمرضى",
+    "تواصل مباشر، بدون وسيط",
+    "يمكن لمزودي الخدمة الجدد الانضمام خلال دقائق",
+  ],
   footer: {
     forPatients: "للمرضى",
     forProviders: "لمقدمي الخدمات",
