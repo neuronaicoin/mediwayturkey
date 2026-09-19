@@ -40,7 +40,7 @@ export function TreatmentCityTabs({
   const [tab, setTab] = useState<"treatment" | "city">("treatment");
 
   return (
-    <section className="max-w-container mx-auto px-5 mt-10 w-full">
+    <section className="max-w-container mx-auto px-5 mt-3 w-full">
       <div className="text-center mb-5">
         <h2 className="font-display text-xl sm:text-2xl font-semibold text-navy">{title}</h2>
         <div className="w-10 h-[3px] bg-gold rounded-full mx-auto mt-2.5" />
