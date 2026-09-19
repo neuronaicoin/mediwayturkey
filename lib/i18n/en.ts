@@ -60,6 +60,7 @@ export const en = {
     footnote: "Free · No commission · Your info goes only to matched providers",
     namePlaceholder: "Your name",
     whatsappPlaceholder: "WhatsApp number",
+    answersInSeconds: "Answers in seconds",
   },
   sections: {
     searchTreatment: "Search treatment",
@@ -68,6 +69,12 @@ export const en = {
     step1: "Search",
     step2: "Compare",
     step3: "Connect",
+    findRightCare: "Find the right care",
+    recentlyJoined: "Recently joined",
+    swipeToBrowse: "Swipe to browse",
+    clinicCouldBeHere: "Your clinic could be here",
+    joinFree: "Join free",
+    commonQuestions: "Common questions",
   },
   list: {
     resultsFound: "providers found",
@@ -92,6 +99,14 @@ export const en = {
     email: "Email",
     website: "Website",
   },
+  ticker: [
+    "10 treatment categories covered",
+    "Compare providers across 6 major cities",
+    "No commission — ever, for providers",
+    "Free to search for patients, always",
+    "Direct contact, no middleman",
+    "New providers can join in minutes",
+  ],
   footer: {
     forPatients: "For patients",
     forProviders: "For providers",
