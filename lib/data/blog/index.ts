@@ -105,6 +105,8 @@ import { post as sacEkimi40YasUstuKadin } from "./40-yas-ustu-kadinlarda-sac-eki
 import { post as greffeCheveuxFemme40AnsTurquie } from "./greffe-cheveux-femme-plus-40-ans-turquie";
 import { post as ziraatAlshaarNisaFouq40 } from "./hair-transplant-women-over-40-turkey-arabic";
 import { post as implantsAllOn4TurquieGuide } from "./implants-dentaires-all-on-4-turquie-prix-guide";
+import { post as bariatricSurgeryTurkeyUltimatePillar } from "./bariatric-surgery-turkey-2026-ultimate-complete-guide";
+import { post as chirurgieBariatriqueTurquieUltimatePillar } from "./chirurgie-bariatrique-turquie-2026-guide-ultime-complet";
 
 export const ALL_POSTS: BlogPost[] = [
   hairTransplantTurkeyCost2026,
@@ -208,6 +210,8 @@ export const ALL_POSTS: BlogPost[] = [
   greffeCheveuxFemme40AnsTurquie,
   ziraatAlshaarNisaFouq40,
   implantsAllOn4TurquieGuide,
+  bariatricSurgeryTurkeyUltimatePillar,
+  chirurgieBariatriqueTurquieUltimatePillar,
 ];
 
 // Bir dile ait yayınlanmış yazılar (en yeni önce)
